@@ -86,14 +86,36 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/classes/g_view.js":
+/*!*******************************!*\
+  !*** ./src/classes/g_view.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("\n\n//# sourceURL=webpack:///./src/classes/g_view.js?");
+
+/***/ }),
+
+/***/ "./src/classes/game.js":
+/*!*****************************!*\
+  !*** ./src/classes/game.js ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("\n\n//# sourceURL=webpack:///./src/classes/game.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const Game = __webpack_require__(/*! ./classes/game */ \"./src/classes/game.js\");\nconst GView = __webpack_require__(/*! ./classes/g_view */ \"./src/classes/g_view.js\");\n\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n    const canvas = document.getElementsByTagName(\"canvas\")[0];\n    canvas.width = Game.WIDTH;\n    canvas.height = Game.HEIGHT;\n\n    const ctx = canvas.getContext(\"2d\");\n    const game = new Game();\n    new GView(game, ctx).start();\n});\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
