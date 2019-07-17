@@ -29,8 +29,7 @@ The game will have some additional functionality as well. Different color themes
 * Add styling and user interface to make it look modern and aesthetic
 
 ## Technnology
-* Javascipt/CSS: 
-  ** Because the guidlines state that Javascript/CSS should be the language used
+* Javascipt/CSS: Because the guidlines state that Javascript/CSS should be the language used
   
 ## Architecture
  * Classes: Paddle, ball, block
