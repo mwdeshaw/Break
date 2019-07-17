@@ -5,7 +5,7 @@ As a child, I would spend hours playing a terminal gane called Magic Ball, where
 
 The objective of the game will be to use the ```a``` and ```d``` keys to move a paddle along the bottom of the board. The player would seek to catch the ball on the paddle and bounce it back to the blocks. A standard block will break if hit with the ball. If one clears the entire area, they win. A player has 3 lives and if they miss the ball, they lose a life. If ine loses 3 lives, the game ends and they have to restart. 
 
-The game will have some additional functionality. Different color themes, as well as different sized blocks, which may take a different number of hits to kill.
+The game will have some additional functionality as well. Different color themes, as well as different sized blocks, which may take a different number of hits to kill.
 
 ## Functionality and MVP Features
 ### Board & Paddle:
