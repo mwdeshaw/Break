@@ -1,4 +1,4 @@
-# [Break](not working right now)
+# [Break](link not here right now)
 
 ## Background and Overview
 As a child, I would spend hours playing a terminal gane called Magic Ball, where the objective was to clear the map of blocks with a ball and paddle. The motivation behind break is to remake a favorite childhood game in Javascript.
