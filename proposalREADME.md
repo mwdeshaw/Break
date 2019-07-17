@@ -33,16 +33,11 @@ The game will have some additional functionality as well. Different color themes
   ** Because the guidlines state that Javascript/CSS should be the language used
   
 ## Architecture
- * Classes:
-  ** Paddle, ball, block
- * Methods overview:
-  ** Detecting collisions, calculating positions and velocities, vectors, block health, gamer lives
- * Ui:
-  ** Button that changes the game color theme
-  ** Button that changes the difficulty (that is, increased ball speed, or perhaps stronger blocks)
- * General appearance:
-  ** Bottom section of the screen will be the paddle, stuck in place vertically but can move horizontally, bricks in the top half, outside      the screen 
-  
+ * Classes: Paddle, ball, block
+ * Methods overview: Detecting collisions, calculating positions and velocities, vectors, block health, gamer lives
+ * Ui: Button that changes the game color theme ; button that changes the difficulty (that is, increased ball speed, or perhaps stronger blocks)
+ * General appearance: Bottom section of the screen will be the paddle, stuck in place vertically but can move horizontally, bricks in the top half
+
 ## Implementation Timeline
 #### 7/17:
 * Build out project framework
