@@ -1,7 +1,7 @@
 # [Break](link not here right now)
 
 ## Background and Overview
-As a child, I would spend hours playing a terminal gane called Magic Ball, where the objective was to clear the map of blocks with a ball and paddle. The motivation behind break is to remake a favorite childhood game in Javascript.
+As a child, I would spend hours playing a terminal gane called Magic Ball, where the objective was to clear the map of blocks with a ball and paddle. The motivation behind Break is to remake a favorite childhood game in Javascript.
 
 The objective of the game will be to use the ```a``` and ```d``` keys to move a paddle along the bottom of the board. The player would seek to catch the ball on the paddle and bounce it back to the blocks. A standard block will break if hit with the ball. If one clears the entire area, they win. A player has 3 lives and if they miss the ball, they lose a life. If ine loses 3 lives, the game ends and they have to restart. 
 
