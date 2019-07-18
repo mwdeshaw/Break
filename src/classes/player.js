@@ -19,17 +19,16 @@ class Player extends MovingObject {
         this.speed = 0;
         this.color = randomColor();
         this.inputs = {};
-    }
+    };
 
     setKeyInputs(inputs) {
-        debugger
         this.inputs = inputs;
         if (inputs.d || inputs.a) {
             this.speed = PLAYER_SPEED;
         } else {
             this.speed = 0;
-        }
-    }
+        };
+    };
 
     draw(ctx) {
         console.log("drawn!")
@@ -37,7 +36,7 @@ class Player extends MovingObject {
         ctx.fillStyle = this.color;
         ctx.fillRect(this.pos.x, this.pos.y, this.radius * 3, this.radius);
         ctx.restore();
-    }
-}
+    };
+};
 
 export default Player;
