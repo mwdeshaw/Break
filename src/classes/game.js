@@ -1,10 +1,12 @@
 // const Player = require("./player");
 const HEIGHT = 850;
 const WIDTH = 1200;
+const START_LOCATION = { x: 600, y: 840 }
+
 
 class Game {
     constructor(ctx) {
-        this.player = new Player(); //manage player death, maybe preload lives into it 
+        this.player = new Player(START_LOCATION);
         this.lives = this.player.lives
         this.ctx = ctx;
         this.blocks = [];
