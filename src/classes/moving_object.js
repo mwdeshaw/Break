@@ -25,7 +25,7 @@ class MovingObject {
 
     isCollidedWith(otherObj) {
         const centerDist = this.distanceFormula(this.pos, otherObj.pos);
-        return centerDist < (this.radius + otherObject.radius)
+        return centerDist < (this.radius + otherObj.radius)
     }
 
     isOutOfBounds(posY) {

@@ -6,7 +6,7 @@ class GVIEW {
         this.input = {
             a: [-30, 0],
             d: [30, 0],
-            space: [0, -30]
+            space: [0, -45]
         };
     }
 
@@ -25,18 +25,19 @@ class GVIEW {
         switch (event.keyCode) {
             case 65:
                 if (input.a !== down) {
-                    this.game.player.setKeyInputs(input.a);
+                    this.game.player.setKeyInputs(input.a, Object.keys(input)[0]);
+                    this.game.balls[0].handleBallRelease(input.a, Object.keys(input)[0])
                 }
                 break;
             case 68:
                 if (input.d !== down) {
-                    this.game.player.setKeyInputs(input.d);
+                    this.game.player.setKeyInputs(input.d, Object.keys(input)[1]);
+                    this.game.balls[0].handleBallRelease(input.d, Object.keys(input)[1])
                 }
                 break;
             case 32:
-                if (input.space) {
-                    debugger
-                    this.game.balls[0].handleBallRelease(input.space)
+                if (input.space !== down) {
+                    this.game.balls[0].handleBallRelease(input.space, Object.keys(input)[2])
                 }
                 break;
             default:

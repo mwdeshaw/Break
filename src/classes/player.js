@@ -1,4 +1,5 @@
 import MovingObject from './moving_object';
+import Ball from './ball';
 const STARTING_LIVES = 3;
 // const PLAYER_SPEED = 150;
 const PLAYER_RADIUS = 30;
@@ -19,7 +20,7 @@ class Player extends MovingObject {
         this.color = randomColor();
     };
 
-    setKeyInputs(input) {
+    setKeyInputs(input, key) {
         if (this.pos.x < 0) {
             this.pos.x = 0;
             this.vel.x = 0;
@@ -39,6 +40,11 @@ class Player extends MovingObject {
         ctx.restore();
     };
 
+    collidesWith(otherObj) {
+        if (otherObj instanceof Ball) {
+            otherObj.bounce(); 
+        };
+    };
 
     deathAnimation(ctx) {
         //likely will have image here later for death...

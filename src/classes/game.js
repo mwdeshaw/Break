@@ -4,7 +4,7 @@ import Ball from './ball';
 const HEIGHT = 850;
 const WIDTH = 1200;
 const PLAYER_START_LOCATION = { x: 600, y: 800 }
-const BALL_START_LOCATION = { x: 600, y: 760 }
+const BALL_START_LOCATION = { x: 645, y: 779 }
 const STARTING_BALLS = 3;
 
 class Game {
@@ -35,7 +35,7 @@ class Game {
     //     return [].concat(this.player, this.blocks, this.balls);
     // };
 
-    allCurMovingObj() {
+    allCurMovingObjs() {
         return [].concat(this.player, this.balls[0]);
     };
 
@@ -54,7 +54,7 @@ class Game {
     };
 
     moveObjects(delta) {
-        const movingObj = this.allCurMovingObj();
+        const movingObj = this.allCurMovingObjs();
         movingObj.forEach(obj => {
             obj.move(delta);
             if (obj instanceof Ball && obj.isOutOfBounds(obj.pos.y)) {
@@ -82,13 +82,13 @@ class Game {
     };
 
     checkForCollisions() {
-        const allObj = this.allObjects;
+        const allObj = this.allCurObjects();
         for (let i = 0; i < allObj.length; i++) {
             for (let j = 0; j < allObj.length; j ++) {
                 const obj1 = allObj[i];
                 const obj2 = allObj[j];
                 if (obj1.isCollidedWith(obj2)) {
-                    return obj1.collideWith(obj2);
+                    return obj1.collidesWith(obj2);
                 }
             }
         }

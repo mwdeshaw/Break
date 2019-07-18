@@ -1,4 +1,5 @@
 import MovingObj from './moving_object';
+import Player from './player';
 
 const BALL_RADIUS = 20;
 
@@ -15,8 +16,7 @@ class Ball extends MovingObj {
     constructor(pos) {
         super(pos, { x: 0, y: 0 }, BALL_RADIUS);
         this.color = randomColor();
-        this.initialDir = this.initialRotation();
-        // this.dir = this.randomRotation();
+        this.dir = { x: 0, y: 0 }
         this.spinSpeed = Math.random() * 60 + 30;
     }
 
@@ -34,34 +34,47 @@ class Ball extends MovingObj {
         ctx.restore();
     };
 
-    collideWith(otherObj) {
+    collidesWith(otherObj) {
         if (otherObj instanceof Player) {
-            this.ball.bounce();
+            this.bounce();
             return true;
         } else {
             return false;
         }
     };
 
+    bounce() {
+        this.dir.y = -this.dir.y;
+    };
+
     initialRotation() {
         let rads = 90 * (Math.PI / 180); //assuming a 90 degree start
-        return { x: Math.cos(radians), y: Math.sin(radians) };
-    }
+        this.dir.x = Math.cos(rads);
+        this.dir.y = Math.sin(rads);
+    };
 
     rotate(deltaTime) {
-        let angle = -this.spinSpeed * (Math.PI / 180) * deltaTime;
-        let vector = [this.dir.x, this.dir.y];
+        if (this.dir.y !== 0) {
+            let angle = -this.spinSpeed * (Math.PI / 180) * deltaTime;
+            let vector = [this.dir.x, this.dir.y];
 
-        var cos = Math.cos(angle);
-        var sin = Math.sin(angle);
+            var cos = Math.cos(angle);
+            var sin = Math.sin(angle);
 
-        this.dir.x = Math.round(10000 * (vector[0] * cos - vector[1] * sin)) / 10000;
-        this.dir.y = Math.round(10000 * (vector[0] * sin + vector[1] * cos)) / 10000;
+            this.dir.x = Math.round(10000 * (vector[0] * cos - vector[1] * sin)) / 10000;
+            this.dir.y = Math.round(10000 * (vector[0] * sin + vector[1] * cos)) / 10000;
+        }
     }
 
-    handleBallRelease(input) {
-        this.vel.x += input[0];
-        this.vel.y += input[1];
+    handleBallRelease(input, key) {
+        if ((key !== "space") && (this.dir.y === 0)) {
+            this.vel.x += input[0];
+            this.vel.y += input[1];
+        } else if ((key === "space") && (this.dir.y === 0)) {
+            this.vel.x += input[0];
+            this.vel.y += input[1];
+            this.initialRotation();
+        }
     };
 
     move(deltaTime) {
