@@ -14,9 +14,8 @@ class MovingObject {
         this.pos.y = this.pos.y + newDistanceY;
         console.log(this.pos.x);
         console.log(this.pos.y);
-    }
 
-    
+    }
 }
 
 export default MovingObject;
