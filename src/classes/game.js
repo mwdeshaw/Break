@@ -1,8 +1,9 @@
-// const Player = require("./player");
+import Player from "./player";
+
 const HEIGHT = 850;
 const WIDTH = 1200;
-const START_LOCATION = { x: 600, y: 840 }
-
+const START_LOCATION = { x: 0, y: 0 }
+// const START_LOCATION = { x: 600, y: 840 }
 
 class Game {
     constructor(ctx) {
@@ -14,7 +15,19 @@ class Game {
         this.width = WIDTH;
         this.themeColor = ["red", "blue", "green"];     //add a function to pick a theme color based on user input, or simply randomize it
         this.balls = [];
-    };
+        this.input = {
+            a: false,
+            d: false
+        };
+    };   
+//     document.addEventListener("keydown", event => {
+//         this._handleKey(event, true);
+//         });
+        
+// document.addEventListener("keyup", event => {
+//     this._handleKey(event, false);
+// })
+
 
     allObjects() {
         return [].concat(this.player, this.blocks, this.balls);
@@ -29,6 +42,30 @@ class Game {
             object.draw(this.ctx);
         });
     };
+
+    // keyDown() {
+    //     document 
+    // }
+
+    handleKey(event, down) {
+        let input = this.input;
+        switch(event.keyCode) {
+            case 65:
+                if (input.a !== down ) {
+                    input.a = down;
+                }
+                break;
+            case 68:
+                if (input.d !== down) {
+                    input.d = down;
+                }
+                break;
+            default:
+                break;
+        }
+
+        this.input = input;
+    }
 
     //add block function needed
     //add player function needed
