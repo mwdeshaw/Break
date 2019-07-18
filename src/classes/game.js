@@ -4,7 +4,7 @@ import Ball from './ball';
 const HEIGHT = 850;
 const WIDTH = 1200;
 const PLAYER_START_LOCATION = { x: 600, y: 800 }
-const BALL_START_LOCATION = { x: 600, y: 710 }
+const BALL_START_LOCATION = { x: 600, y: 760 }
 const STARTING_BALLS = 3;
 
 class Game {
@@ -27,26 +27,34 @@ class Game {
         }
     }
      
-    allObjects() {
-        return [].concat(this.player, this.blocks, this.balls);
+    allCurObjects() {
+        return [].concat(this.player, this.blocks, this.balls[0]);
     };
 
-    allMovingObj() {
-        return [].concat(this.player, this.balls);
+    // allObjects() {
+    //     return [].concat(this.player, this.blocks, this.balls);
+    // };
+
+    allCurMovingObj() {
+        return [].concat(this.player, this.balls[0]);
     };
+
+    // allMovingObj() {
+    //     return [].concat(this.player, this.balls);
+    // };
 
     draw() {
         this.ctx.clearRect(0, 0, this.width, this.height);
         this.ctx.fillStyle = this.themeColor[1];
         this.ctx.fillRect(0, 0, this.width, this.height);
 
-        this.allObjects().forEach(obj => {
+        this.allCurObjects().forEach(obj => {
             obj.draw(this.ctx);
         });
     };
 
     moveObjects(delta) {
-        const movingObj = this.allMovingObj();
+        const movingObj = this.allCurMovingObj();
         movingObj.forEach(obj => {
             obj.move(delta);
             if (obj instanceof Ball && obj.isOutOfBounds(obj.pos.y)) {
@@ -63,7 +71,11 @@ class Game {
 
     remove(obj) {
         if (obj instanceof Ball) {
-            this.balls.splice(this.balls.indexOf(obj), 1);
+            if (this.balls.length === 0) {
+                return "Game Over"
+            } else {
+                this.balls.shift(); //returns the new balls array 
+            }
         } else {
             throw new Error("Unknown Object, Please Address")
         };
