@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\n\n//# sourceURL=webpack:///./src/classes/g_view.js?");
+eval("class GVIEW {\n    constructor(game){\n        this.game = game;\n    }\n\n    start() {\n        this.game.draw();\n    }\n}\n\nmodule.exports = GVIEW;\n\n//# sourceURL=webpack:///./src/classes/g_view.js?");
 
 /***/ }),
 
@@ -104,7 +104,7 @@ eval("\n\n//# sourceURL=webpack:///./src/classes/g_view.js?");
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\n\n//# sourceURL=webpack:///./src/classes/game.js?");
+eval("// const Player = require(\"./player\");\nconst HEIGHT = 850;\nconst WIDTH = 1200;\n// const LIVES = 3;\n\nclass Game {\n    constructor(ctx) {\n        this.player = new Player(); //manage player death, maybe preload lives into it \n        this.ctx = ctx;\n        this.blocks = [];\n        this.height = HEIGHT;\n        this.width = WIDTH;\n        this.themeColor = [\"red\", \"blue\", \"green\"];     //add a function to pick a theme color based on user input, or simply randomize it\n        this.balls = [];\n    };\n\n    allObjects() {\n        return [].concat(this.player, this.blocks, this.balls);\n    };\n\n    draw() {\n        this.ctx.clearRect(0, 0, this.width, this.height);\n        this.ctx.fillStyle = this.themeColor[1];\n        this.ctx.fillRect(0, 0, this.width, this.height);\n\n        this.allObjects().forEach(object => {\n            object.draw(this.ctx);\n        });\n    };\n\n    //add block function needed\n    //add player function needed\n}\n\nmodule.exports = Game;\n\n//# sourceURL=webpack:///./src/classes/game.js?");
 
 /***/ }),
 
@@ -115,7 +115,7 @@ eval("\n\n//# sourceURL=webpack:///./src/classes/game.js?");
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const Game = __webpack_require__(/*! ./classes/game */ \"./src/classes/game.js\");\nconst GView = __webpack_require__(/*! ./classes/g_view */ \"./src/classes/g_view.js\");\n\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n    const canvas = document.getElementsByTagName(\"canvas\")[0];\n    canvas.width = Game.WIDTH;\n    canvas.height = Game.HEIGHT;\n\n    const ctx = canvas.getContext(\"2d\");\n    const game = new Game();\n    new GView(game, ctx).start();\n});\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const Game = __webpack_require__(/*! ./classes/game */ \"./src/classes/game.js\");\nconst GView = __webpack_require__(/*! ./classes/g_view */ \"./src/classes/g_view.js\");\n\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n    const canvas = document.getElementById(\"board\");\n\n    const ctx = canvas.getContext(\"2d\");\n    const game = new Game(ctx);\n    new GView(game).start();\n});\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
