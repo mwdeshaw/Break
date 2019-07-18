@@ -20,15 +20,7 @@ class Game {
             d: false
         };
     };   
-//     document.addEventListener("keydown", event => {
-//         this._handleKey(event, true);
-//         });
-        
-// document.addEventListener("keyup", event => {
-//     this._handleKey(event, false);
-// })
-
-
+     
     allObjects() {
         return [].concat(this.player, this.blocks, this.balls);
     };
@@ -41,11 +33,27 @@ class Game {
         this.allObjects().forEach(object => {
             object.draw(this.ctx);
         });
+
+        document.addEventListener("keydown", event => {
+            this.handleKey(event, true);
+        });
+
+        document.addEventListener("keyup", event => {
+            this.handleKey(event, false);
+        });
+
     };
 
-    // keyDown() {
-    //     document 
-    // }
+    moveObjects(delta) {
+        const movingObj = [].concat(this.player, this.balls);
+        this.allObjects().forEach(obj => {
+            object.move(delta);
+        });
+    };
+
+    singleMove(delta) {
+        this.moveObjects(delta);
+    }
 
     handleKey(event, down) {
         let input = this.input;
@@ -71,4 +79,5 @@ class Game {
     //add player function needed
 }
 
-module.exports = Game;
+// module.exports = Game;
+export default Game;

@@ -9,6 +9,7 @@ class MovingObject {
     };
     
     move(deltaTime) {
+        debugger
         const velocityScale = deltaTime / FRAME_RATE;
         let offsetX = this.vel.x * velocityScale;
         let offsetY = this.vel.offsetY * velocityScale;
@@ -18,4 +19,5 @@ class MovingObject {
 
 }
 
-module.exports = MovingObject;
+// module.exports = MovingObject;
+export default MovingObject;
