@@ -36,6 +36,11 @@ class MovingObject {
         };
     };
 
+    randomRotation() {
+        let radians = Math.random() * Math.PI * 2;
+        return { x: Math.cos(radians), y: Math.sin(radians) };
+    }
+
 };
 
 export default MovingObject;
