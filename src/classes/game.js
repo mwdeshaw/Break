@@ -31,6 +31,10 @@ class Game {
         return [].concat(this.player, this.blocks, this.balls);
     };
 
+    allMovingObj() {
+        return [].concat(this.player, this.balls);
+    };
+
     draw() {
         this.ctx.clearRect(0, 0, this.width, this.height);
         this.ctx.fillStyle = this.themeColor[1];
@@ -42,28 +46,41 @@ class Game {
     };
 
     moveObjects(delta) {
-        const movingObj = [].concat(this.player, this.balls);
+        const movingObj = this.allMovingObj();
         movingObj.forEach(obj => {
             obj.move(delta);
+            if (obj instanceof Ball && obj.isOutOfBounds(obj.pos.y)) {
+                this.remove(obj)
+                    .then(this.player.deathAnimation(this.ctx))
+            };
         });
     };
 
     singleMove(delta) {
         this.moveObjects(delta);
-    }
+        this.checkForCollisions();
+    };
 
     remove(obj) {
-        if (obj instanceof Player) {
-            this.player.lives -= 1;
-            if (this.player.lives === 0) {
-                return "Game Over!"
-            };
-        } else if (obj instanceof Ball) {
+        if (obj instanceof Ball) {
             this.balls.splice(this.balls.indexOf(obj), 1);
         } else {
             throw new Error("Unknown Object, Please Address")
         };
     };
+
+    checkForCollisions() {
+        const allObj = this.allObjects;
+        for (let i = 0; i < allObj.length; i++) {
+            for (let j = 0; j < allObj.length; j ++) {
+                const obj1 = allObj[i];
+                const obj2 = allObj[j];
+                if (obj1.isCollidedWith(obj2)) {
+                    return obj1.collideWith(obj2);
+                }
+            }
+        }
+    }
 
 }
 

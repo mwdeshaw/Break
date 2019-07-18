@@ -11,7 +11,6 @@ const randomColor = () => {
     return color;
 };
 
-
 class Ball extends MovingObj {
     constructor(pos) {
         super(pos, { x: 0, y: 0 }, BALL_RADIUS);
@@ -25,6 +24,15 @@ class Ball extends MovingObj {
         ctx.fill();
     };
 
-    
+    collideWith(otherObj) {
+        if (otherObj instanceof Player) {
+            this.ball.bounce();
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 };
+
+export default Ball;

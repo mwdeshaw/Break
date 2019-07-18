@@ -14,19 +14,28 @@ class MovingObject {
         this.pos.y = this.pos.y + newDistanceY;
         console.log(this.pos.x);
         console.log(this.pos.y);
-
+        // if (this.isOutOfBounds(this.pos.y)) {
+            //decided to handle the remove logic in game, this may change...
+        // }
     }
 
     distanceFormula(pos1, pos2) {
         return Math.sqrt(Math.pow(pos1.x - pos2.x, 2) + Math.pow(pos1.y - pos2.y, 2));
     };
 
-
-    isCollided(otherObj) {
+    isCollidedWith(otherObj) {
         const centerDist = this.distanceFormula(this.pos, otherObj.pos);
         return centerDist < (this.radius + otherObject.radius)
     }
 
-}
+    isOutOfBounds(posY) {
+        if (posY > 800 ) {
+            return true
+        } else {
+            return false;
+        };
+    };
+
+};
 
 export default MovingObject;

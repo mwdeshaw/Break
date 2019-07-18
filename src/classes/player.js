@@ -39,7 +39,18 @@ class Player extends MovingObject {
         ctx.restore();
     };
 
-    //player death and live deduction
+    deathAnimation(ctx) {
+        ctx.clearRec(this.pos.x, this.pos.y, this.radius * 3, this.radius);
+        this.lives -= 1;
+        if (this.player.lives === 0) {
+            return "Game Over!"
+        } else {
+            this.draw(ctx);
+        }
+    };
+
+
+
     //inciorporating the above into the game class
     //ball management
 };
