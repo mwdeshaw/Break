@@ -4,7 +4,7 @@ import Ball from './ball';
 const HEIGHT = 850;
 const WIDTH = 1200;
 const PLAYER_START_LOCATION = { x: 600, y: 800 }
-const BALL_START_LOCATION = { x: 600, y: 890 }
+const BALL_START_LOCATION = { x: 600, y: 710 }
 const STARTING_BALLS = 3;
 
 class Game {
@@ -50,8 +50,8 @@ class Game {
         movingObj.forEach(obj => {
             obj.move(delta);
             if (obj instanceof Ball && obj.isOutOfBounds(obj.pos.y)) {
-                this.remove(obj)
-                    .then(this.player.deathAnimation(this.ctx))
+                this.remove(obj);
+                this.player.deathAnimation(this.ctx);
             };
         });
     };

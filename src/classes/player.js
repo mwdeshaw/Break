@@ -39,10 +39,13 @@ class Player extends MovingObject {
         ctx.restore();
     };
 
+
     deathAnimation(ctx) {
-        ctx.clearRec(this.pos.x, this.pos.y, this.radius * 3, this.radius);
+        //likely will have image here later for death...
+        this.draw(ctx);
+        // ctx.clearRec(this.pos.x, this.pos.y, this.radius * 3, this.radius);
         this.lives -= 1;
-        if (this.player.lives === 0) {
+        if (this.lives === 0) {
             return "Game Over!"
         } else {
             this.draw(ctx);

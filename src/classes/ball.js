@@ -15,10 +15,12 @@ class Ball extends MovingObj {
     constructor(pos) {
         super(pos, { x: 0, y: 0 }, BALL_RADIUS);
         this.color = randomColor();
-        this.dir = this.randomRotation();
-        this.rotSpeed = Math.random() * 60 + 30;
+        this.initialDir = this.initialRotation();
+        // this.dir = this.randomRotation();
+        this.spinSpeed = Math.random() * 60 + 30;
     }
 
+    //check to see if it can be kept simple
     draw(ctx) {
         let rotateDir = Math.atan(this.dir.y / this.dir.x);
         ctx.save();
@@ -41,8 +43,13 @@ class Ball extends MovingObj {
         }
     };
 
+    initialRotation() {
+        let rads = 90 * (Math.PI / 180); //assuming a 90 degree start
+        return { x: Math.cos(radians), y: Math.sin(radians) };
+    }
+
     rotate(deltaTime) {
-        let angle = -this.rotateSpeed * (Math.PI / 180) * deltaTime;
+        let angle = -this.spinSpeed * (Math.PI / 180) * deltaTime;
         let vector = [this.dir.x, this.dir.y];
 
         var cos = Math.cos(angle);
@@ -51,6 +58,11 @@ class Ball extends MovingObj {
         this.dir.x = Math.round(10000 * (vector[0] * cos - vector[1] * sin)) / 10000;
         this.dir.y = Math.round(10000 * (vector[0] * sin + vector[1] * cos)) / 10000;
     }
+
+    handleBallRelease(input) {
+        this.vel.x += input[0];
+        this.vel.y += input[1];
+    };
 
     move(deltaTime) {
         super.move(deltaTime);
