@@ -28,7 +28,7 @@ class Game {
     }
      
     allCurObjects() {
-        return [].concat(this.player, this.blocks, this.balls[0]);
+        return [].concat(this.player, this.balls[0], this.blocks);
     };
 
     // allObjects() {
@@ -83,17 +83,36 @@ class Game {
 
     checkForCollisions() {
         const allObj = this.allCurObjects();
+
         for (let i = 0; i < allObj.length; i++) {
             for (let j = 0; j < allObj.length; j ++) {
                 const obj1 = allObj[i];
                 const obj2 = allObj[j];
-                if (obj1.isCollidedWith(obj2)) {
-                    return obj1.collidesWith(obj2);
-                }
-            }
-        }
-    }
 
-}
+                if ((obj1.pos.x > (1200 - obj1.radius)) || (obj1.pos.x < 0)) {
+                    return obj1.wallCollision();            
+                } else if ((obj2.pos.x > (1200 - obj2.radius)) || (obj2.pos.x < 0)) {
+
+                } else if (obj1.isCollidedWith(obj2)) {
+                    return obj1.collidesWith(obj2);
+                };
+            };
+        };
+    };
+};
+
+    // checkForCollisions() {
+    //     const allObj = this.allCurObjects();
+    //     for (let i = 0; i < allObj.length; i++) {
+    //         for (let j = 0; j < allObj.length; j ++) {
+    //             const obj1 = allObj[i];
+    //             const obj2 = allObj[j];
+    //             if (obj1.isCollidedWith(obj2)) {
+    //                 return obj1.collidesWith(obj2);
+    //             }
+    //         }
+    //     }
+    // }
+// }
 
 export default Game;

@@ -15,28 +15,23 @@ const randomColor = () => {
 
 class Player extends MovingObject {
     constructor(pos, lives = STARTING_LIVES) {
-        super(pos, { x: 0, y: 0 }, PLAYER_RADIUS)
+        super(pos, { x: 0, y: 0 })
         this.lives = lives;
         this.color = randomColor();
+        this.radius = Math.floor(Math.sqrt((Math.pow(PLAYER_RADIUS, 2)) + (Math.pow(PLAYER_RADIUS * 3, 2))));
+    //rectangular game piece operates differently from collisions than circles
     };
 
     setKeyInputs(input, key) {
-        if (this.pos.x < 0) {
-            this.pos.x = 0;
-            this.vel.x = 0;
-        } else if ((this.pos.x + this.radius * 3) > 1200) {
-            this.pos.x = 1200 - (this.radius * 3);
-            this.vel.x = 0;
-        } else {
-            this.vel.x += input[0];
-            this.vel.y += input[1];
-        };
+        this.vel.x += input[0];
+        this.vel.y += input[1];
     };
 
     draw(ctx) {
+        const rad = PLAYER_RADIUS;
         ctx.save();
         ctx.fillStyle = this.color;
-        ctx.fillRect(this.pos.x, this.pos.y, this.radius * 3, this.radius);
+        ctx.fillRect(this.pos.x, this.pos.y, rad * 3, rad);
         ctx.restore();
     };
 
@@ -46,10 +41,14 @@ class Player extends MovingObject {
         };
     };
 
+    wallCollision() {
+        this.vel.x = -this.vel.x;
+        return true;
+    };
+
     deathAnimation(ctx) {
         //likely will have image here later for death...
         this.draw(ctx);
-        // ctx.clearRec(this.pos.x, this.pos.y, this.radius * 3, this.radius);
         this.lives -= 1;
         if (this.lives === 0) {
             return "Game Over!"
@@ -58,10 +57,6 @@ class Player extends MovingObject {
         }
     };
 
-
-
-    //inciorporating the above into the game class
-    //ball management
 };
 
 export default Player;

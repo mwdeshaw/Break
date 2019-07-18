@@ -14,9 +14,6 @@ class MovingObject {
         this.pos.y = this.pos.y + newDistanceY;
         console.log(this.pos.x);
         console.log(this.pos.y);
-        // if (this.isOutOfBounds(this.pos.y)) {
-            //decided to handle the remove logic in game, this may change...
-        // }
     }
 
     distanceFormula(pos1, pos2) {
@@ -25,10 +22,10 @@ class MovingObject {
 
     isCollidedWith(otherObj) {
         const centerDist = this.distanceFormula(this.pos, otherObj.pos);
-        return centerDist < (this.radius + otherObj.radius)
-    }
+        return centerDist < (this.radius + otherObj.radius);
+    };
 
-    isOutOfBounds(posY) {
+    isOutOfBounds(posY) { //handles the death logic for the player
         if (posY > 800 ) {
             return true
         } else {

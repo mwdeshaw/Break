@@ -43,8 +43,15 @@ class Ball extends MovingObj {
         }
     };
 
+    wallCollision() {
+        this.bounce();
+        return true;
+    }
+
     bounce() {
+        debugger
         this.dir.y = -this.dir.y;
+        console.log(this.vel);
     };
 
     initialRotation() {
