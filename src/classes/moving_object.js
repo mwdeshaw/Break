@@ -16,6 +16,17 @@ class MovingObject {
         console.log(this.pos.y);
 
     }
+
+    distanceFormula(pos1, pos2) {
+        return Math.sqrt(Math.pow(pos1.x - pos2.x, 2) + Math.pow(pos1.y - pos2.y, 2));
+    };
+
+
+    isCollided(otherObj) {
+        const centerDist = this.distanceFormula(this.pos, otherObj.pos);
+        return centerDist < (this.radius + otherObject.radius)
+    }
+
 }
 
 export default MovingObject;

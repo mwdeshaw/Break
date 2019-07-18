@@ -1,12 +1,15 @@
 import Player from "./player";
+import Ball from './ball';
 
 const HEIGHT = 850;
 const WIDTH = 1200;
-const START_LOCATION = { x: 600, y: 800 }
+const PLAYER_START_LOCATION = { x: 600, y: 800 }
+const BALL_START_LOCATION = { x: 600, y: 890 }
+const STARTING_BALLS = 3;
 
 class Game {
     constructor(ctx) {
-        this.player = new Player(START_LOCATION);
+        this.player = new Player(PLAYER_START_LOCATION);
         this.lives = this.player.lives;
         this.ctx = ctx;
         this.blocks = [];
@@ -14,7 +17,15 @@ class Game {
         this.width = WIDTH;
         this.themeColor = ["red", "blue", "green"];     //add a function to pick a theme color based on user input, or simply randomize it
         this.balls = [];
+
+        this.addBalls(STARTING_BALLS);
     };   
+
+    addBalls(n) {
+        for (let i = 0; i < n; i++) {
+            this.balls.push(new Ball(BALL_START_LOCATION))
+        }
+    }
      
     allObjects() {
         return [].concat(this.player, this.blocks, this.balls);
@@ -41,9 +52,19 @@ class Game {
         this.moveObjects(delta);
     }
 
-    //add block function needed
-    //add player function needed
+    remove(obj) {
+        if (obj instanceof Player) {
+            this.player.lives -= 1;
+            if (this.player.lives === 0) {
+                return "Game Over!"
+            };
+        } else if (obj instanceof Ball) {
+            this.balls.splice(this.balls.indexOf(obj), 1);
+        } else {
+            throw new Error("Unknown Object, Please Address")
+        };
+    };
+
 }
 
-// module.exports = Game;
 export default Game;

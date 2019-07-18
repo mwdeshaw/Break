@@ -38,6 +38,10 @@ class Player extends MovingObject {
         ctx.fillRect(this.pos.x, this.pos.y, this.radius * 3, this.radius);
         ctx.restore();
     };
+
+    //player death and live deduction
+    //inciorporating the above into the game class
+    //ball management
 };
 
 export default Player;

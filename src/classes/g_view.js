@@ -3,16 +3,10 @@
 class GVIEW {
     constructor(game){
         this.game = game;
-        // this.input = {
-        //     a: false,
-        //     d: false
-        // };
         this.input = {
             a: [-30, 0],
             d: [30, 0],
         };
-        this.fired = false;
-        // this.lastTime = new Date();
     }
 
     keyHandler() {      
