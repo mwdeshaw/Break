@@ -18,8 +18,7 @@ class Player extends MovingObject {
         super(pos, { x: 0, y: 0 })
         this.lives = lives;
         this.color = randomColor();
-        this.radius = Math.floor(Math.sqrt((Math.pow(PLAYER_RADIUS, 2)) + (Math.pow(PLAYER_RADIUS * 3, 2))));
-    //rectangular game piece operates differently from collisions than circles
+        this.radius = Math.floor(Math.sqrt((Math.pow(PLAYER_RADIUS, 2)) + (Math.pow(PLAYER_RADIUS * 3, 2))) / 2);
     };
 
     setKeyInputs(input, key) {
@@ -48,12 +47,12 @@ class Player extends MovingObject {
 
     deathAnimation(ctx) {
         //likely will have image here later for death...
-        this.draw(ctx);
         this.lives -= 1;
         if (this.lives === 0) {
             return "Game Over!"
         } else {
-            this.draw(ctx);
+            this.color = randomColor();
+            this.radius = Math.floor(Math.sqrt((Math.pow(PLAYER_RADIUS, 2)) + (Math.pow(PLAYER_RADIUS * 3, 2))) / 2);
         }
     };
 

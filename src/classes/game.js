@@ -4,7 +4,7 @@ import Ball from './ball';
 const HEIGHT = 850;
 const WIDTH = 1200;
 const PLAYER_START_LOCATION = { x: 600, y: 800 }
-const BALL_START_LOCATION = { x: 645, y: 779 }
+const BALL_START_LOCATION = { x: 645, y: 778 }
 const STARTING_BALLS = 3;
 
 class Game {
@@ -57,7 +57,7 @@ class Game {
         const movingObj = this.allCurMovingObjs();
         movingObj.forEach(obj => {
             obj.move(delta);
-            if (obj instanceof Ball && obj.isOutOfBounds(obj.pos.y)) {
+            if (obj instanceof Ball && this.isOutOfBounds(obj.pos.y)) {
                 this.remove(obj);
                 this.player.deathAnimation(this.ctx);
             };
@@ -67,7 +67,17 @@ class Game {
     singleMove(delta) {
         this.moveObjects(delta);
         this.checkForCollisions();
+        this.checkForWallCollisions();
     };
+
+    isOutOfBounds(posY) {
+        if (posY > (850 - this.player.radius)) {
+            return true
+        } else {
+            return false;
+        };
+    };
+
 
     remove(obj) {
         if (obj instanceof Ball) {
@@ -81,38 +91,29 @@ class Game {
         };
     };
 
-    checkForCollisions() {
-        const allObj = this.allCurObjects();
+    checkForWallCollisions() { //all walls
+        const allMovingObj = this.allCurMovingObjs();
+        for (let i = 0; i < allMovingObj.length; i++) {
+            const obj = allMovingObj[i];
+            if ((obj.pos.x > (1200 - obj.radius)) || (obj.pos.x < 0)) {
+                return obj.wallCollision();
+            };
+        };
+    };
 
+    checkForCollisions() { //handles block-ball and ball-paddle
+        const allObj = this.allCurObjects();
         for (let i = 0; i < allObj.length; i++) {
-            for (let j = 0; j < allObj.length; j ++) {
+            for (let j = i + 1; j < allObj.length; j ++) {
                 const obj1 = allObj[i];
                 const obj2 = allObj[j];
-
-                if ((obj1.pos.x > (1200 - obj1.radius)) || (obj1.pos.x < 0)) {
-                    return obj1.wallCollision();            
-                } else if ((obj2.pos.x > (1200 - obj2.radius)) || (obj2.pos.x < 0)) {
-
-                } else if (obj1.isCollidedWith(obj2)) {
+                if (obj1.objToObjCollision(obj2)) {
                     return obj1.collidesWith(obj2);
                 };
             };
         };
     };
-};
 
-    // checkForCollisions() {
-    //     const allObj = this.allCurObjects();
-    //     for (let i = 0; i < allObj.length; i++) {
-    //         for (let j = 0; j < allObj.length; j ++) {
-    //             const obj1 = allObj[i];
-    //             const obj2 = allObj[j];
-    //             if (obj1.isCollidedWith(obj2)) {
-    //                 return obj1.collidesWith(obj2);
-    //             }
-    //         }
-    //     }
-    // }
-// }
+};
 
 export default Game;

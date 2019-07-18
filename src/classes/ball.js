@@ -49,8 +49,10 @@ class Ball extends MovingObj {
     }
 
     bounce() {
-        debugger
-        this.dir.y = -this.dir.y;
+        // debugger
+        this.dir.y = -this.dir.y; //this should change the rotation dir
+        this.vel.x = -this.vel.x;
+        this.vel.y = -this.vel.y;
         console.log(this.vel);
     };
 
@@ -86,7 +88,7 @@ class Ball extends MovingObj {
 
     move(deltaTime) {
         super.move(deltaTime);
-        this.rotate();
+        this.rotate(deltaTime);
     };
 
 };
