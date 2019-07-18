@@ -3,13 +3,19 @@
 class GVIEW {
     constructor(game){
         this.game = game;
+        // this.input = {
+        //     a: false,
+        //     d: false
+        // };
         this.input = {
-            a: false,
-            d: false
+            a: [-30, 0],
+            d: [30, 0],
         };
+        this.fired = false;
+        // this.lastTime = new Date();
     }
 
-    keyHandler() {
+    keyHandler() {      
         document.addEventListener("keydown", event => {
             this.handleKey(event, true);
         });
@@ -20,35 +26,35 @@ class GVIEW {
 
     handleKey(event, down) {
         let input = this.input;
+
         switch (event.keyCode) {
             case 65:
                 if (input.a !== down) {
-                    input.a = down;
+                    this.game.player.setKeyInputs(input.a);
                 }
                 break;
             case 68:
                 if (input.d !== down) {
-                    input.d = down;
+                    this.game.player.setKeyInputs(input.d);
                 }
                 break;
             default:
                 break;
         }
-
-        this.input = input;
+        // this.input = input;
     }
 
     start() {
-        this.keyHandler()
-        this.lastTime = 0;
-        // this.game.draw();
+        this.keyHandler();
+        this.lastTime = new Date();
         requestAnimationFrame(this.animate.bind(this))
     }
 
-    animate(time) {
-        const deltaT = time - this.lastTime;
+    animate() {
+        const deltaT = (new Date() - this.lastTime) / 1000;
         this.game.singleMove(deltaT)
         this.game.draw();
+        this.lastTime = new Date();
         requestAnimationFrame(this.animate.bind(this))
     }
 

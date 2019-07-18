@@ -16,19 +16,32 @@ class Player extends MovingObject {
     constructor(pos, lives = STARTING_LIVES) {
         super(pos, { x: 0, y: 0 }, PLAYER_RADIUS)
         this.lives = lives;
-        this.speed = 0;
+        // this.speed = 0;
         this.color = randomColor();
-        this.inputs = {};
+        // this.keyInputs = {
+        //     "a": [-30, 0],
+        //     "d": [30, 0]
+        // }
     };
 
-    setKeyInputs(inputs) {
-        this.inputs = inputs;
-        if (inputs.d || inputs.a) {
-            this.speed = PLAYER_SPEED;
-        } else {
-            this.speed = 0;
-        };
+    setKeyInputs(input) {
+        console.log(input)
+        this.vel.x += input[0];
+        this.vel.y += input[1];
+        // this.vel.x += this.keyInputs[input][0];
+        // this.vel.y += this.keyInputs[input][1];
     };
+
+    // setKeyInputs(inputs) {
+    //     this.inputs = inputs;
+    //     debugger
+    //     if (inputs.d || inputs.a) {
+    //         this.speed = PLAYER_SPEED;
+    //     } else {
+    //         this.speed = 0;
+    //     };
+    //     console.log(this.inputs);
+    // };
 
     draw(ctx) {
         console.log("drawn!")
