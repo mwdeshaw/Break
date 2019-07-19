@@ -108,6 +108,18 @@ body {
     left: 58px;
 }
 
+#h4 {
+    background: #65589b;
+    position: absolute;
+    width: 60px;
+    height: 30px;
+    border-radius: 45% 25% 0 10%;
+    z-index: 4;
+    transform: rotate(-35.5deg);
+    top: 52.5px;
+    left: 237px;
+}
+
 #b2 {
     background: #ddd9dc;
     position: absolute;
@@ -119,6 +131,45 @@ body {
     top: 85px;
     right: 75px;
 }
+
+#h3 {
+    background: #65589b;
+    position: absolute;
+    width: 210px;
+    height: 30px;
+    border-radius: 80% 80% 10% 10%;
+    z-index: 4;
+    transform: rotate(210deg);
+    top: 115px;
+    right: 80px;
+}
+
+
+#h5 {
+    background: #65589b;
+    position: absolute;
+    width: 60px;
+    height: 15px;
+    border-radius: 80% 20% 20% 20%;
+    z-index: 4;
+    transform: rotate(16deg);
+    top: 157px;
+    right: 58px;
+}
+
+#h6 {
+    background: #65589b;
+    position: absolute;
+    width: 60px;
+    height: 30px;
+    border-radius: 50% 20% 60% 20%;
+    z-index: 4;
+    transform: rotate(52deg);
+    top: 54px;
+    right: 235px;
+}
+
+
 
 
 .screen {
