@@ -4,7 +4,7 @@ import Ball from './ball';
 const HEIGHT = 850;
 const WIDTH = 1200;
 const PLAYER_START_LOCATION = { x: 600, y: 800 }
-const BALL_START_LOCATION = { x: 645, y: 778 }
+const BALL_START_LOCATION = { x: 645, y: 700 }
 const STARTING_BALLS = 3;
 
 class Game {
@@ -88,9 +88,12 @@ class Game {
         const allMovingObj = this.allCurMovingObjs();
         for (let i = 0; i < allMovingObj.length; i++) {
             const obj = allMovingObj[i];
-            if ((obj.pos.x > (1200 - obj.radius)) || (obj.pos.x < 0)) {
+            // if ((obj.pos.x > (1200 - obj.radius)) || (obj.pos.x < 0)) {
+            if ((obj instanceof Player) && (obj.pos.x < 0 || obj.pos.x > (1200 - obj.width))) {
                 return obj.wallCollision();
-            };
+            } else if ((obj instanceof Ball) && (obj.pos.x < 0 || obj.pos.x > (1200 - obj.radius))) {
+                return obj.wallCollision();
+            }
         };
     };
 

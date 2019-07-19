@@ -17,7 +17,7 @@ class Ball extends MovingObj {
         super(pos, { x: 0, y: 0 }, BALL_RADIUS);
         this.color = randomColor();
         this.dir = { x: 0, y: 0 }
-        // this.spinSpeed = Math.random() * 60 + 30;
+        this.spinSpeed = Math.random() * 60 + 30;
         // this.player = player;
     }
 
@@ -35,7 +35,7 @@ class Ball extends MovingObj {
     };
 
     collidesWith(otherObj) {
-        if (otherObj instanceof Player && this.dir.x !== 0 && this.dir.y !== 0) {
+        if (otherObj instanceof Player) {
             this.bounce();
             return true;
         } else {
@@ -44,15 +44,20 @@ class Ball extends MovingObj {
     };
 
     wallCollision() {
-        this.bounce();
+        this.dir.y = -this.dir.y;
+        this.vel.x = -this.vel.x;
+        this.vel.y = -this.vel.y;
         return true;
     }
 
     bounce() {
-        this.dir.y = -this.dir.y; 
-        this.vel.x = -this.vel.x;
-        this.vel.y = -this.vel.y;
-        console.log(this.vel);
+        if (this.dir.x !== 0 && this.dir.y !== 0) {
+            this.dir.x = -this.dir.x;
+            this.dir.y = -this.dir.y;
+            this.vel.y = -this.vel.y;
+            // this.vel.x = -this.vel.x;
+            console.log(this.dir, this.vel);
+        };
     };
 
     initialRotation() {
