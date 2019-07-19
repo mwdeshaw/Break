@@ -13,10 +13,10 @@ class Game {
         this.lives = this.player.lives;
         this.ctx = ctx;
         this.blocks = [];
+        this.balls = [];
         this.height = HEIGHT;
         this.width = WIDTH;
-        this.themeColor = ["red", "blue", "green"];     //add a function to pick a theme color based on user input, or simply randomize it
-        this.balls = [];
+        this.themeColor = ["red", "blue", "green"];
 
         this.addBalls(STARTING_BALLS);
     };   
@@ -25,24 +25,17 @@ class Game {
         for (let i = 0; i < n; i++) {
             this.balls.push(new Ball(BALL_START_LOCATION))
         }
+        return this.balls;
     }
      
     allCurObjects() {
         return [].concat(this.player, this.balls[0], this.blocks);
     };
 
-    // allObjects() {
-    //     return [].concat(this.player, this.blocks, this.balls);
-    // };
-
     allCurMovingObjs() {
         return [].concat(this.player, this.balls[0]);
     };
-
-    // allMovingObj() {
-    //     return [].concat(this.player, this.balls);
-    // };
-
+ 
     draw() {
         this.ctx.clearRect(0, 0, this.width, this.height);
         this.ctx.fillStyle = this.themeColor[1];
@@ -101,18 +94,43 @@ class Game {
         };
     };
 
+    distanceFormula(pos1, pos2) {
+        return Math.sqrt(Math.pow(pos1, 2) + Math.pow(pos2, 2));
+    }
+
+    isCollided(obj1, obj2) {
+        const dx = obj1.pos.x - obj2.pos.x;
+        const dy = obj1.pos.y - obj2.pos.y;
+        const dist = this.distanceFormula(dx, dy);
+        return dist < (obj1.radius + obj2.radius);
+    };
+
     checkForCollisions() { //handles block-ball and ball-paddle
         const allObj = this.allCurObjects();
         for (let i = 0; i < allObj.length; i++) {
             for (let j = i + 1; j < allObj.length; j ++) {
                 const obj1 = allObj[i];
                 const obj2 = allObj[j];
-                if (obj1.objToObjCollision(obj2)) {
-                    return obj1.collidesWith(obj2);
-                };
-            };
-        };
-    };
+                if (obj1 instanceof Player && obj2 instanceof Ball) {
+                    if (this.isCollided(obj1, obj2)) {
+                        obj1.collidesWith(obj2);
+                    };
+                } else if (obj1 instanceof Ball && obj1 instanceof Player) {
+                    if (this.isCollided(obj1, obj2)) {
+                        obj1.collidesWith(obj2);
+                    };
+                }
+            }
+        }
+    }
+                    
+
+
+    // objToObjCollision(otherObj) {
+    //     const dist = this.distanceFormula(dx, dy);
+    //     return dist < (this.radius);
+
+
 
 };
 

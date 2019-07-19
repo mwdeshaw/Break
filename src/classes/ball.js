@@ -17,10 +17,10 @@ class Ball extends MovingObj {
         super(pos, { x: 0, y: 0 }, BALL_RADIUS);
         this.color = randomColor();
         this.dir = { x: 0, y: 0 }
-        this.spinSpeed = Math.random() * 60 + 30;
+        // this.spinSpeed = Math.random() * 60 + 30;
+        // this.player = player;
     }
 
-    //check to see if it can be kept simple
     draw(ctx) {
         let rotateDir = Math.atan(this.dir.y / this.dir.x);
         ctx.save();
@@ -35,7 +35,7 @@ class Ball extends MovingObj {
     };
 
     collidesWith(otherObj) {
-        if (otherObj instanceof Player) {
+        if (otherObj instanceof Player && this.dir.x !== 0 && this.dir.y !== 0) {
             this.bounce();
             return true;
         } else {
@@ -49,8 +49,7 @@ class Ball extends MovingObj {
     }
 
     bounce() {
-        // debugger
-        this.dir.y = -this.dir.y; //this should change the rotation dir
+        this.dir.y = -this.dir.y; 
         this.vel.x = -this.vel.x;
         this.vel.y = -this.vel.y;
         console.log(this.vel);
@@ -75,11 +74,11 @@ class Ball extends MovingObj {
         }
     }
 
-    handleBallRelease(input, key) {
-        if ((key !== "space") && (this.dir.y === 0)) {
+    handleBallRelease(input, key, bool) {
+        if (!bool && key !== "space") {
             this.vel.x += input[0];
             this.vel.y += input[1];
-        } else if ((key === "space") && (this.dir.y === 0)) {
+        } else if (key === "space" && this.dir.x === 0 && this.dir.y === 0) {
             this.vel.x += input[0];
             this.vel.y += input[1];
             this.initialRotation();

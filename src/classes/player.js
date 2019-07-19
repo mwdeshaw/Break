@@ -1,7 +1,7 @@
 import MovingObject from './moving_object';
 import Ball from './ball';
 const STARTING_LIVES = 3;
-// const PLAYER_SPEED = 150;
+const PLAYER_SPEED = 150;
 const PLAYER_RADIUS = 30;
 
 const randomColor = () => {
@@ -19,11 +19,12 @@ class Player extends MovingObject {
         this.lives = lives;
         this.color = randomColor();
         this.radius = Math.floor(Math.sqrt((Math.pow(PLAYER_RADIUS, 2)) + (Math.pow(PLAYER_RADIUS * 3, 2))) / 2);
+        this.speed = PLAYER_SPEED;
     };
 
-    setKeyInputs(input, key) {
-        this.vel.x += input[0];
-        this.vel.y += input[1];
+    setKeyInputs(input, key, bool) {
+            this.vel.x += input[0];
+            this.vel.y += input[1];
     };
 
     draw(ctx) {
@@ -35,9 +36,10 @@ class Player extends MovingObject {
     };
 
     collidesWith(otherObj) {
-        if (otherObj instanceof Ball) {
-            otherObj.bounce(); 
-        };
+        return null;
+        // if (otherObj instanceof Ball) {
+        //     otherObj.bounce(); 
+        // };
     };
 
     wallCollision() {
