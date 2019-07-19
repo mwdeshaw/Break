@@ -17,10 +17,10 @@ const FIRST_BLOCK_POS = { x: 10, y: 10 }
 class Game {
     constructor(ctx) {
         this.lives = STARTING_LIVES;
-        this.player = [new Player(Object.assign({}, PLAYER_START_LOCATION))];
+        this.player = new Player(Object.assign({}, PLAYER_START_LOCATION));
         this.ctx = ctx;
         this.blocks = [];
-        this.ball = [new Ball(Object.assign({}, BALL_START_LOCATION))];
+        this.ball = new Ball(Object.assign({}, BALL_START_LOCATION));
         this.height = HEIGHT;
         this.width = WIDTH;
         this.themeColor = ["#a7a7a7", "blue", "green"];
@@ -36,11 +36,11 @@ class Game {
     }
      
     allCurObjects() {
-        return [].concat(this.player, this.ball, this.blocks);
+        return [].concat([this.player], [this.ball], this.blocks);
     };
 
     allCurMovingObjs() {
-        return [].concat(this.player, this.ball);
+        return [].concat([this.player], [this.ball]);
     };
  
     draw() {
@@ -81,28 +81,17 @@ class Game {
     deathAnimation() {
         this.lives -= 1;
         if (this.lives === 0) {
-            // this.remove(this.player);
-            // this.remove(this.ball);
             return "Game Over!"
         } else {
             
-            this.player[0].pos = Object.assign({}, PLAYER_START_LOCATION);
-            this.player[0].vel = { x: 0, y: 0 };
-            this.ball[0].pos = Object.assign({}, BALL_START_LOCATION);
-            this.ball[0].vel = { x: 0, y: 0 };
-            this.ball[0].dir = { x: 0, y: 0 };
-            this.ball[0].initialFlag = false;
+            this.player.pos = Object.assign({}, PLAYER_START_LOCATION);
+            this.player.vel = { x: 0, y: 0 };
+            this.ball.pos = Object.assign({}, BALL_START_LOCATION);
+            this.ball.vel = { x: 0, y: 0 };
+            this.ball.dir = { x: 0, y: 0 };
+            this.ball.initialFlag = false;
         }
     };
-
-    // remove(arr) {
-    //     if (arr[0] instanceof Ball) {
-    //         this.ball.splice(0, 1);
-    //         return this.ball;
-    //     } else if (arr[0] instanceof Player) {
-    //         this.player.splice(0, 1);
-    //     };
-    // };
 
     checkForWallCollisions() { //all walls
         const allMovingObj = this.allCurMovingObjs();
