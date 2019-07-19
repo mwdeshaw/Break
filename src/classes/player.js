@@ -22,7 +22,7 @@ class Player extends MovingObject {
         this.height = PLAYER_HEIGHT;
     };
 
-    setKeyInputs(input, key, bool) {
+    setKeyInputs(input, key) {
             this.vel.x += input[0];
             this.vel.y += input[1];
     };

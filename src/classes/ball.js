@@ -18,6 +18,7 @@ class Ball extends MovingObj {
         this.color = randomColor();
         this.dir = { x: 0, y: 0 }
         this.spinSpeed = Math.random() * 60 + 30;
+        this.initialFlag = false;
     }
 
     draw(ctx) {
@@ -84,7 +85,7 @@ class Ball extends MovingObj {
     }
 
     handleBallRelease(input, key, bool) {
-        if (!bool && key !== "space") {
+        if (!this.initialFlag && key !== "space") {
             this.vel.x += input[0];
             this.vel.y += input[1];
         } else if (key === "space" && this.dir.x === 0 && this.dir.y === 0) {

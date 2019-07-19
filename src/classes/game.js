@@ -17,10 +17,10 @@ const FIRST_BLOCK_POS = { x: 10, y: 10 }
 class Game {
     constructor(ctx) {
         this.lives = STARTING_LIVES;
-        this.player = [new Player(PLAYER_START_LOCATION)];
+        this.player = [new Player(Object.assign({}, PLAYER_START_LOCATION))];
         this.ctx = ctx;
         this.blocks = [];
-        this.ball = [new Ball(BALL_START_LOCATION)];
+        this.ball = [new Ball(Object.assign({}, BALL_START_LOCATION))];
         this.height = HEIGHT;
         this.width = WIDTH;
         this.themeColor = ["#a7a7a7", "blue", "green"];
@@ -85,16 +85,13 @@ class Game {
             // this.remove(this.ball);
             return "Game Over!"
         } else {
-            this.player[0].pos = PLAYER_START_LOCATION;
+            
+            this.player[0].pos = Object.assign({}, PLAYER_START_LOCATION);
             this.player[0].vel = { x: 0, y: 0 };
-            this.ball[0].pos = BALL_START_LOCATION;
+            this.ball[0].pos = Object.assign({}, BALL_START_LOCATION);
             this.ball[0].vel = { x: 0, y: 0 };
             this.ball[0].dir = { x: 0, y: 0 };
-
-            // this.remove(this.player);
-            // this.remove(this.ball);
-            // this.player.push(new Player(PLAYER_START_LOCATION, this.lives));
-            // this.ball.push(new Ball(BALL_START_LOCATION));
+            this.ball[0].initialFlag = false;
         }
     };
 
