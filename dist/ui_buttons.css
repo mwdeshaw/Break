@@ -1,5 +1,4 @@
 .controls-parent {
-    /* z-index: 7; */
     position: absolute;
     top: 350px; 
     left: 110px;
@@ -17,6 +16,7 @@
     border-bottom: 10px solid #2d302e;
 };
 
+
 .pad  {
     position: absolute;
     margin-left: 40px;
@@ -28,8 +28,6 @@
     left: 30px;
     width: 42px;
     height: 126px;
-    /* width: 30px;
-    height: 90px; */
     background: #ddd9dc;
     border-radius: 5px;
     z-index: 6;
@@ -74,8 +72,7 @@
     height: 126px;
     background: #ddd9dc;
     border-radius: 5px;
-        z-index: 6;
-
+    z-index: 6;
 }
 
 .thing {
@@ -135,9 +132,53 @@
 		1px -1px 0 #000,
 		-1px 1px 0 #000,
 		1px 1px 0 #000;
-
 }
 
+.start-btn {
+    position: absolute;
+    top: 205px;
+    left: 45px;
+    width: 130px;
+    height: 60px;
+    background: #615297;
+    z-index: 6;
+    border-radius: 30px;
+    transform: rotate(30deg);
+    border: 0.5px solid black;
+    display: flex;
+    vertical-align: middle;
+    align-content: center;
+    justify-content: center;
+}
+
+.start-btn p {
+    color: #2d302e;
+    font-size: 18px;
+    font-weight: 700;
+    left: 10px;
+    padding-left: 6px;
+    padding-top: 19px;
+    text-shadow:
+		-.25px -.25px 0 #000,
+		0.25px -.25px 0 #000,
+		-.25px 0.25px 0 #000,
+		0.25px 0.25px 0 #000;
+}
+
+.start-btn::after {
+    content: "";   
+    margin-top: 7px;
+    width: 44px;
+    height: 44px;
+    background: #ddd9dc;
+    border-radius: 100%;
+    vertical-align: middle;
+    align-content: center;
+    justify-content: center;
+    border: 0.5px solid black;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
 
 #horiz::before {
     content: "";

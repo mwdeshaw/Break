@@ -2,7 +2,6 @@ body {
     background: #28d1e6;
 }
 
-
 .logo {
     position: absolute;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -17,7 +16,6 @@ body {
 		-3px 3px 0 #000,
 		3px 3px 0 #000;
 }
-
 
 .page-parent {
     z-index: 1;
@@ -184,6 +182,35 @@ body {
     right: 235px;
 }
 
+.power-lt {
+    position: absolute;
+    background: #525253;
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    top: 100px;
+    right: 280px;
+    z-index: 7;
+    display: flex;
+    justify-content: space-between;
+}
+
+.power-lt p {
+    color: #2d302e;
+    font-size: 16px;
+    font-weight: 700;
+    left: 10px;
+    padding-left: 35px;
+    padding-top: 8px;
+    /* padding-top: 19px; */
+    text-shadow:
+		-.25px -.25px 0 #000,
+		0.25px -.25px 0 #000,
+		-.25px 0.25px 0 #000,
+		0.25px 0.25px 0 #000;
+
+}
+
 .screen {
     position: absolute;
     top: 45px;
@@ -214,6 +241,3 @@ body {
     top: 160px;
     z-index: 4;
 };
-
-
-
