@@ -14,7 +14,6 @@ body {
 .page {
     z-index: 2;
     position: relative;
-    /* display: block; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,22 +24,114 @@ body {
     width: 100%;
 }
 
+#c1 {
+    position: absolute;
+    background: #28d1e6;
+    width: 260px;
+    height: 90px;
+    border-radius: 60% 60% 10% 10%;
+    z-index: 4;
+    transform: rotate(-208deg);
+    top: 50px;
+    left: 30px;
+}
+
+#c2 {
+    position: absolute;
+    background: #28d1e6;
+    width: 260px;
+    height: 70px;
+    border-radius: 10% 10% 60% 60%;
+    z-index: 4;
+    transform: rotate(208deg);
+    bottom: 50px;
+    left: 30px;
+}
+
+#c3 {
+    position: absolute;
+    background: #28d1e6;
+    width: 260px;
+    height: 70px;
+    border-radius: 10% 10% 60% 60%;
+    z-index: 4;
+    transform: rotate(-208deg);
+    bottom: 50px;
+    right: 30px;
+}
+
+#c4 {
+    position: absolute;
+    background: #28d1e6;
+    width: 260px;
+    height: 90px;
+    border-radius: 60% 60% 10% 10%;
+    z-index: 4;
+    transform: rotate(208deg);
+    top: 50px;
+    right: 30px;
+}
+
+#b1 {
+    background: #ddd9dc;
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    border-radius: 70% 90% 10% 10%;
+    z-index: 4;
+    transform: rotate(-30deg);
+    top: 85px;
+    left: 75px;
+}
+
+#h1 {
+    background: #65589b;
+    position: absolute;
+    width: 210px;
+    height: 30px;
+    border-radius: 80% 80% 10% 10%;
+    z-index: 4;
+    transform: rotate(-210deg);
+    top: 115px;
+    left: 80px;
+}
+
+#h2 {
+    background: #65589b;
+    position: absolute;
+    width: 60px;
+    height: 15px;
+    border-radius: 80% 20% 20% 20%;
+    z-index: 4;
+    transform: rotate(-1deg);
+    top: 157px;
+    left: 58px;
+}
+
+#b2 {
+    background: #ddd9dc;
+    position: absolute;
+    width: 200px;
+    height: 50px;
+    border-radius: 70% 90% 10% 10%;
+    z-index: 4;
+    transform: rotate(30deg);
+    top: 85px;
+    right: 75px;
+}
+
+
 .screen {
     position: absolute;
     top: 45px;
-    /* left: 359px; */
     background: #2d302e;
     z-index: 3;
     width: 1000px;
-    /* height: 700px; */
     height: 750px;
-    /* border-radius: 50px 50px 50% 50%; */
     border-radius: 10% 10% 80% 80%;
     display: flex;
     vertical-align: middle; 
     justify-content: center;
-    /* justify-content: end; */
-    /* align-items: baseline; */
     align-items: flex-start;
 }
 
