@@ -1,0 +1,92 @@
+.controls-parent {
+    z-index: 7;
+    position: absolute;
+    top: 350px; 
+    left: 110px;
+}
+
+
+#horiz::after {
+    content: "";
+    position: relative;
+    top: -28px;
+    left: -8px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #2d302e;
+};
+
+
+.gamepad  {
+    position: absolute;
+    margin-left: 40px;
+    z-index: 6;
+}
+
+.vert {
+    position: absolute;
+    left: 30px;
+    width: 42px;
+    height: 126px;
+    /* width: 30px;
+    height: 90px; */
+    background: #ddd9dc;
+    border-radius: 5px;
+     z-index: 6;
+}
+
+ .vert::before {
+    content: "";
+    position: relative;
+    top: 138px;
+    left: 11px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #2d302e;
+}
+
+.vert::after {
+    content: "";
+    position: relative;
+    top: -28px;
+    left: -9px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #2d302e;
+}
+
+#horiz {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+#horiz {
+    position: absolute;
+    left: 30px;
+    width: 42px;
+    height: 126px;
+    background:#ddd9dc;
+    border-radius: 5px;
+}
+
+#horiz::before {
+    content: "";
+    position: relative;
+    top: 139px;
+    left: 11px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #2d302e;
+};
+

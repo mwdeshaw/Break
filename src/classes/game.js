@@ -3,8 +3,8 @@ import Ball from './ball';
 
 const HEIGHT = 600;
 const WIDTH = 920;
-const PLAYER_START_LOCATION = { x: 300, y: 460 }
-const BALL_START_LOCATION = { x: 345, y: 400 }
+const PLAYER_START_LOCATION = { x: 300, y: 540 }
+const BALL_START_LOCATION = { x: 345, y: 500 }
 const STARTING_BALLS = 3;
 
 class Game {
@@ -16,7 +16,7 @@ class Game {
         this.balls = [];
         this.height = HEIGHT;
         this.width = WIDTH;
-        this.themeColor = ["red", "blue", "green"];
+        this.themeColor = ["#a7a7a7", "blue", "green"];
 
         this.addBalls(STARTING_BALLS);
     };   
@@ -38,7 +38,7 @@ class Game {
  
     draw() {
         this.ctx.clearRect(0, 0, this.width, this.height);
-        this.ctx.fillStyle = this.themeColor[1];
+        this.ctx.fillStyle = this.themeColor[0];
         this.ctx.fillRect(0, 0, this.width, this.height);
 
         this.allCurObjects().forEach(obj => {

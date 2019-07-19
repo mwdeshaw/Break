@@ -2,6 +2,7 @@ body {
     background: #28d1e6;
 }
 
+
 .logo {
     position: absolute;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -16,6 +17,7 @@ body {
 		-3px 3px 0 #000,
 		3px 3px 0 #000;
 }
+
 
 .page-parent {
     z-index: 1;
@@ -213,10 +215,5 @@ body {
     z-index: 4;
 };
 
-/* #logo { */
-    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: #ababa9;
-    font-size: 72px;
-    font-weight: 700; */
-    /* z-index: 6; */
-/* }; */
+
+
