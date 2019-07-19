@@ -1,39 +1,46 @@
 import Player from "./player";
 import Ball from './ball';
+import Block from './blocks';
+import { throws } from "assert";
 
 const HEIGHT = 600;
 const WIDTH = 920;
-const PLAYER_START_LOCATION = { x: 300, y: 540 }
-const BALL_START_LOCATION = { x: 345, y: 500 }
+const PLAYER_START_LOCATION = { x: 400, y: 540 }
+const BALL_START_LOCATION = { x: 445, y: 500 }
 const STARTING_BALLS = 3;
+const STARTING_LIVES = 3;
+const BLOCK_HEIGHT = 40;
+const BLOCK_WIDTH = 40;
+const BLOCKS_NUM = 1;
+const FIRST_BLOCK_POS = { x: 10, y: 10 }
 
 class Game {
     constructor(ctx) {
-        this.player = new Player(PLAYER_START_LOCATION);
-        this.lives = this.player.lives;
+        this.lives = STARTING_LIVES;
+        this.player = [new Player(PLAYER_START_LOCATION)];
         this.ctx = ctx;
         this.blocks = [];
-        this.balls = [];
+        this.ball = [new Ball(BALL_START_LOCATION)];
         this.height = HEIGHT;
         this.width = WIDTH;
         this.themeColor = ["#a7a7a7", "blue", "green"];
 
-        this.addBalls(STARTING_BALLS);
+        this.addBlocks(BLOCKS_NUM);
     };   
-
-    addBalls(n) {
+     
+    addBlocks(n) {
         for (let i = 0; i < n; i++) {
-            this.balls.push(new Ball(BALL_START_LOCATION))
+            this.blocks.push(new Block(FIRST_BLOCK_POS, BLOCK_WIDTH, BLOCK_HEIGHT));
         }
-        return this.balls;
+        return this.blocks;
     }
      
     allCurObjects() {
-        return [].concat(this.player, this.balls[0], this.blocks);
+        return [].concat(this.player, this.ball, this.blocks);
     };
 
     allCurMovingObjs() {
-        return [].concat(this.player, this.balls[0]);
+        return [].concat(this.player, this.ball);
     };
  
     draw() {
@@ -49,10 +56,10 @@ class Game {
     moveObjects(delta) {
         const movingObj = this.allCurMovingObjs();
         movingObj.forEach(obj => {
+            
             obj.move(delta);
             if (obj instanceof Ball && this.isOutOfBounds(obj.pos.y)) {
-                this.remove(obj);
-                this.player.deathAnimation(this.ctx);
+                this.deathAnimation();
             };
         });
     };
@@ -64,25 +71,41 @@ class Game {
     };
 
     isOutOfBounds(posY) {
-        if (posY > (600 - this.player.radius)) {
+        if (posY > (560)) { //player height never changing
             return true
         } else {
             return false;
         };
     };
 
-
-    remove(obj) {
-        if (obj instanceof Ball) {
-            if (this.balls.length === 0) {
-                return "Game Over"
-            } else {
-                this.balls.shift(); //returns the new balls array 
-            }
+    deathAnimation() {
+        this.lives -= 1;
+        if (this.lives === 0) {
+            // this.remove(this.player);
+            // this.remove(this.ball);
+            return "Game Over!"
         } else {
-            throw new Error("Unknown Object, Please Address")
-        };
+            this.player[0].pos = PLAYER_START_LOCATION;
+            this.player[0].vel = { x: 0, y: 0 };
+            this.ball[0].pos = BALL_START_LOCATION;
+            this.ball[0].vel = { x: 0, y: 0 };
+            this.ball[0].dir = { x: 0, y: 0 };
+
+            // this.remove(this.player);
+            // this.remove(this.ball);
+            // this.player.push(new Player(PLAYER_START_LOCATION, this.lives));
+            // this.ball.push(new Ball(BALL_START_LOCATION));
+        }
     };
+
+    // remove(arr) {
+    //     if (arr[0] instanceof Ball) {
+    //         this.ball.splice(0, 1);
+    //         return this.ball;
+    //     } else if (arr[0] instanceof Player) {
+    //         this.player.splice(0, 1);
+    //     };
+    // };
 
     checkForWallCollisions() { //all walls
         const allMovingObj = this.allCurMovingObjs();
@@ -90,15 +113,15 @@ class Game {
             const obj = allMovingObj[i];
             if ((obj instanceof Player) && (obj.pos.x < 0 || obj.pos.x > (920 - obj.width))) {
                 return obj.wallCollision();
-            } else if ((obj instanceof Ball) && (obj.pos.x < 0 || obj.pos.x > (920 - obj.radius))) {
+            }
+            if ((obj instanceof Ball) && (obj.pos.x < 0 || obj.pos.x > (920 - obj.radius))) {
                 return obj.wallCollision();
+            }
+            if ((obj instanceof Ball) && (obj.pos.y < 0 || obj.pos.y > (600 - obj.radius))) {
+                return obj.topWallCollision();
             }
         };
     };
-
-    // distanceFormula(pos1, pos2) {
-    //     return Math.sqrt(Math.pow(pos1, 2) + Math.pow(pos2, 2));
-    // }
 
     isCollided(obj1, obj2) {
         let temp;
@@ -107,7 +130,6 @@ class Game {
             obj1 = obj2;
             obj2 = temp;
         }
-        //2 is rect 1 is circle 
         let dx = Math.abs(obj2.pos.x - obj1.pos.x - obj1.width / 2);
         let dy = Math.abs(obj2.pos.y - obj1.pos.y - obj1.height / 2);
         if (dx > (obj1.width / 2 + obj2.radius)) {
@@ -145,15 +167,7 @@ class Game {
             }
         }
     }
-                    
-
-
-    // objToObjCollision(otherObj) {
-    //     const dist = this.distanceFormula(dx, dy);
-    //     return dist < (this.radius);
-
-
-
+                
 };
 
 export default Game;

@@ -9,6 +9,7 @@ class GVIEW {
             space: [0, -45]
         };
         this.initialFlag = false;
+        //you will need a flag to change the flag
     }
 
     keyHandler() {      
@@ -26,20 +27,20 @@ class GVIEW {
             switch (event.keyCode) {
                 case 65:
                     if (input.a !== down) {
-                        this.game.player.setKeyInputs(input.a, Object.keys(this.input)[0], this.initialFlag);
-                        this.game.balls[0].handleBallRelease(input.a, this.initialFlag)
+                        this.game.player[0].setKeyInputs(input.a, Object.keys(this.input)[0], this.initialFlag);
+                        this.game.ball[0].handleBallRelease(input.a, this.initialFlag)
                     }
                     break;
                 case 68:
                     if (input.d !== down) {
-                        this.game.player.setKeyInputs(input.d, this.initialFlag);
-                        this.game.balls[0].handleBallRelease(input.d, Object.keys(this.input)[1], this.initialFlag)
+                        this.game.player[0].setKeyInputs(input.d, this.initialFlag);
+                        this.game.ball[0].handleBallRelease(input.d, Object.keys(this.input)[1], this.initialFlag)
                     }
                     break;
                 case 32:
                     if (input.space !== down) {
                         this.initialFlag = true;
-                        this.game.balls[0].handleBallRelease(input.space, Object.keys(this.input)[2], this.initialFlag)
+                        this.game.ball[0].handleBallRelease(input.space, Object.keys(this.input)[2], this.initialFlag)
                     }
                     break;
                 default:
@@ -49,17 +50,18 @@ class GVIEW {
             switch (event.keyCode) {
                 case 65:
                     if (input.a !== down) {
-                        this.game.player.setKeyInputs(input.a, Object.keys(this.input)[0], this.initialFlag);
+                        this.game.player[0].setKeyInputs(input.a, Object.keys(this.input)[0], this.initialFlag);
                     }
                     break;
                 case 68:
                     if (input.d !== down) {
-                        this.game.player.setKeyInputs(input.d, Object.keys(this.input)[1], this.initialFlag);
+                        this.game.player[0].setKeyInputs(input.d, Object.keys(this.input)[1], this.initialFlag);
                     }
                     break;
-            }
+                default:
+                    break;
+            }                
         }
-
     }
 
     start() {

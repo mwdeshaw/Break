@@ -18,7 +18,6 @@ class Ball extends MovingObj {
         this.color = randomColor();
         this.dir = { x: 0, y: 0 }
         this.spinSpeed = Math.random() * 60 + 30;
-        // this.player = player;
     }
 
     draw(ctx) {
@@ -47,6 +46,11 @@ class Ball extends MovingObj {
         // this.dir.y = -this.dir.y;
         this.vel.x = -this.vel.x;
         // this.vel.y = -this.vel.y;
+        return true;
+    }
+
+    topWallCollision() {
+        this.vel.y = -this.vel.y;
         return true;
     }
 
