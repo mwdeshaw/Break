@@ -88,10 +88,9 @@ class Game {
         const allMovingObj = this.allCurMovingObjs();
         for (let i = 0; i < allMovingObj.length; i++) {
             const obj = allMovingObj[i];
-            // if ((obj.pos.x > (1200 - obj.radius)) || (obj.pos.x < 0)) {
-            if ((obj instanceof Player) && (obj.pos.x < 0 || obj.pos.x > (1200 - obj.width))) {
+            if ((obj instanceof Player) && (obj.pos.x < 0 || obj.pos.x > (920 - obj.width))) {
                 return obj.wallCollision();
-            } else if ((obj instanceof Ball) && (obj.pos.x < 0 || obj.pos.x > (1200 - obj.radius))) {
+            } else if ((obj instanceof Ball) && (obj.pos.x < 0 || obj.pos.x > (920 - obj.radius))) {
                 return obj.wallCollision();
             }
         };

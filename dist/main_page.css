@@ -1,6 +1,20 @@
 body {
-    background: #28d1e6;   
-    
+    background: #28d1e6;
+}
+
+.logo {
+    position: absolute;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #ababa9;
+    font-size: 80px;
+    font-weight: 700;
+    bottom: 7px;
+    z-index: 6;
+    text-shadow:
+		-3px -3px 0 #000,
+		3px -3px 0 #000,
+		-3px 3px 0 #000,
+		3px 3px 0 #000;
 }
 
 .page-parent {
@@ -84,7 +98,7 @@ body {
     left: 75px;
 }
 
-#h1 {
+#f1 {
     background: #65589b;
     position: absolute;
     width: 210px;
@@ -96,7 +110,7 @@ body {
     left: 80px;
 }
 
-#h2 {
+#f2 {
     background: #65589b;
     position: absolute;
     width: 60px;
@@ -108,7 +122,7 @@ body {
     left: 58px;
 }
 
-#h4 {
+#f4 {
     background: #65589b;
     position: absolute;
     width: 60px;
@@ -132,7 +146,7 @@ body {
     right: 75px;
 }
 
-#h3 {
+#f3 {
     background: #65589b;
     position: absolute;
     width: 210px;
@@ -144,8 +158,7 @@ body {
     right: 80px;
 }
 
-
-#h5 {
+#f5 {
     background: #65589b;
     position: absolute;
     width: 60px;
@@ -157,7 +170,7 @@ body {
     right: 58px;
 }
 
-#h6 {
+#f6 {
     background: #65589b;
     position: absolute;
     width: 60px;
@@ -168,9 +181,6 @@ body {
     top: 54px;
     right: 235px;
 }
-
-
-
 
 .screen {
     position: absolute;
@@ -202,3 +212,11 @@ body {
     top: 160px;
     z-index: 4;
 };
+
+/* #logo { */
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #ababa9;
+    font-size: 72px;
+    font-weight: 700; */
+    /* z-index: 6; */
+/* }; */
