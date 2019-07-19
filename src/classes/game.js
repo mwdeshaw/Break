@@ -1,10 +1,10 @@
 import Player from "./player";
 import Ball from './ball';
 
-const HEIGHT = 850;
-const WIDTH = 1200;
-const PLAYER_START_LOCATION = { x: 600, y: 800 }
-const BALL_START_LOCATION = { x: 645, y: 700 }
+const HEIGHT = 600;
+const WIDTH = 920;
+const PLAYER_START_LOCATION = { x: 300, y: 460 }
+const BALL_START_LOCATION = { x: 345, y: 400 }
 const STARTING_BALLS = 3;
 
 class Game {
@@ -64,7 +64,7 @@ class Game {
     };
 
     isOutOfBounds(posY) {
-        if (posY > (850 - this.player.radius)) {
+        if (posY > (600 - this.player.radius)) {
             return true
         } else {
             return false;
