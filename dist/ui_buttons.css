@@ -17,9 +17,6 @@
     border-bottom: 10px solid #2d302e;
 };
 
-
-
-
 .pad  {
     position: absolute;
     margin-left: 40px;
@@ -90,6 +87,55 @@
     left: 30px;
     position: absolute;
     z-index: 7;
+}
+
+#a-btn {
+    position: absolute;
+    color: #c0c0be;
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    left: -3px;
+    top: 50px;
+    z-index: 7;
+    text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+}
+
+#d-btn {
+    position: absolute;
+    color: #c0c0be;
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    left: 82px;
+    top: 50px;
+    z-index: 7;
+    text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+}
+
+#sp-btn {
+    position: absolute;
+    color: #c0c0be;
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    left: 32px;
+    top: 93px;
+    z-index: 7;
+    text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+
 }
 
 
