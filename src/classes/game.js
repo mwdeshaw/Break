@@ -97,15 +97,35 @@ class Game {
         };
     };
 
-    distanceFormula(pos1, pos2) {
-        return Math.sqrt(Math.pow(pos1, 2) + Math.pow(pos2, 2));
-    }
+    // distanceFormula(pos1, pos2) {
+    //     return Math.sqrt(Math.pow(pos1, 2) + Math.pow(pos2, 2));
+    // }
 
     isCollided(obj1, obj2) {
-        const dx = obj1.pos.x - obj2.pos.x;
-        const dy = obj1.pos.y - obj2.pos.y;
-        const dist = this.distanceFormula(dx, dy);
-        return dist < (obj1.radius + obj2.radius);
+        let temp;
+        if (obj1 instanceof Ball) {
+            temp = obj1;
+            obj1 = obj2;
+            obj2 = temp;
+        }
+        //2 is rect 1 is circle 
+        let dx = Math.abs(obj2.pos.x - obj1.pos.x - obj1.width / 2);
+        let dy = Math.abs(obj2.pos.y - obj1.pos.y - obj1.height / 2);
+        if (dx > (obj1.width / 2 + obj2.radius)) {
+            return false;
+        };
+        if (dy > (obj1.height / 2 + obj2.radius)) { 
+            return false; 
+        };
+        if (dx <= (obj1.width / 2)) { 
+            return true; 
+        };
+        if (dy <= (obj1.height / 2)) { 
+            return true; 
+        };
+        let dX = dx - obj1.width / 2;
+        let dY = dy - obj2.width / 2;
+        return (dX * dX + dY * dY <= (obj2.radius * obj2.radius));
     };
 
     checkForCollisions() { //handles block-ball and ball-paddle
@@ -114,7 +134,7 @@ class Game {
             for (let j = i + 1; j < allObj.length; j ++) {
                 const obj1 = allObj[i];
                 const obj2 = allObj[j];
-                if (obj1 instanceof Player && obj2 instanceof Ball) {
+                if (obj1 instanceof Player && obj2 instanceof Ball) { //order basically ensures this
                     if (this.isCollided(obj1, obj2)) {
                         obj1.collidesWith(obj2);
                     };

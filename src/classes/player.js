@@ -2,8 +2,6 @@ import MovingObject from './moving_object';
 import Ball from './ball';
 const STARTING_LIVES = 3;
 const PLAYER_SPEED = 150;
-// const PLAYER_RADIUS = 30;
-// const PLAYER_RADIUS = 30;
 const PLAYER_HEIGHT = 30;
 const PLAYER_WIDTH = 90;
 
@@ -32,7 +30,6 @@ class Player extends MovingObject {
     };
 
     draw(ctx) {
-        const rad = PLAYER_RADIUS;
         ctx.save();
         ctx.fillStyle = this.color;
         ctx.fillRect(this.pos.x, this.pos.y, this.width, this.height);
