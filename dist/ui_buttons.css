@@ -1,10 +1,9 @@
 .controls-parent {
-    z-index: 7;
+    /* z-index: 7; */
     position: absolute;
     top: 350px; 
     left: 110px;
 }
-
 
 #horiz::after {
     content: "";
@@ -19,7 +18,9 @@
 };
 
 
-.gamepad  {
+
+
+.pad  {
     position: absolute;
     margin-left: 40px;
     z-index: 6;
@@ -34,7 +35,7 @@
     height: 90px; */
     background: #ddd9dc;
     border-radius: 5px;
-     z-index: 6;
+    z-index: 6;
 }
 
  .vert::before {
@@ -74,9 +75,23 @@
     left: 30px;
     width: 42px;
     height: 126px;
-    background:#ddd9dc;
+    background: #ddd9dc;
     border-radius: 5px;
+        z-index: 6;
+
 }
+
+.thing {
+    background-color: #c0c0be;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    top: 43px;
+    left: 30px;
+    position: absolute;
+    z-index: 7;
+}
+
 
 #horiz::before {
     content: "";
@@ -89,4 +104,3 @@
     border-right: 10px solid transparent;
     border-top: 10px solid #2d302e;
 };
-
