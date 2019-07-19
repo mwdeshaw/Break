@@ -44,9 +44,9 @@ class Ball extends MovingObj {
     };
 
     wallCollision() {
-        this.dir.y = -this.dir.y;
+        // this.dir.y = -this.dir.y;
         this.vel.x = -this.vel.x;
-        this.vel.y = -this.vel.y;
+        // this.vel.y = -this.vel.y;
         return true;
     }
 
