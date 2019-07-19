@@ -1,18 +1,15 @@
 import Player from "./player";
 import Ball from './ball';
 import Block from './blocks';
-import { throws } from "assert";
 
 const HEIGHT = 600;
 const WIDTH = 920;
 const PLAYER_START_LOCATION = { x: 400, y: 540 }
 const BALL_START_LOCATION = { x: 445, y: 500 }
-const STARTING_BALLS = 3;
 const STARTING_LIVES = 3;
-const BLOCK_HEIGHT = 40;
-const BLOCK_WIDTH = 40;
-const BLOCKS_NUM = 1;
-const FIRST_BLOCK_POS = { x: 10, y: 10 }
+const BLOCK_HEIGHT = 50;
+const BLOCK_WIDTH = 50;
+const BLOCKS_NUM = 60;
 
 class Game {
     constructor(ctx) {
@@ -29,8 +26,22 @@ class Game {
     };   
      
     addBlocks(n) {
-        for (let i = 0; i < n; i++) {
-            this.blocks.push(new Block(FIRST_BLOCK_POS, BLOCK_WIDTH, BLOCK_HEIGHT));
+        let blockPosX = 10;
+        let blockPosY = 10;
+        let i = 0;
+        while (i < n) {
+            if (!this.blocks.length) {
+                this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, BLOCK_WIDTH, BLOCK_HEIGHT));
+                i += 1;
+            } 
+
+            blockPosX += BLOCK_WIDTH;
+            if (blockPosX > 890) {
+                blockPosX = 10;
+                blockPosY = blockPosY += BLOCK_HEIGHT;
+            }
+            this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, BLOCK_WIDTH, BLOCK_HEIGHT));
+            i += 1;
         }
         return this.blocks;
     }
