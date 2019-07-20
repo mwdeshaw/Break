@@ -1,5 +1,6 @@
 import MovingObj from './moving_object';
 import Player from './player';
+import Block from './blocks';
 
 const BALL_RADIUS = 20;
 
@@ -38,9 +39,12 @@ class Ball extends MovingObj {
         if (otherObj instanceof Player) {
             this.bounce();
             return true;
+        } else if (otherObj instanceof Block) {
+            this.bounce();
+            return true;
         } else {
             return false;
-        }
+        };
     };
 
     wallCollision() {
@@ -61,7 +65,6 @@ class Ball extends MovingObj {
             this.dir.y = -this.dir.y;
             this.vel.y = -this.vel.y;
             // this.vel.x = -this.vel.x;
-            console.log(this.dir, this.vel);
         };
     };
 

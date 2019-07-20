@@ -9,7 +9,7 @@ const BALL_START_LOCATION = { x: 445, y: 500 }
 const STARTING_LIVES = 3;
 const BLOCK_HEIGHT = 50;
 const BLOCK_WIDTH = 50;
-const BLOCKS_NUM = 60;
+const BLOCKS_NUM = 72;
 
 class Game {
     constructor(ctx) {
@@ -42,9 +42,9 @@ class Game {
             }
             this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, BLOCK_WIDTH, BLOCK_HEIGHT));
             i += 1;
-        }
+        };
         return this.blocks;
-    }
+    };
      
     allCurObjects() {
         return [].concat([this.player], [this.ball], this.blocks);
@@ -93,8 +93,7 @@ class Game {
         this.lives -= 1;
         if (this.lives === 0) {
             return "Game Over!"
-        } else {
-            
+        } else {     
             this.player.pos = Object.assign({}, PLAYER_START_LOCATION);
             this.player.vel = { x: 0, y: 0 };
             this.ball.pos = Object.assign({}, BALL_START_LOCATION);
@@ -111,10 +110,10 @@ class Game {
             if ((obj instanceof Player) && (obj.pos.x < 0 || obj.pos.x > (920 - obj.width))) {
                 return obj.wallCollision();
             }
-            if ((obj instanceof Ball) && (obj.pos.x < 0 || obj.pos.x > (920 - obj.radius))) {
+            if ((obj instanceof Ball) && (obj.pos.x < (0 + obj.radius) || obj.pos.x > (920 - obj.radius))) {
                 return obj.wallCollision();
             }
-            if ((obj instanceof Ball) && (obj.pos.y < 0 || obj.pos.y > (600 - obj.radius))) {
+            if ((obj instanceof Ball) && (obj.pos.y < (0 + obj.radius) || obj.pos.y > (600 - obj.radius))) {
                 return obj.topWallCollision();
             }
         };
@@ -146,7 +145,15 @@ class Game {
         return (dX * dX + dY * dY <= (obj2.radius * obj2.radius));
     };
 
-    checkForCollisions() { //handles block-ball and ball-paddle
+    remove(obj) {
+        if (obj instanceof Block) {
+            this.blocks.splice(this.blocks.indexOf(obj), 1);
+        } else {
+            throw new Error("unknown type of object");
+        };
+    }
+
+    checkForCollisions() {
         const allObj = this.allCurObjects();
         for (let i = 0; i < allObj.length; i++) {
             for (let j = i + 1; j < allObj.length; j ++) {
@@ -156,15 +163,20 @@ class Game {
                     if (this.isCollided(obj1, obj2)) {
                         obj1.collidesWith(obj2);
                     };
-                } else if (obj1 instanceof Ball && obj1 instanceof Player) {
+                } else if (obj1 instanceof Ball && obj2 instanceof Player) {
                     if (this.isCollided(obj1, obj2)) {
                         obj1.collidesWith(obj2);
                     };
-                }
-            }
-        }
-    }
-                
+                } else if (obj1 instanceof Ball && obj2 instanceof Block) {
+                    if (this.isCollided(obj1, obj2)) {
+                        obj1.collidesWith(obj2);
+                        this.remove(obj2);
+                    };
+                };
+            };
+        };
+    };
+
 };
 
 export default Game;

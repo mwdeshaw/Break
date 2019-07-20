@@ -1,3 +1,5 @@
+import Ball from './ball';
+
 const randomColor = () => {
     const digs = "0123456789ABCDEF";
     let color = "#";
@@ -21,6 +23,13 @@ class Block {
         ctx.fillRect(this.pos.x, this.pos.y, this.width, this.height);
         ctx.restore();
     };
+
+    collidesWith(otherObj) {
+        if (otherObj instanceof Ball) {
+            otherObj.bounce();
+        };
+    };
+
 }
 
 export default Block;
