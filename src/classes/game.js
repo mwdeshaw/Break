@@ -177,6 +177,12 @@ class Game {
         };
     };
 
+    checkForVictory() {
+        if (!this.blocks.length) {
+            return true;
+        }
+    }
+
 };
 
 export default Game;

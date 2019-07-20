@@ -9,12 +9,16 @@ const randomColor = () => {
     return color;
 };
 
+const powerUps = ["multiball", "invinciball", "bomb", "wreckingBall", "longerBat", "tinyBat"]; //
+const blockTypes = ["regular", "brick", "concrete"];
 class Block {
-    constructor(pos, width, height) {
+    constructor(pos, width, height, type, powerUp) {
         this.pos = pos;
         this.width = width;
         this.height = height;
         this.color = randomColor();
+        this.type = type;
+        this.powerUp = powerUp;
     }
 
     draw(ctx) {
