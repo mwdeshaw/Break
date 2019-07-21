@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --mode=development --watch",
     "start": "node /src/index.js",
-    "build": "webpaclk"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
     "webpack-cli": "^3.3.6"
   },
   "dependencies": {
+    "node": "^12.6.0",
     "style-loader": "^0.23.1"
   }
 }
