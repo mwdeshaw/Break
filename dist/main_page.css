@@ -294,14 +294,35 @@ body {
 }
 
 .end-screen.end {
+  position: absolute;
     opacity: 1;
     /* border-radius: 13px; */
     /* background-: #bdae57; */
     z-index: 5;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-content: center; */
     /* margin-top: 40px; */
     /* width: 920px; */
     /* height: 600px; */
     /* position: absolute; */
+}
+
+#text-thing {
+  font-size: 36px;
+  margin-left: 272px;
+  padding-bottom: 15px;
+  /* display: flex; */
+  /* align-content: flex-end; */
+  /* top: 100px; */
+  margin-top: 140px;
+
+}
+
+#play-again {
+  font-size: 26px;
+  margin-left: 128px;
+  padding-top: 20px;
 }
 
 .start-text {
