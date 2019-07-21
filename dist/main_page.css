@@ -2,6 +2,20 @@ body {
     background: #28d1e6;
 }
 
+.speakers {
+  content: "";
+  position: relative;
+  height: 120px;
+  width: 8px;
+  top: 555px;
+  left: 320px;
+  background: #3c2861;
+  border-radius: 4px;
+  -webkit-transform: rotate(-95deg);
+  box-shadow: 20px 0 #3c2861, 40px 0 #3c2861, 60px 0 #3c2861, 80px 0 #3c2861;
+  z-index: 5;
+}
+
 .logo {
     position: absolute;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -296,25 +310,13 @@ body {
 .end-screen.end {
   position: absolute;
     opacity: 1;
-    /* border-radius: 13px; */
-    /* background-: #bdae57; */
     z-index: 5;
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-content: center; */
-    /* margin-top: 40px; */
-    /* width: 920px; */
-    /* height: 600px; */
-    /* position: absolute; */
 }
 
 #text-thing {
   font-size: 36px;
   margin-left: 272px;
   padding-bottom: 15px;
-  /* display: flex; */
-  /* align-content: flex-end; */
-  /* top: 100px; */
   margin-top: 140px;
 
 }
@@ -366,11 +368,6 @@ body {
   line-height: normal;
   display: flex;
   justify-content: center;
-  /* -webkit-transition: top 3s linear;
-  -moz-transition: top 3s linear;
-  -ms-transition: top 3s linear;
-  -o-transition: top 3s linear;
-  transition: top 3s linear; */
 }
 
 .controls-list {
