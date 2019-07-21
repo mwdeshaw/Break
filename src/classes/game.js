@@ -178,6 +178,7 @@ class Game {
                     };
                 } else if (obj1 instanceof Ball && obj2 instanceof Block) {
                     if (this.isCollided(obj1, obj2)) {
+                        this.playSound();
                         obj1.collidesWith(obj2);
                         this.remove(obj2);
                     };
@@ -186,11 +187,11 @@ class Game {
         };
     };
 
-    // checkForVictory() {
-    //     if (!this.blocks.length) {
-    //         return true;
-    //     }
-    // }
+    playSound() {
+        const ballSound = document.getElementById("blockSound");
+        ballSound.currentTime = 0;
+        ballSound.play();
+    };
 
 };
 

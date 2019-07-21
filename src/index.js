@@ -6,13 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
     github.onclick = () => {
         document.location.href = 'https://github.com/mwdeshaw';
     }
-    // addEventListener("click", () => {
-    // });
-    // let linkedin = document.getElementById("linkedin");
-    // linkedin.addEventListener("click", () => {
-    //     document.location.href = 'https://www.linkedin.com/in/matthew-deshaw-b629a0ba/';
-    // });
-
+    let linkedin = document.getElementById("linkedin");
+    linkedin.onclick = () => {
+        document.location.href = 'https://www.linkedin.com/in/matthew-deshaw-b629a0ba/';
+    }
 
     const defScreen = document.getElementById("default");
     const powerBtn = document.getElementById("power-btn");
@@ -31,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         screenText.classList.add("end");
         const startBtn = document.getElementById("start-game");
         setTimeout(() => {
-            const audio = document.querySelector(`audio`);
+            const audio = document.getElementById("gameboySound");
             audio.currentTime = 0;
             audio.play();
             instructions.classList.add("end");
