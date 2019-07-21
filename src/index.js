@@ -3,13 +3,15 @@ import GView from "./classes/g_view";
 
 document.addEventListener("DOMContentLoaded", () => {
     let github = document.getElementById("github");
-    github.addEventListener("click", () => {
+    github.onclick = () => {
         document.location.href = 'https://github.com/mwdeshaw';
-    });
-    let linkedin = document.getElementById("linkedin");
-    linkedin.addEventListener("click", () => {
-        document.location.href = 'https://www.linkedin.com/in/matthew-deshaw-b629a0ba/';
-    });
+    }
+    // addEventListener("click", () => {
+    // });
+    // let linkedin = document.getElementById("linkedin");
+    // linkedin.addEventListener("click", () => {
+    //     document.location.href = 'https://www.linkedin.com/in/matthew-deshaw-b629a0ba/';
+    // });
 
 
     const defScreen = document.getElementById("default");

@@ -1,3 +1,4 @@
+
 .controls-parent {
     position: absolute;
     top: 350px; 
@@ -15,6 +16,7 @@
 #sp-btn.active {
     color: gold;
 };
+
 
 .power-container {
     position: absolute;
@@ -272,3 +274,6 @@
     border-top: 10px solid #2d302e;
 };
  */
+
+
+ 

@@ -2,27 +2,12 @@ body {
     background: #28d1e6;
 }
 
-.speakers {
-  content: "";
-  position: relative;
-  height: 120px;
-  width: 8px;
-  top: 555px;
-  left: 320px; 
-  background: #3c2861;
-  border-radius: 4px;
-  -webkit-transform: rotate(-95deg);
-  box-shadow: 20px 0 #3c2861, 40px 0 #3c2861, 60px 0 #3c2861, 80px 0 #3c2861;
-  z-index: 5;
-}
 
 .media{
-  position: relative;
-  left: 340px; 
-  top: 230px;
-  height: 200px;
-  /* display: flex;
-  justify-content: space-between; */
+  position: absolute;
+  z-index: 7 ;
+  right: 220px; 
+  top: 250px;
 }
 
 #github {
@@ -42,22 +27,35 @@ body {
 }
 
 #linkedin {
-  /* top: 10px; */
-  /* margin-bottom: 10px; */
-  left: 10px;
+  /* left: 10px; */
   width: 60px;
   height: 60px;
   border-radius: 100%;
   outline: none;
   color: #c0c0be;
   position: absolute;
-  /* bottom: 10px; */
 }
 
 #linkedin:hover {
   background: lightgrey;
   cursor: pointer;
 }
+
+.speakers {
+  content: "";
+  position: absolute;
+  height: 120px;
+  width: 8px;
+  top: 555px;
+  right: 210px; 
+  background: #3c2861;
+  border-radius: 4px;
+  -webkit-transform: rotate(-95deg);
+  box-shadow: 20px 0 #3c2861, 40px 0 #3c2861, 60px 0 #3c2861, 80px 0 #3c2861;
+  z-index: 5;
+}
+
+
 
 .logo {
     position: absolute;
@@ -246,7 +244,7 @@ body {
     width: 15px;
     border-radius: 100%;
     top: 120px;
-    right: 288px;
+    right: 276px;
     z-index: 7;
     display: flex;
     justify-content: space-between;
@@ -350,11 +348,14 @@ body {
 
 }
 
+
 .end-screen.end {
   position: absolute;
     opacity: 1;
     z-index: 5;
 }
+
+
 
 #text-thing {
   font-size: 36px;
@@ -380,6 +381,8 @@ body {
   font-family:'Press Start 2P', cursive;
 }
 
+
+
 .start-text.end {
   opacity: 1;
   z-index: 7;
@@ -393,6 +396,7 @@ body {
   -o-transition: top 3s linear;
   transition: top 3s linear;
 }
+
 
 .instructions {
   top: 0;
@@ -429,6 +433,7 @@ body {
 
 }
 
+
 .controls-list.end {
   opacity: 1;
   z-index: 7;
@@ -449,6 +454,8 @@ body {
     margin-top: 40px;
 }
 
+
+
 #circle {
     width: 1000px;
     height: 80%;
@@ -458,3 +465,4 @@ body {
     top: 160px;
     z-index: 4;
 };
+

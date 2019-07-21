@@ -14,7 +14,8 @@
 
 <body> 
 <div class='page-parent'>
-    <audio src="./GameboyStartupSound.mp3"></audio>
+    <!-- <audio src="./GameboyStartupSound.mp3"></audio> -->
+    <audio src="./NewGameBoySound.mp3"></audio>
     <div class='page'>
         <div id="c1"></div>
         <div id="c2"></div>
@@ -32,6 +33,12 @@
             <div id="power-lt">
                 <p id="power-text">POWER</p>
             </div>
+            <div class="speakers"></div>
+
+            <div class="media">
+                <button id="github"><i class="fab fa-github fa-2x"></i></button>
+                <button id="linkedin"><i class="fab fa-linkedin-in fa-2x"></i></button>
+            </div>
 
         <div class="screen">
             <p class="logo">Break!</p>
@@ -47,16 +54,13 @@
                     <li>D: Move Right</li>
                 </ul>
             </div>
+
             <div class="end-screen">
                 <p id="text-thing">Game Over</p>
                 <p id="play-again">Press Start to Play Again!</p>  
             </div>
-            <div class="media">
-                <button id="github"><i class="fab fa-github fa-2x"></i></button>
-                <button id="linkedin"><i class="fab fa-linkedin-in fa-2x"></i></button>
-            </div>
-            <div class="speakers"></div>
             <canvas id="board" width="920px" height="600px"></canvas>
+
         </div>
         <div class="controls-parent">
             <div class="pad">
