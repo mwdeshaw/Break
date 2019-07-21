@@ -8,12 +8,55 @@ body {
   height: 120px;
   width: 8px;
   top: 555px;
-  left: 320px;
+  left: 320px; 
   background: #3c2861;
   border-radius: 4px;
   -webkit-transform: rotate(-95deg);
   box-shadow: 20px 0 #3c2861, 40px 0 #3c2861, 60px 0 #3c2861, 80px 0 #3c2861;
   z-index: 5;
+}
+
+.media{
+  position: relative;
+  left: 340px; 
+  top: 230px;
+  height: 200px;
+  /* display: flex;
+  justify-content: space-between; */
+}
+
+#github {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  position: absolute;
+  outline: none;
+  right: 10px;
+  color: #c0c0be;
+  top: 40px;
+}
+
+#github:hover {
+  background: lightgrey;
+  cursor: pointer;
+}
+
+#linkedin {
+  /* top: 10px; */
+  /* margin-bottom: 10px; */
+  left: 10px;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  outline: none;
+  color: #c0c0be;
+  position: absolute;
+  /* bottom: 10px; */
+}
+
+#linkedin:hover {
+  background: lightgrey;
+  cursor: pointer;
 }
 
 .logo {
