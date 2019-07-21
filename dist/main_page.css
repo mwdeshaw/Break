@@ -301,6 +301,30 @@ body {
   transition: top 3s linear;
 }
 
+.instructions {
+  top: 0;
+  opacity: 0;
+  position: relative;
+  color: #8a891f;
+  font-size: 28px;
+  z-index: 7;
+  font-family:'Press Start 2P', cursive;
+}
+
+.instructions.end {
+  opacity: 1;
+  z-index: 7;
+  top: 170px;
+  line-height: normal;
+  display: flex;
+  justify-content: center;
+  /* -webkit-transition: top 3s linear;
+  -moz-transition: top 3s linear;
+  -ms-transition: top 3s linear;
+  -o-transition: top 3s linear;
+  transition: top 3s linear; */
+}
+
 #board {
   position: absolute;
     border-radius: 13px;

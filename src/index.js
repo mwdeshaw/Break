@@ -13,9 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
         light.setAttribute("class", "active");
 
         const screenText = document.querySelector(".start-text");
+        const instructions = document.querySelector(".instructions");
+
         screenText.classList.add("end");
         const startBtn = document.getElementById("start-game");
         setTimeout(() => {
+            instructions.classList.add("end");
             const audio = document.querySelector(`audio`);
             audio.currentTime = 0;
             audio.play();
@@ -24,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         startBtn.onclick = () => {
             startScreen.removeAttribute("class");
+            instructions.classList.remove("end");
             screenText.classList.remove("end");
             const canvas = document.getElementById("board");
             const ctx = canvas.getContext("2d");
