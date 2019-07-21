@@ -20,7 +20,8 @@ class Ball extends MovingObj {
         this.dir = { x: 0, y: 0 }
         this.spinSpeed = Math.random() * 60 + 30;
         this.initialFlag = false;
-    }
+
+    };
 
     draw(ctx) {
         let rotateDir = Math.atan(this.dir.y / this.dir.x);
@@ -84,7 +85,7 @@ class Ball extends MovingObj {
         }
     }
 
-    handleBallRelease(input, key, bool) {
+    handleBallRelease(input, key) {
         if (!this.initialFlag && key !== "space") {
             this.vel.x += input[0];
             this.vel.y += input[1];
