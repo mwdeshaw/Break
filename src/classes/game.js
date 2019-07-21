@@ -20,7 +20,7 @@ class Game {
         this.ball = new Ball(Object.assign({}, BALL_START_LOCATION));
         this.height = HEIGHT;
         this.width = WIDTH;
-        this.themeColor = ["#a7a7a7", "blue", "green"];
+        this.themeColor = ["#bdae57", "#a7a7a7", "blue", "green"];
 
         this.addBlocks(BLOCKS_NUM);
     };   

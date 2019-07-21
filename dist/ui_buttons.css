@@ -152,11 +152,11 @@
 
 .start-btn p {
     color: #2d302e;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
     left: 10px;
     padding-left: 6px;
-    padding-top: 19px;
+    padding-top: 21px;
     text-shadow:
 		-.25px -.25px 0 #000,
 		0.25px -.25px 0 #000,
@@ -176,10 +176,60 @@
     justify-content: center;
     border: 0.5px solid black;
     box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
-
 }
 
 #start-game:hover {
+    cursor: pointer;
+    background: lightgray;
+}
+
+
+.power-container {
+    position: absolute;
+    top: 290px;
+    left: 29px;
+    width: 130px;
+    height: 60px;
+    background: #615297;
+    z-index: 6;
+    border-radius: 30px;
+    transform: rotate(30deg);
+    border: 0.5px solid black;
+    display: flex;
+    vertical-align: middle;
+    align-content: center;
+    justify-content: center;
+}
+
+.power-container p {
+    color: #2d302e;
+    font-size: 16px;
+    font-weight: 700;
+    left: 10px;
+    padding-left: 7px;
+    padding-top: 22px;
+    text-shadow:
+		-.25px -.25px 0 #000,
+		0.25px -.25px 0 #000,
+		-.25px 0.25px 0 #000,
+		0.25px 0.25px 0 #000;
+}
+
+#power-btn {
+    content: "";   
+    margin-top: 7px;
+    width: 44px;
+    height: 44px;
+    background: #ddd9dc;
+    border-radius: 100%;
+    vertical-align: middle;
+    align-content: center;
+    justify-content: center;
+    border: 0.5px solid black;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+#power-btn:hover {
     cursor: pointer;
     background: lightgray;
 }

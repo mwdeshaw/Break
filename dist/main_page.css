@@ -255,6 +255,17 @@ body {
     align-items: flex-start;
 }
 
+#start-screen.active {
+    border-radius: 13px;
+    background-color: #bdae57;
+    z-index: 4;
+    border: 2px solid black;
+    margin-top: 40px;
+    width: 920px;
+    height: 600px;
+    position: absolute;
+}
+
 #board {
     border-radius: 13px;
     z-index: 5;
