@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "heroku-postbuild": "webpack --config webpack.prod.js",
+    "postbuild": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --mode=development --watch"
+    "dev": "webpack --mode=development --watch"
   },
   "repository": {
     "type": "git",
