@@ -48,9 +48,7 @@ class Ball extends MovingObj {
     };
 
     wallCollision() {
-        // this.dir.y = -this.dir.y;
         this.vel.x = -this.vel.x;
-        // this.vel.y = -this.vel.y;
         return true;
     }
 
@@ -64,12 +62,11 @@ class Ball extends MovingObj {
             this.dir.x = -this.dir.x;
             this.dir.y = -this.dir.y;
             this.vel.y = -this.vel.y;
-            // this.vel.x = -this.vel.x;
         };
     };
 
     initialRotation() {
-        let rads = 90 * (Math.PI / 180); //assuming a 90 degree start
+        let rads = 90 * (Math.PI / 180);
         this.dir.x = Math.cos(rads);
         this.dir.y = Math.sin(rads);
     };

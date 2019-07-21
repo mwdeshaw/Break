@@ -16,7 +16,6 @@ const randomColor = () => {
 class Player extends MovingObject {
     constructor(pos) {
         super(pos, { x: 0, y: 0 })
-        // this.lives = lives;
         this.color = randomColor();
         this.width = PLAYER_WIDTH;
         this.height = PLAYER_HEIGHT;

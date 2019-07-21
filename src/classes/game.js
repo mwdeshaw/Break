@@ -20,8 +20,9 @@ class Game {
         this.ball = new Ball(Object.assign({}, BALL_START_LOCATION));
         this.height = HEIGHT;
         this.width = WIDTH;
-        this.themeColor = ["#bdae57", "#a7a7a7", "blue", "green"];
+        this.themeColor = ["#bdae57"];
         this.numBlocks = BLOCKS_NUM;
+
         this.addBlocks(this.numBlocks);
     };   
      
@@ -110,9 +111,11 @@ class Game {
                 return obj.wallCollision();
             }
             if ((obj instanceof Ball) && (obj.pos.x < (0 + obj.radius) || obj.pos.x > (920 - obj.radius))) {
+                this.playBounceSound();
                 return obj.wallCollision();
             }
             if ((obj instanceof Ball) && (obj.pos.y < (0 + obj.radius) || obj.pos.y > (600 - obj.radius))) {
+                this.playBounceSound();
                 return obj.topWallCollision();
             }
         };
@@ -170,10 +173,12 @@ class Game {
                 const obj2 = allObj[j];
                 if (obj1 instanceof Player && obj2 instanceof Ball) { //order basically ensures this
                     if (this.isCollided(obj1, obj2)) {
+                        this.playBounceSound();
                         obj1.collidesWith(obj2);
                     };
                 } else if (obj1 instanceof Ball && obj2 instanceof Player) {
                     if (this.isCollided(obj1, obj2)) {
+                        this.playBounceSound();
                         obj1.collidesWith(obj2);
                     };
                 } else if (obj1 instanceof Ball && obj2 instanceof Block) {
@@ -191,6 +196,12 @@ class Game {
         const ballSound = document.getElementById("blockSound");
         ballSound.currentTime = 0;
         ballSound.play();
+    };
+
+    playBounceSound() {
+        const anotherSound = document.getElementById("anotherSound");
+        anotherSound.currentTime = 0;
+        anotherSound.play();
     };
 
 };
