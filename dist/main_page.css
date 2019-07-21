@@ -381,8 +381,6 @@ body {
   font-family:'Press Start 2P', cursive;
 }
 
-
-
 .start-text.end {
   opacity: 1;
   z-index: 7;
@@ -447,14 +445,12 @@ body {
 }
 
 #board {
-  position: absolute;
+    position: absolute;
     border-radius: 13px;
     z-index: 5;
     border: 2px solid black;
     margin-top: 40px;
 }
-
-
 
 #circle {
     width: 1000px;
@@ -465,4 +461,3 @@ body {
     top: 160px;
     z-index: 4;
 };
-

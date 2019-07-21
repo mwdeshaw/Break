@@ -59,7 +59,15 @@ class Game {
         this.ctx.clearRect(0, 0, this.width, this.height);
         this.ctx.fillStyle = this.themeColor[0];
         this.ctx.fillRect(0, 0, this.width, this.height);
-
+        
+        this.ctx.font = "30px Sans-Serif";
+        this.ctx.fillStyle = "#8a891f";
+        if (this.lives > 1) {
+            this.ctx.fillText(`${this.lives} Lives Left`, 750, 580);
+        } else {
+            this.ctx.fillText(`${this.lives} Life Left`, 750, 580);
+        }
+        
         this.allCurObjects().forEach(obj => {
             obj.draw(this.ctx);
         });
@@ -82,7 +90,7 @@ class Game {
     };
 
     isOutOfBounds(posY) {
-        if (posY > (560)) { //player height never changing
+        if (posY > (560)) {
             return true
         } else {
             return false;
@@ -103,7 +111,7 @@ class Game {
         }
     };
 
-    checkForWallCollisions() { //all walls
+    checkForWallCollisions() {
         const allMovingObj = this.allCurMovingObjs();
         for (let i = 0; i < allMovingObj.length; i++) {
             const obj = allMovingObj[i];
@@ -123,8 +131,6 @@ class Game {
 
     isOver() {
         if (this.numBlocks === 0 || this.lives === 0) {
-            console.log(this.numBlocks);
-            console.log(this.lives);
             return true;
         }
         return false;
