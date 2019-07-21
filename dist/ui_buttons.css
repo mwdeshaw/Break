@@ -4,185 +4,6 @@
     left: 110px;
 }
 
-#horiz::after {
-    content: "";
-    position: relative;
-    top: -28px;
-    left: -8px;
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 10px solid #2d302e;
-};
-
-.pad  {
-    position: absolute;
-    margin-left: 40px;
-    z-index: 6;
-}
-
-.vert {
-    position: absolute;
-    left: 30px;
-    width: 42px;
-    height: 126px;
-    background: #ddd9dc;
-    border-radius: 5px;
-    z-index: 6;
-}
-
- .vert::before {
-    content: "";
-    position: relative;
-    top: 138px;
-    left: 11px;
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid #2d302e;
-}
-
-.vert::after {
-    content: "";
-    position: relative;
-    top: -28px;
-    left: -9px;
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 10px solid #2d302e;
-}
-
-#horiz {
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
-    transform: rotate(90deg);
-}
-
-#horiz {
-    position: absolute;
-    left: 30px;
-    width: 42px;
-    height: 126px;
-    background: #ddd9dc;
-    border-radius: 5px;
-    z-index: 6;
-}
-
-.thing {
-    background-color: #c0c0be;
-    width: 40px;
-    height: 40px;
-    border-radius: 100%;
-    top: 43px;
-    left: 30px;
-    position: absolute;
-    z-index: 7;
-}
-
-#a-btn {
-    position: absolute;
-    color: #c0c0be;
-    font-size: 28px;
-    font-weight: 700;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    left: -3px;
-    top: 50px;
-    z-index: 7;
-    text-shadow:
-		-1px -1px 0 #000,
-		1px -1px 0 #000,
-		-1px 1px 0 #000,
-		1px 1px 0 #000;
-}
-
-#d-btn {
-    position: absolute;
-    color: #c0c0be;
-    font-size: 28px;
-    font-weight: 700;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    left: 82px;
-    top: 50px;
-    z-index: 7;
-    text-shadow:
-		-1px -1px 0 #000,
-		1px -1px 0 #000,
-		-1px 1px 0 #000,
-		1px 1px 0 #000;
-}
-
-#sp-btn {
-    position: absolute;
-    color: #c0c0be;
-    font-size: 28px;
-    font-weight: 700;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    left: 32px;
-    top: 93px;
-    z-index: 7;
-    text-shadow:
-		-1px -1px 0 #000,
-		1px -1px 0 #000,
-		-1px 1px 0 #000,
-		1px 1px 0 #000;
-}
-
-.start-btn {
-    position: absolute;
-    top: 205px;
-    left: 45px;
-    width: 130px;
-    height: 60px;
-    background: #615297;
-    z-index: 6;
-    border-radius: 30px;
-    transform: rotate(30deg);
-    border: 0.5px solid black;
-    display: flex;
-    vertical-align: middle;
-    align-content: center;
-    justify-content: center;
-}
-
-.start-btn p {
-    color: #2d302e;
-    font-size: 16px;
-    font-weight: 700;
-    left: 10px;
-    padding-left: 6px;
-    padding-top: 21px;
-    text-shadow:
-		-.25px -.25px 0 #000,
-		0.25px -.25px 0 #000,
-		-.25px 0.25px 0 #000,
-		0.25px 0.25px 0 #000;
-}
-
-#start-game {
-    content: "";   
-    margin-top: 7px;
-    width: 44px;
-    height: 44px;
-    background: #ddd9dc;
-    border-radius: 100%;
-    vertical-align: middle;
-    align-content: center;
-    justify-content: center;
-    border: 0.5px solid black;
-    box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
-}
-
-#start-game:hover {
-    cursor: pointer;
-    background: lightgray;
-}
-
 
 .power-container {
     position: absolute;
@@ -201,13 +22,210 @@
     justify-content: center;
 }
 
-.power-container p {
+#power-btn {
+    margin-top: 7px;
+    width: 44px;
+    height: 44px;
+    background: #ddd9dc;
+    border-radius: 100%;
+    vertical-align: middle;
+    align-content: center;
+    justify-content: center;
+    border: 0.5px solid black;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+};
+
+
+
+.pad  {
+    position: absolute;
+    margin-left: 40px;
+    z-index: 6;
+}
+
+.power-container {
+    position: absolute;
+    top: 290px;
+    left: 29px;
+    width: 130px;
+    height: 60px;
+    background: #615297;
+    z-index: 6;
+    border-radius: 30px;
+    transform: rotate(30deg);
+    border: 0.5px solid black;
+    display: flex;
+    vertical-align: middle;
+    align-content: center;
+    justify-content: center;
+}
+#start-game.active:hover {
+    cursor: pointer;
+    background: lightgray;
+} 
+
+
+
+.vert {
+    position: absolute;
+    left: 30px;
+    width: 42px;
+    height: 126px;
+    background: #ddd9dc;
+    border-radius: 5px;
+    z-index: 6;
+}
+
+
+#power-btn:hover {
+    cursor: pointer;
+    background: lightgray;
+}; 
+
+ .vert::before {
+    content: "";
+    position: relative;
+    top: 138px;
+    left: 11px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #2d302e;
+}
+
+
+
+/* .vert::after {
+    content: "";
+    position: relative;
+    top: -28px;
+    left: -9px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #2d302e;
+} */
+
+
+
+#horiz {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+
+#horiz {
+    position: absolute;
+    left: 30px;
+    width: 42px;
+    height: 126px;
+    background: #ddd9dc;
+    border-radius: 5px;
+    z-index: 6;
+}
+
+
+
+
+.thing {
+    background-color: #c0c0be;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    top: 43px;
+    left: 30px;
+    position: absolute;
+    z-index: 7;
+}
+
+
+
+#a-btn {
+    position: absolute;
+    color: #c0c0be;
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    left: -3px;
+    top: 50px;
+    z-index: 7;
+    text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+}
+
+
+
+#d-btn {
+    position: absolute;
+    color: #c0c0be;
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    left: 82px;
+    top: 50px;
+    z-index: 7;
+    text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+}
+
+
+
+
+#sp-btn {
+    position: absolute;
+    color: #c0c0be;
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    left: 32px;
+    top: 93px;
+    z-index: 7;
+    text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+}
+
+
+
+.start-btn {
+    position: absolute;
+    top: 205px;
+    left: 45px;
+    width: 130px;
+    height: 60px;
+    background: #615297;
+    z-index: 6;
+    border-radius: 30px;
+    transform: rotate(30deg);
+    border: 0.5px solid black;
+    display: flex;
+    vertical-align: middle;
+    align-content: center;
+    justify-content: center;
+}
+
+
+
+.start-btn p {
     color: #2d302e;
     font-size: 16px;
     font-weight: 700;
     left: 10px;
-    padding-left: 7px;
-    padding-top: 22px;
+    padding-left: 6px;
+    padding-top: 21px;
     text-shadow:
 		-.25px -.25px 0 #000,
 		0.25px -.25px 0 #000,
@@ -215,8 +233,9 @@
 		0.25px 0.25px 0 #000;
 }
 
-#power-btn {
-    content: "";   
+
+
+#start-game {
     margin-top: 7px;
     width: 44px;
     height: 44px;
@@ -229,12 +248,23 @@
     box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
 }
 
-#power-btn:hover {
-    cursor: pointer;
-    background: lightgray;
-}
 
-#horiz::before {
+#power {
+    color: #2d302e;
+    font-size: 16px;
+    font-weight: 700;
+    left: 10px;
+    padding-left: 2px;
+    padding-top: 22px;
+    text-shadow:
+		-.25px -.25px 0 #000,
+		0.25px -.25px 0 #000,
+		-.25px 0.25px 0 #000,
+		0.25px 0.25px 0 #000;
+};
+
+
+/* #horiz::before {
     content: "";
     position: relative;
     top: 139px;
@@ -245,3 +275,4 @@
     border-right: 10px solid transparent;
     border-top: 10px solid #2d302e;
 };
+ */
