@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --mode=development --watch",
-    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress"
+    "dev": "webpack --mode=development --watch",
+    "start": "node /src/index.js",
+    "build": "webpaclk"
   },
   "repository": {
     "type": "git",
