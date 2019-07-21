@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 startBtn.removeAttribute("class");
                 startScreen.removeAttribute("class");
                 screenText.classList.remove("end");
+                instructions.classList.remove("end");
                 controlsList.classList.remove("end");
                 light.removeAttribute("class");
             };

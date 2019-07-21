@@ -4,6 +4,17 @@
     left: 110px;
 }
 
+#a-btn.active {
+    color: gold;
+};
+
+#d-btn.active {
+    color: gold;
+};
+
+#sp-btn.active {
+    color: gold;
+};
 
 .power-container {
     position: absolute;
@@ -59,12 +70,11 @@
     align-content: center;
     justify-content: center;
 }
+
 #start-game.active:hover {
     cursor: pointer;
     background: lightgray;
 } 
-
-
 
 .vert {
     position: absolute;
@@ -76,13 +86,12 @@
     z-index: 6;
 }
 
-
 #power-btn:hover {
     cursor: pointer;
     background: lightgray;
 }; 
 
- .vert::before {
+.vert::before {
     content: "";
     position: relative;
     top: 138px;
@@ -93,8 +102,6 @@
     border-right: 10px solid transparent;
     border-top: 10px solid #2d302e;
 }
-
-
 
 /* .vert::after {
     content: "";
@@ -107,8 +114,6 @@
     border-right: 10px solid transparent;
     border-bottom: 10px solid #2d302e;
 } */
-
-
 
 #horiz {
     -webkit-transform: rotate(90deg);
@@ -129,9 +134,6 @@
     z-index: 6;
 }
 
-
-
-
 .thing {
     background-color: #c0c0be;
     width: 40px;
@@ -142,8 +144,6 @@
     position: absolute;
     z-index: 7;
 }
-
-
 
 #a-btn {
     position: absolute;
@@ -161,8 +161,6 @@
 		1px 1px 0 #000;
 }
 
-
-
 #d-btn {
     position: absolute;
     color: #c0c0be;
@@ -178,9 +176,6 @@
 		-1px 1px 0 #000,
 		1px 1px 0 #000;
 }
-
-
-
 
 #sp-btn {
     position: absolute;
@@ -198,8 +193,6 @@
 		1px 1px 0 #000;
 }
 
-
-
 .start-btn {
     position: absolute;
     top: 205px;
@@ -216,6 +209,7 @@
     align-content: center;
     justify-content: center;
 }
+
 
 
 
@@ -262,6 +256,8 @@
 		-.25px 0.25px 0 #000,
 		0.25px 0.25px 0 #000;
 };
+
+
 
 
 /* #horiz::before {

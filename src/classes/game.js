@@ -21,8 +21,8 @@ class Game {
         this.height = HEIGHT;
         this.width = WIDTH;
         this.themeColor = ["#bdae57", "#a7a7a7", "blue", "green"];
-
-        this.addBlocks(BLOCKS_NUM);
+        this.numBlocks = BLOCKS_NUM;
+        this.addBlocks(this.numBlocks);
     };   
      
     addBlocks(n) {
@@ -67,7 +67,6 @@ class Game {
     moveObjects(delta) {
         const movingObj = this.allCurMovingObjs();
         movingObj.forEach(obj => {
-            
             obj.move(delta);
             if (obj instanceof Ball && this.isOutOfBounds(obj.pos.y)) {
                 this.deathAnimation();
@@ -119,6 +118,15 @@ class Game {
         };
     };
 
+    isOver() {
+        if (this.numBlocks === 0 || this.lives === 0) {
+            console.log(this.numBlocks);
+            console.log(this.lives);
+            return true;
+        }
+        return false;
+    }
+
     isCollided(obj1, obj2) {
         let temp;
         if (obj1 instanceof Ball) {
@@ -147,6 +155,7 @@ class Game {
 
     remove(obj) {
         if (obj instanceof Block) {
+            this.numBlocks -= 1;
             this.blocks.splice(this.blocks.indexOf(obj), 1);
         } else {
             throw new Error("unknown type of object");
@@ -177,11 +186,11 @@ class Game {
         };
     };
 
-    checkForVictory() {
-        if (!this.blocks.length) {
-            return true;
-        }
-    }
+    // checkForVictory() {
+    //     if (!this.blocks.length) {
+    //         return true;
+    //     }
+    // }
 
 };
 
