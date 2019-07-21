@@ -6,7 +6,8 @@
   "scripts": {
     "postbuild": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --mode=development --watch"
+    "dev": "webpack --mode=development --watch",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
