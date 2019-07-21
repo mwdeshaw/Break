@@ -93,6 +93,7 @@ class Ball extends MovingObj {
             this.vel.x += input[0];
             this.vel.y += input[1];
             this.initialRotation();
+
         }
     };
 
