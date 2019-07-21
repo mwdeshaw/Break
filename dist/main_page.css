@@ -51,6 +51,7 @@ body {
   background: #3c2861;
   border-radius: 4px;
   -webkit-transform: rotate(-95deg);
+  transform: rotate(-95deg);
   box-shadow: 20px 0 #3c2861, 40px 0 #3c2861, 60px 0 #3c2861, 80px 0 #3c2861;
   z-index: 5;
 }
