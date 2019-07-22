@@ -1,5 +1,5 @@
-import Game from "./classes/game";
-import GView from "./classes/g_view";
+import Game from "./src/classes/game";
+import GView from "./src/classes/g_view";
 
 document.addEventListener("DOMContentLoaded", () => {
     let github = document.getElementById("github");
