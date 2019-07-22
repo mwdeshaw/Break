@@ -101,7 +101,6 @@ class Ball extends MovingObj {
         super.move(deltaTime);
         this.rotate(deltaTime);
     };
-
 };
 
 export default Ball;
