@@ -35,18 +35,20 @@ Break! has many features, all of which contribute to a great user experience:
  5. Start playing Break!
  
 ## About the Project
-Break was designed and built over the course of five days. A proposal was drafted, which described the idea and the timeline for adding all of the features, from ui design to ball physics. The timeline was then systematically followed to create an aesthetic and functional app. The idea was based on a popular game I played during my childhood, Magic Ball, where the goal was to clear the entire area of blocks.
+Break was designed and built over the course of five days. A proposal was drafted, which described the idea and the timeline for adding all of the features, from ui design to ball physics. The timeline was then systematically followed to create an aesthetic and functional app. The idea was based on a popular computer game I played during my childhood, Magic Ball, where the goal was to clear the entire board of blocks.
+
+The gameplay sound assets come from [here](https://opengameart.org/content/3-ping-pong-sounds-8-bit-style). The Game Boy startup sound is from an mp3 file made from [this](https://www.youtube.com/watch?v=3bCT3YxZfAY) video. Some inspiration for the css Game Boy implementation comes from [here](https://baumannzone.github.io/gameboy-css/).
 
 ## The Technology
 ![game page](https://github.com/mwdeshaw/Break/blob/master/dist/style/gameStart.png)
 
 ### Frontend
-Notable was built with vanilla Javascript. The user interface is created with pure HTML/CSS, while event listeners are used to make the ui come to life. 
+Break! was built using vanilla Javascript. The user interface is created with pure HTML/CSS, while event listeners are used to make the ui come to life. 
 
 #### User Interface
 Break!'s user interface was created to reflect the purpose of the app, to play and to entertain! The design is based off Nintendo's Game Boy Advance. The ui is not only aesthetic, but also functional. One cannot play the game until he or she turns the interface on! The functionality of the interface was created using event listeners.
 
-Here is some of the code that makes the user interface come to life: 
+Here is some of this code:
 
 ```javascript
     const defScreen = document.getElementById("default");
@@ -92,7 +94,7 @@ Note the numerous event listeners. The order, and functions including setTimeout
 
 ![controls](https://github.com/mwdeshaw/Break/blob/master/dist/style/Screen%20Shot%202019-07-21%20at%208.59.28%20PM.png)
 
-The game only requires three keys, the space bar, a key and d key. The functionality of these keys was achieved through event listeners and a key handler:
+The game only requires three keys, the space bar, the a key, and the d key. The functionality of these keys is achieved through two event listeners, shown here, as well as a custom key handler:
 ```javascript
     keyHandler() {   
         document.addEventListener("keydown", event => {
@@ -104,7 +106,6 @@ The game only requires three keys, the space bar, a key and d key. The functiona
     };
 ```
 The event listeners above sense for key presses and call the handleKey() function. They also stops the event's popagation on "keyup".
-
 
 #### Gameplay Physics:
 ![gameplay](https://github.com/mwdeshaw/Break/blob/master/dist/style/Screen%20Shot%202019-07-21%20at%208.39.46%20PM.png)
@@ -121,7 +122,7 @@ Physics drove the creation of the ball and its functionality, from spin and rota
 end
 ```
 
-The ball's initial velocity and direction were placed at { x: 0, y: 0 }, so it would not move until the force of the player acted on it by means of the spacebar. Spin was achieved through this.spinSpeed, and this spin was important in determining the ball's rotation:
+The ball's initial velocity and direction were placed at { x: 0, y: 0 }, so it would not move until the force of the player acted on it by means of the spacebar. Spin was achieved through this.spinSpeed, and this spin helped determine the ball's rotation:
 
 ```javascript
     rotate(deltaTime) {
@@ -138,7 +139,7 @@ The ball's initial velocity and direction were placed at { x: 0, y: 0 }, so it w
     }
 ```
 
-Another interting element of the ball is that it moves with the player until the spacebar is pressed. This functionality parallels that of Magic Ball, Break!'s predecessor. This functionality was achieved through the creation of an initial flag in the constructor, and key handling logic:
+Another interting element of the ball is that it moves with the player until the spacebar is pressed. This parallels that of Magic Ball, Break!'s predecessor. This functionality was achieved through the creation of an initial flag in the Ball's constructor, as well as key handling logic shown here:
 
 ```javascript
     handleBallRelease(input, key) {
@@ -164,7 +165,7 @@ Multiple types of collisions were managed in this game. Paddle to wall, wall to 
         return true;
     };
 ```
-Note the reversal of velocity on the x-axis on collision with the wall, preventing the paddle from going outside of the cavas. Collisions of all types were checked for with the following code in the main game class:
+Note the reversal of velocity on the x-axis on collision with the wall, preventing the paddle from going outside of the canvas. Collisions of all types were checked for with the following code in the main game class:
 
 ```javascript
     checkForWallCollisions() {
@@ -187,7 +188,7 @@ Note the reversal of velocity on the x-axis on collision with the wall, preventi
 ```
 Note how width and height are used to check for wall collisions for the rectangular objects, while radius is used for the circular objects.
 
-Object-on object collision was more complicated, checked for with this code:
+Object-on object collisions were more complicated, checked for with this code:
 ```javascript
     isCollided(obj1, obj2) {
         let temp;
@@ -215,7 +216,7 @@ Object-on object collision was more complicated, checked for with this code:
         return (dX * dX + dY * dY <= (obj2.radius * obj2.radius));
     };
 ```
-The above algorithm uses an Axis-Aligned Bounding Box (AABB) to check for collisions between the ball and rectangular objects (blocks and player). It also checks for corner collisions as well.
+The above algorithm uses an Axis-Aligned Bounding Box (AABB) to check for collisions between the ball and rectangular objects (blocks and the player). It also checks for corner collisions as well.
 
 If a collision is detected, the following function determines ball behavior:
 ```javascript
@@ -227,9 +228,9 @@ If a collision is detected, the following function determines ball behavior:
         };
     };
 ```    
-Upon collision, the ball reverses its x and y directions, as well as its y velocity.  
+Upon collision, the ball reverses its x and y directions, as well as its y velocity.
 
 ## Future Directions
 While I am quite proud of the app, there is much to do in order to make it even better:
-* Implement powerups, like metal balls or multiballs to allow for more dynamic gameplay.
-* Implement different types of blocks, including unbreakable or stronger ones.
+* Implement powerups, like superballs, multiballs, and longer paddle to allow for more dynamic gameplay.
+* Implement different types of blocks, including unbreakable and extra-strong ones.
