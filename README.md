@@ -35,82 +35,113 @@ Break! has many features, all of which contribute to a great user experience:
  5. Start playing Break!
  
 ## About the Project
-Break was designed and built over the course of five days. A proposal was drafted, which described the idea and the timeline for adding all of the features, from ui design to ball physics. The timeline was then systematically followed to create an aesthetic and functional app.
+Break was designed and built over the course of five days. A proposal was drafted, which described the idea and the timeline for adding all of the features, from ui design to ball physics. The timeline was then systematically followed to create an aesthetic and functional app. The idea was based on a popular game I played during my childhood, Magic Ball, where the goal was to clear the entire area of blocks.
 
 ## The Technology
 ![game page](https://github.com/mwdeshaw/Break/blob/master/dist/style/gameStart.png)
 
 ### Frontend
-Notable was built with vanilla Javascript. The user interface is created with pure HTML/CSS, while event listeners are used to make it interactive.
+Notable was built with vanilla Javascript. The user interface is created with pure HTML/CSS, while event listeners are used to make the ui come to life. 
 
+#### User Interface
+Break!'s user interface was created to reflect the purpose of the app, to play and to entertain! The design is based off Nintendo's Game Boy Advance. The ui is not only aesthetic, but also functional. One cannot play the game until he or she turns the interface on! The functionality of the interface was created using event listeners.
 
-#### User Authentication and Session Management
-Creating an account on Notable is quick and seamless, requiring only an email and a password. However, behind the scenes, many steps are taken to ensure protection of users and their credentials. Built-in Cross-site request forgery (CSRF) protection is also provided, protecting users from malicious attacks
-
-Here is a snipped from the User model, where you could get a glimpse of some of these features:
-
-```ruby
-class User < ApplicationRecord
-    attr_reader :password
-
-    validates :email, :session_token, presence: true, uniqueness: true
-    validates :password_digest, presence: true
-    validates :password, length: { minimum: 6, allow_nil: true }
-
-    def password=(password)
-        @password = password
-        self.password_digest = BCrypt::Password.create(password)
-    end
-
-    def is_password?(password)
-        BCrypt::Password.new(self.password_digest).is_password?(password)
-    end
-
-    def self.find_by_credentials(email, password)
-        user = User.find_by(email: email)
-        return nil unless user
-        user.is_password?(password) ? user : nil
-    end
-end
-```
-
-Note the use of BCrypt for password salting and hashing. Plain text passwords are never stored in the database. Instead, passwords only exist for a moment as instance variables, where they are then salted and hashed with 128-bit encryption.
-
-#### Notebooks and Notes:
-Notable is nothing without notes, and the relationship between users, notebooks, and notes is managed through database associations. Here is an example from the Note Model:
+Here is some of the code that makes the user interface come to life: 
 
 ```javascript
-class Note < ApplicationRecord
-    validates :notebook_id, :author_id, :title, presence: true
-    validates :body, presence: true, allow_blank: true
+    const defScreen = document.getElementById("default");
+    const powerBtn = document.getElementById("power-btn");
+    powerBtn.onclick = () => {
+        defScreen.setAttribute("class", "active");
+        const startScreen = document.getElementById('start-screen');
+        startScreen.setAttribute("class", "active");
 
-    belongs_to :user,
-        primary_key: :id,
-        foreign_key: :author_id,
-        class_name: :User
+        const light = document.getElementById('power-lt');
+        light.setAttribute("class", "active");
 
-    belongs_to :notebook,
-        primary_key: :id,
-        foreign_key: :notebook_id,
-        class_name: :Notebook
+        const screenText = document.querySelector(".start-text");
+        const instructions = document.querySelector(".instructions");
+        const controlsList = document.querySelector(".controls-list");
+
+        screenText.classList.add("end");
+        const startBtn = document.getElementById("start-game");
+        setTimeout(() => {
+            const audio = document.getElementById("gameboySound");
+            audio.currentTime = 0;
+            audio.play();
+            instructions.classList.add("end");
+            controlsList.classList.add("end");
+            startBtn.setAttribute("class", "active");
+        }, 3000);
+
+        startBtn.onclick = () => {
+            startScreen.removeAttribute("class");
+            instructions.classList.remove("end");
+            controlsList.classList.remove("end");
+            screenText.classList.remove("end");
+            const canvas = document.getElementById("board");
+            const ctx = canvas.getContext("2d");
+            const game = new Game(ctx);
+            new GView(game).start();
+        };
+
+```
+Note the numerous event listeners. The order, and functions including setTimeout() ensure one can only play the game after the ui is "fired-up." The event listeners also give the ability to start a new game every time the start button is pressed.
+
+#### Gameplay Physics:
+
+picture
+
+Physics drove the creation of the ball and its functionality, from spin and rotation, to direction vectors. Some of the code that allowed for the ball's realistic behavior is here:
+
+```javascript
+    constructor(pos) {
+        super(pos, { x: 0, y: 0 }, BALL_RADIUS);
+        this.dir = { x: 0, y: 0 }
+        this.spinSpeed = Math.random() * 60 + 30;
+        this.initialFlag = false;
+    };
 end
 ```
 
-These associations are utilized in the controllers to tie users to notes and notes to notebooks, enabling proper functionality from the creation of notes for specific notebooks to deleting all notes for a single notebook if a notebook is deleted.
+The ball's initial velocity and direction were placed at { x: 0, y: 0 }, so it would not move until the force of the player acted on it by means of the spacebar. Spin was achieved through this.spinSpeed, and this spin was important in determining the ball's rotation:
 
-### Frontend
+```javascript
+    rotate(deltaTime) {
+        if (this.dir.y !== 0) {
+            let angle = -this.spinSpeed * (Math.PI / 180) * deltaTime;
+            let vector = [this.dir.x, this.dir.y];
+
+            var cos = Math.cos(angle);
+            var sin = Math.sin(angle);
+
+            this.dir.x = Math.round(10000 * (vector[0] * cos - vector[1] * sin)) / 10000;
+            this.dir.y = Math.round(10000 * (vector[0] * sin + vector[1] * cos)) / 10000;
+        }
+    }
+```
+
+Another interting element of the ball is that it moves with the player until the spacebar is pressed. This functionality parallels that of Magic Ball, Break!'s predecessor. This functionality was achieved through the creation of an initial flag in the constructor, and key handling logic:
+
+```javascript
+    handleBallRelease(input, key) {
+        if (!this.initialFlag && key !== "space") {
+            this.vel.x += input[0];
+            this.vel.y += input[1];
+        } else if (key === "space" && this.dir.x === 0 && this.dir.y === 0) {
+            this.vel.x += input[0];
+            this.vel.y += input[1];
+            this.initialRotation();
+
+        }
+    };
+```
+
+The above conditionals ensure that one has no control of the ball (with the a and d keys) after the spacebar is pressed and the ball is released.
+
+### Collision Logic
 
 ![signup](https://github.com/mwdeshaw/Notable/blob/master/read_me_images/Screen%20Shot%202019-07-12%20at%2012.20.54%20PM.png)
-
-Notable's frontend was built using React-Redux. These choices allowed for a unidirectional dataflow and single-source of truth. With so many states to manage, like notes inside notebooks and both belonging to authors, redux enables proper state management. CSS was used for frontend styling.
-
-#### Frontend Dependencies
-Node package manager (npm) was used to install and save frontend dependencies, while webpack was used to bundle all the reqeuired JavaScript files and ensure correct loading order. JQuery was used to make AJAX requests to the backend rails API. Draft.js was used in the note show page, allowing for rich-text editing with a range of styles. Other frontend dependencies include React-DOM, React DOM-Router, Provider, and Babel.
-
-#### Notebooks
-Upon login or signup, the user is brought to the notebooks index, where they have the abililty to create, rename, or delete notebooks. When a user first signs up, a notebook is created automatically, so he or she can instantly get started.
-
-![notebook index](https://github.com/mwdeshaw/Notable/blob/master/read_me_images/Screen%20Shot%202019-07-12%20at%2010.22.33%20AM.png)
 
 To create this page, an HTML table was employed, allowing for orangization, responsivness, and hover effects:
 
