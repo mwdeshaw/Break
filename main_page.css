@@ -27,7 +27,6 @@ body {
 }
 
 #linkedin {
-  /* left: 10px; */
   width: 60px;
   height: 60px;
   border-radius: 100%;
@@ -55,8 +54,6 @@ body {
   box-shadow: 20px 0 #3c2861, 40px 0 #3c2861, 60px 0 #3c2861, 80px 0 #3c2861;
   z-index: 5;
 }
-
-
 
 .logo {
     position: absolute;
@@ -174,8 +171,8 @@ body {
     border-radius: 80% 20% 20% 20%;
     z-index: 4;
     transform: rotate(-1deg);
-    top: 157px;
-    left: 58px;
+    top: 154px;
+    left: 56px;
 }
 
 #f4 {
@@ -186,8 +183,8 @@ body {
     border-radius: 45% 25% 0 10%;
     z-index: 4;
     transform: rotate(-35.5deg);
-    top: 52.5px;
-    left: 237px;
+    top: 52px;
+    left: 236px;
 }
 
 #b2 {
@@ -222,8 +219,8 @@ body {
     border-radius: 80% 20% 20% 20%;
     z-index: 4;
     transform: rotate(16deg);
-    top: 157px;
-    right: 58px;
+    top: 155px;
+    right: 56px;
 }
 
 #f6 {
@@ -234,7 +231,7 @@ body {
     border-radius: 50% 20% 60% 20%;
     z-index: 4;
     transform: rotate(52deg);
-    top: 54px;
+    top: 53px;
     right: 235px;
 }
 
@@ -349,14 +346,11 @@ body {
 
 }
 
-
 .end-screen.end {
   position: absolute;
     opacity: 1;
     z-index: 5;
 }
-
-
 
 #text-thing {
   font-size: 36px;
@@ -431,7 +425,6 @@ body {
   padding: 5px;
 
 }
-
 
 .controls-list.end {
   opacity: 1;

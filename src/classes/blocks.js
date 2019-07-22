@@ -9,8 +9,6 @@ const randomColor = () => {
     return color;
 };
 
-const powerUps = ["multiball", "invinciball", "bomb", "wreckingBall", "longerBat", "tinyBat"]; //
-const blockTypes = ["regular", "brick", "concrete"];
 class Block {
     constructor(pos, width, height, type, powerUp) {
         this.pos = pos;

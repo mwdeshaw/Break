@@ -177,7 +177,7 @@ class Game {
             for (let j = i + 1; j < allObj.length; j ++) {
                 const obj1 = allObj[i];
                 const obj2 = allObj[j];
-                if (obj1 instanceof Player && obj2 instanceof Ball) { //order basically ensures this
+                if (obj1 instanceof Player && obj2 instanceof Ball) {
                     if (this.isCollided(obj1, obj2)) {
                         this.playBounceSound();
                         obj1.collidesWith(obj2);

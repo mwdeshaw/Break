@@ -5,19 +5,6 @@
     left: 110px;
 }
 
-#a-btn.active {
-    color: gold;
-};
-
-#d-btn.active {
-    color: gold;
-};
-
-#sp-btn.active {
-    color: gold;
-};
-
-
 .power-container {
     position: absolute;
     top: 290px;
@@ -47,8 +34,6 @@
     border: 0.5px solid black;
     box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
 };
-
-
 
 .pad  {
     position: absolute;
@@ -104,18 +89,6 @@
     border-right: 10px solid transparent;
     border-top: 10px solid #2d302e;
 }
-
-/* .vert::after {
-    content: "";
-    position: relative;
-    top: -28px;
-    left: -9px;
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 10px solid #2d302e;
-} */
 
 #horiz {
     -webkit-transform: rotate(90deg);
@@ -212,9 +185,6 @@
     justify-content: center;
 }
 
-
-
-
 .start-btn p {
     color: #2d302e;
     font-size: 16px;
@@ -229,8 +199,6 @@
 		0.25px 0.25px 0 #000;
 }
 
-
-
 #start-game {
     margin-top: 7px;
     width: 44px;
@@ -243,7 +211,6 @@
     border: 0.5px solid black;
     box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
 }
-
 
 #power {
     color: #2d302e;
@@ -258,22 +225,3 @@
 		-.25px 0.25px 0 #000,
 		0.25px 0.25px 0 #000;
 };
-
-
-
-
-/* #horiz::before {
-    content: "";
-    position: relative;
-    top: 139px;
-    left: 11px;
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid #2d302e;
-};
- */
-
-
- 
