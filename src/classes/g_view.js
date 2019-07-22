@@ -15,46 +15,9 @@ class GVIEW {
             this.handleKey(event, true);
         });
         document.addEventListener("keyup", event => {
-            this.handleKeyUp(event, true);
+            this.handleKeyUp(event, false);
         });
     };
-
-
-    handleKeyUp(event, up) {
-        let input = this.input;
-        if (!this.game.ball.initialFlag) {
-            switch (event.keyCode) {
-                case 65:
-                    if (input.a !== up) {
-                        this.game.player.vel.x = 0;
-                    }
-                    break;
-                case 68:
-                    if (input.d !== up) {
-                        this.game.player.vel.x = 0;
-                    }
-                    break;
-                default:
-                    break;
-            }
-        } else {
-            switch (event.keyCode) {
-                case 65:
-                    if (input.a !== up) {
-                        this.game.player.vel.x = 0;
-                    }
-                    break;
-                case 68:
-                    if (input.d !== up) {
-                        this.game.player.vel.x = 0;
-                    }
-                    break;
-                default:
-                    break;
-            };
-        };
-    };
-
 
     handleKey(event, down) {
         let input = this.input;
