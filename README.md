@@ -27,7 +27,7 @@ Break! has many features, all of which contribute to a great user experience:
  npm start
  ```
  
-4.  Open the index.html
+4.  Open the index.html:
   ```
   open index.html
   ```
