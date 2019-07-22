@@ -157,7 +157,7 @@ Another interting element of the ball is that it moves with the player until the
 
 The above conditionals ensure that one has no control of the ball (with the a and d keys) after the spacebar is pressed and the ball is released.
 
-### Collision Logic
+#### Collision Logic
 Multiple types of collisions were managed in this game. Paddle to wall, wall to ball, paddle to ball, and ball to block. For paddle to wall, the following code was used:
 ```javascript
     wallCollision() {
