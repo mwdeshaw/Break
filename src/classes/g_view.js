@@ -15,7 +15,7 @@ class GVIEW {
             this.handleKey(event, true);
         });
         document.addEventListener("keyup", event => {
-            this.handleKeyUp(event, false);
+            this.handleKey(event, false);
         });
     };
 

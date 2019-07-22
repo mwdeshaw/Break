@@ -61,7 +61,7 @@ class Ball extends MovingObj {
     bounce() {
         if (this.dir.x !== 0 && this.dir.y !== 0) {
             this.dir.x = -this.dir.x;
-            this.dir.y = -this.dir.y;
+            this.dir.y = -this.dir.y;            
             this.vel.y = -this.vel.y;
         };
     };
@@ -101,6 +101,7 @@ class Ball extends MovingObj {
         super.move(deltaTime);
         this.rotate(deltaTime);
     };
+
 };
 
 export default Ball;
