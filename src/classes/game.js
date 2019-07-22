@@ -4,8 +4,8 @@ import Block from './blocks';
 
 const HEIGHT = 600;
 const WIDTH = 920;
-const PLAYER_START_LOCATION = { x: 400, y: 540 }
-const BALL_START_LOCATION = { x: 445, y: 500 }
+const PLAYER_START_LOCATION = { x: 400, y: 540 };
+const BALL_START_LOCATION = { x: 460, y: 500 };
 const STARTING_LIVES = 3;
 const BLOCK_HEIGHT = 50;
 const BLOCK_WIDTH = 50;

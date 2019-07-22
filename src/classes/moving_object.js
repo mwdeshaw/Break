@@ -11,7 +11,7 @@ class MovingObject {
         let newDistanceY = this.vel.y * deltaTime;
         this.pos.x = this.pos.x + newDistanceX;
         this.pos.y = this.pos.y + newDistanceY;
-    }
+    };
 };
 
 export default MovingObject;

@@ -4,8 +4,8 @@ class GVIEW {
     constructor(game){
         this.game = game;
         this.input = {
-            a: [-45, 0],
-            d: [45, 0],
+            a: [-70, 0],
+            d: [70, 0],
             space: [0, -100]
         };
     };
@@ -15,9 +15,46 @@ class GVIEW {
             this.handleKey(event, true);
         });
         document.addEventListener("keyup", event => {
-            this.handleKey(event, false);
+            this.handleKeyUp(event, true);
         });
     };
+
+
+    handleKeyUp(event, up) {
+        let input = this.input;
+        if (!this.game.ball.initialFlag) {
+            switch (event.keyCode) {
+                case 65:
+                    if (input.a !== up) {
+                        this.game.player.vel.x = 0;
+                    }
+                    break;
+                case 68:
+                    if (input.d !== up) {
+                        this.game.player.vel.x = 0;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            switch (event.keyCode) {
+                case 65:
+                    if (input.a !== up) {
+                        this.game.player.vel.x = 0;
+                    }
+                    break;
+                case 68:
+                    if (input.d !== up) {
+                        this.game.player.vel.x = 0;
+                    }
+                    break;
+                default:
+                    break;
+            };
+        };
+    };
+
 
     handleKey(event, down) {
         let input = this.input;

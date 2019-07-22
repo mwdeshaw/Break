@@ -1,8 +1,7 @@
 import MovingObject from './moving_object';
 import Ball from './ball';
-const PLAYER_SPEED = 150;
 const PLAYER_HEIGHT = 30;
-const PLAYER_WIDTH = 90;
+const PLAYER_WIDTH = 120;
 
 const randomColor = () => {
     const digs = "0123456789ABCDEF";
@@ -22,8 +21,8 @@ class Player extends MovingObject {
     };
 
     setKeyInputs(input, key) {
-            this.vel.x += input[0];
-            this.vel.y += input[1];
+        this.vel.x += input[0];
+        this.vel.y += input[1];
     };
 
     draw(ctx) {
