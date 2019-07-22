@@ -19,11 +19,6 @@
     "url": "https://github.com/mwdeshaw/Break/issues"
   },
   "homepage": "https://github.com/mwdeshaw/Break#readme",
-  "devDependencies": {
-    "css-loader": "^3.1.0",
-    "webpack": "^4.36.1",
-    "webpack-cli": "^3.3.6"
-  },
   "dependencies": {
     "node": "^12.6.0",
     "style-loader": "^0.23.1",
