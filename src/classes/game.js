@@ -118,9 +118,18 @@ class Game {
             if ((obj instanceof Player) && (obj.pos.x < 0 || obj.pos.x > (920 - obj.width))) {
                 return obj.wallCollision();
             }
-            if ((obj instanceof Ball) && (obj.pos.x < (0 + obj.radius) || obj.pos.x > (920 - obj.radius))) {
+            if ((obj instanceof Ball) && (obj.pos.x < (0 + obj.radius))) {
                 this.playBounceSound();
-                return obj.wallCollision();
+                return obj.leftWallCollision();
+            }
+            // if ((obj instanceof Ball) && (obj.pos.x < (0 + obj.radius) || obj.pos.x > (920 - obj.radius))) {
+            //     this.playBounceSound();
+            //     return obj.leftWallCollision();
+            // }
+            
+            if ((obj instanceof Ball) && (obj.pos.x > (920 - obj.radius))) {
+                this.playBounceSound();
+                return obj.rightWallCollision();
             }
             if ((obj instanceof Ball) && (obj.pos.y < (0 + obj.radius) || obj.pos.y > (600 - obj.radius))) {
                 this.playBounceSound();

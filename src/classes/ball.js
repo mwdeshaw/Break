@@ -48,8 +48,13 @@ class Ball extends MovingObj {
         };
     };
 
-    wallCollision() {
-        this.vel.x = (-this.vel.x) * 0.95;
+    rightWallCollision() {
+        this.vel.x = - Math.abs(this.vel.x) * 0.95;
+        return true;
+    }
+
+    leftWallCollision() {
+        this.vel.x = Math.abs(this.vel.x) * 0.95;
         return true;
     }
 

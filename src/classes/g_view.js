@@ -8,10 +8,6 @@ class GVIEW {
             d: [90, 0],
             space: [0, -100]
         };
-        this.keyUp = {
-            a: [90, 0],
-            d: [-90, 0],
-        };
     };
 
     keyHandler() {   
