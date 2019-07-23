@@ -115,18 +115,16 @@ class Game {
         const allMovingObj = this.allCurMovingObjs();
         for (let i = 0; i < allMovingObj.length; i++) {
             const obj = allMovingObj[i];
-            if ((obj instanceof Player) && (obj.pos.x < 0 || obj.pos.x > (920 - obj.width))) {
-                return obj.wallCollision();
+            if ((obj instanceof Player) && (obj.pos.x < 0)) {
+                return obj.leftWallCollision();
+            }
+            if ((obj instanceof Player) && (obj.pos.x > (920 - obj.width))) {
+                return obj.rightWallCollision();
             }
             if ((obj instanceof Ball) && (obj.pos.x < (0 + obj.radius))) {
                 this.playBounceSound();
                 return obj.leftWallCollision();
             }
-            // if ((obj instanceof Ball) && (obj.pos.x < (0 + obj.radius) || obj.pos.x > (920 - obj.radius))) {
-            //     this.playBounceSound();
-            //     return obj.leftWallCollision();
-            // }
-            
             if ((obj instanceof Ball) && (obj.pos.x > (920 - obj.radius))) {
                 this.playBounceSound();
                 return obj.rightWallCollision();
@@ -146,12 +144,7 @@ class Game {
     }
 
     isCollided(obj1, obj2) {
-        let temp;
-        if (obj1 instanceof Ball) {
-            temp = obj1;
-            obj1 = obj2;
-            obj2 = temp;
-        }
+
         let dx = Math.abs(obj2.pos.x - obj1.pos.x - obj1.width / 2);
         let dy = Math.abs(obj2.pos.y - obj1.pos.y - obj1.height / 2);
         if (dx > (obj1.width / 2 + obj2.radius)) {
@@ -197,7 +190,7 @@ class Game {
                         obj1.collidesWith(obj2);
                     };
                 } else if (obj1 instanceof Ball && obj2 instanceof Block) {
-                    if (this.isCollided(obj1, obj2)) {
+                    if (this.isCollided(obj2, obj1)) {
                         this.playSound();
                         obj1.collidesWith(obj2);
                         this.remove(obj2);

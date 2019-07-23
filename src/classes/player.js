@@ -38,14 +38,22 @@ class Player extends MovingObject {
 
     collidesWith(otherObj) {
         if (otherObj instanceof Ball) {
-            otherObj.bounce(); 
+            otherObj.dir.x = -Math.abs(otherObj.dir.x);
+            otherObj.dir.y = -Math.abs(otherObj.dir.y);
+            otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.1;
+            return true;
         };
     };
 
-    wallCollision() {
-        this.vel.x = -this.vel.x;
+    rightWallCollision() {
+        this.vel.x = -Math.abs(this.vel.x);
         return true;
-    };
+    }
+
+    leftWallCollision() {
+        this.vel.x = Math.abs(this.vel.x);
+        return true;
+    }
 
 };
 
