@@ -41,7 +41,10 @@ class Ball extends MovingObj {
             this.bounce();
             return true;
         } else if (otherObj instanceof Block) {
-            this.bounce();
+            // this.bounce();
+            this.dir.x = -this.dir.x;
+            this.dir.y = -this.dir.y;
+            this.vel.y = -this.vel.y;
             return true;
         } else {
             return false;

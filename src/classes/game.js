@@ -1,6 +1,7 @@
 import Player from "./player";
 import Ball from './ball';
 import Block from './blocks';
+import Powerup from './powerup'
 
 const HEIGHT = 600;
 const WIDTH = 920;
@@ -10,6 +11,8 @@ const STARTING_LIVES = 3;
 const BLOCK_HEIGHT = 50;
 const BLOCK_WIDTH = 50;
 const BLOCKS_NUM = 72;
+const POWERUPS = ["extraLife", "multiBall", "superball", "shorterPaddle", "longerPaddle", "megaBall", "minieBall"];
+const TOTAL_POWERUP_COUNT = 12;
 
 class Game {
     constructor(ctx) {
@@ -22,14 +25,18 @@ class Game {
         this.width = WIDTH;
         this.themeColor = ["#bdae57"];
         this.numBlocks = BLOCKS_NUM;
+        this.powerupCount = TOTAL_POWERUP_COUNT;
+        this.powerups = POWERUPS;
 
         this.addBlocks(this.numBlocks);
     };   
      
     addBlocks(n) {
+        let that = this; //check this line
         let blockPosX = 10;
         let blockPosY = 10;
         let i = 0;
+
         while (i < n) {
             if (!this.blocks.length) {
                 this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, BLOCK_WIDTH, BLOCK_HEIGHT));
@@ -41,10 +48,16 @@ class Game {
                 blockPosX = 10;
                 blockPosY = blockPosY += BLOCK_HEIGHT;
             }
-            this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, BLOCK_WIDTH, BLOCK_HEIGHT));
+            if ((i % 3 === 0 || i % 7 === 0 || i % 11 === 0 || i % 15 === 0)) {
+                let randomPowerup = new Powerup(this.powerups.sample(), that);
+                this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, BLOCK_WIDTH, BLOCK_HEIGHT, randomPowerup));
+            } else {
+                this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, BLOCK_WIDTH, BLOCK_HEIGHT));
+            }
+            
             i += 1;
         };
-        return this.blocks;
+        return this.blocks.shuffle();
     };
      
     allCurObjects() {
@@ -144,7 +157,6 @@ class Game {
     }
 
     isCollided(obj1, obj2) {
-
         let dx = Math.abs(obj2.pos.x - obj1.pos.x - obj1.width / 2);
         let dy = Math.abs(obj2.pos.y - obj1.pos.y - obj1.height / 2);
         if (dx > (obj1.width / 2 + obj2.radius)) {
