@@ -21,24 +21,24 @@ class GVIEW {
 
     handleKey(event, down) {
         let input = this.input;
-        if (!this.game.ball.initialFlag) {
+        if (!this.game.balls[0].initialFlag) {
             switch (event.keyCode) {
                 case 65:
                     if (input.a !== down) {
                         this.game.player.setKeyInputs(input.a, Object.keys(this.input)[0]);
-                        this.game.ball.handleBallRelease(input.a, Object.keys(this.input)[0]);
+                        this.game.balls[0].handleBallRelease(input.a, Object.keys(this.input)[0]);
                     }
                     break;
                 case 68:
                     if (input.d !== down) {
                         this.game.player.setKeyInputs(input.d, Object.keys(this.input)[1]);
-                        this.game.ball.handleBallRelease(input.d, Object.keys(this.input)[1]);
+                        this.game.balls[0].handleBallRelease(input.d, Object.keys(this.input)[1]);
                     }
                     break;
                 case 32:
                     if (input.space !== down) {
-                        this.game.ball.initialFlag = true;
-                        this.game.ball.handleBallRelease(input.space, Object.keys(this.input)[2]);
+                        this.game.balls[0].initialFlag = true;
+                        this.game.balls[0].handleBallRelease(input.space, Object.keys(this.input)[2]);
                     }
                     break;
                 default:

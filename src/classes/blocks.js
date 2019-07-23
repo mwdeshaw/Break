@@ -1,4 +1,3 @@
-
 const randomColor = () => {
     const digs = "0123456789ABCDEF";
     let color = "#";
@@ -9,12 +8,11 @@ const randomColor = () => {
 };
 
 class Block {
-    constructor(pos, width, height, type, powerUp = null) {
+    constructor(pos, width, height, powerUp = null) {
         this.pos = pos;
         this.width = width;
         this.height = height;
         this.color = randomColor();
-        this.type = type;
         this.powerUp = powerUp;
     }
 

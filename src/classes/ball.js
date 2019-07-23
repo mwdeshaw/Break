@@ -14,12 +14,12 @@ const randomColor = () => {
 };
 
 class Ball extends MovingObj {
-    constructor(pos) {
+    constructor(pos, initialFlag = false) {
         super(pos, { x: 0, y: 0 }, BALL_RADIUS);
         this.color = randomColor();
         this.dir = { x: 0, y: 0 }
         this.spinSpeed = Math.random() * 60 + 30;
-        this.initialFlag = false;
+        this.initialFlag = initialFlag;
     };
 
     draw(ctx) {

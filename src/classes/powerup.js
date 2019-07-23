@@ -1,5 +1,7 @@
 import MovingObject from './moving_object';
 
+const POWERUP_RADIUS = 30;
+
 const randomColor = () => {
     const digs = "0123456789ABCDEF";
     let color = "#";
@@ -10,12 +12,10 @@ const randomColor = () => {
 };
 
 class Powerup extends MovingObject{
-    constructor(pos, type, radius) {
-        super(pos, { x: 0, y: 0 })
+    constructor(pos, type) {
+        super(pos, { x: 0, y: 0 }, POWERUP_RADIUS)
         this.type = type;
         this.color = randomColor();
-        this.width = width;
-        this.radius = radius;
     };
     
     draw(ctx) {
@@ -28,10 +28,12 @@ class Powerup extends MovingObject{
     };
 
     initiateMove() {
+        debugger
         this.vel.y += 100;
     }
 
     move(deltaTime) {
+        debugger
         let newDistanceY = this.vel.y * deltaTime;
         this.pos.y = this.pos.y + newDistanceY;
     }
