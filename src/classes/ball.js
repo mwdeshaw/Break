@@ -20,7 +20,6 @@ class Ball extends MovingObj {
         this.dir = { x: 0, y: 0 }
         this.spinSpeed = Math.random() * 60 + 30;
         this.initialFlag = false;
-
     };
 
     draw(ctx) {
@@ -41,7 +40,6 @@ class Ball extends MovingObj {
             this.bounce();
             return true;
         } else if (otherObj instanceof Block) {
-            // this.bounce();
             this.dir.x = -this.dir.x;
             this.dir.y = -this.dir.y;
             this.vel.y = -this.vel.y;

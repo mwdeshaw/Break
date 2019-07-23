@@ -13,6 +13,8 @@ const BLOCK_WIDTH = 50;
 const BLOCKS_NUM = 72;
 const POWERUPS = ["extraLife", "multiBall", "superball", "shorterPaddle", "longerPaddle", "megaBall", "minieBall"];
 const TOTAL_POWERUP_COUNT = 12;
+const POWERUP_RADIUS = 30;
+
 
 class Game {
     constructor(ctx) {
@@ -20,7 +22,7 @@ class Game {
         this.player = new Player(Object.assign({}, PLAYER_START_LOCATION));
         this.ctx = ctx;
         this.blocks = [];
-        this.ball = new Ball(Object.assign({}, BALL_START_LOCATION));
+        this.balls = [new Ball(Object.assign({}, BALL_START_LOCATION))];
         this.height = HEIGHT;
         this.width = WIDTH;
         this.themeColor = ["#bdae57"];
@@ -28,11 +30,14 @@ class Game {
         this.powerupCount = TOTAL_POWERUP_COUNT;
         this.powerups = POWERUPS;
 
+        this.activePowerups = [];
+        this.totalPowerups = [];
+        this.movingPowerUps = [];
+
         this.addBlocks(this.numBlocks);
     };   
      
     addBlocks(n) {
-        let that = this; //check this line
         let blockPosX = 10;
         let blockPosY = 10;
         let i = 0;
@@ -48,24 +53,48 @@ class Game {
                 blockPosX = 10;
                 blockPosY = blockPosY += BLOCK_HEIGHT;
             }
-            if ((i % 3 === 0 || i % 7 === 0 || i % 11 === 0 || i % 15 === 0)) {
-                let randomPowerup = new Powerup(this.powerups.sample(), that);
+            if ((i % 3 === 0 || i % 7 === 0 || i % 11 === 0 || i % 15 === 0) && this.powerupCount > 0) {
+                let randomPowerup = new Powerup({ x: blockPosX, y: blockPosY }, this.powerups.sample(), POWERUP_RADIUS);
+                this.totalPowerups.push(randomPowerup);
                 this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, BLOCK_WIDTH, BLOCK_HEIGHT, randomPowerup));
+                this.powerupCount -= 1;
             } else {
                 this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, BLOCK_WIDTH, BLOCK_HEIGHT));
             }
-            
             i += 1;
         };
+
         return this.blocks.shuffle();
     };
-     
+
+    // getPowerupEffect(powerUp) {
+    //     switch (powerUp.type) {
+    //         case "extraLife":
+    //             this.game.player.life += 1;
+    //             break;
+    //         case "multiBall":
+    //             this.game.balls.push(new Ball)
+    //             break;
+    //         case "superball":
+    //             break;
+    //         case "shorterPaddle":
+    //             break;
+    //         case "longerPaddle":
+    //             break;
+    //         case "minieBall":
+    //             break;
+    //         case "megaBall":
+    //             break;
+    //     };
+    // };
+
+
     allCurObjects() {
-        return [].concat([this.player], [this.ball], this.blocks);
+        return [].concat([this.player], this.balls, this.blocks, this.movingPowerUps);
     };
 
     allCurMovingObjs() {
-        return [].concat([this.player], [this.ball]);
+        return [].concat([this.player], this.balls, this.movingPowerUps);
     };
  
     draw() {
@@ -92,6 +121,9 @@ class Game {
             obj.move(delta);
             if (obj instanceof Ball && this.isOutOfBounds(obj.pos.y)) {
                 this.deathAnimation();
+            };
+            if (obj instanceof Powerup && this.isOutOfBounds(obj.pos.y)) {
+                this.remove(obj);
             };
         });
     };
@@ -121,6 +153,7 @@ class Game {
             this.ball.vel = { x: 0, y: 0 };
             this.ball.dir = { x: 0, y: 0 };
             this.ball.initialFlag = false;
+            this.current
         }
     };
 
@@ -180,10 +213,14 @@ class Game {
         if (obj instanceof Block) {
             this.numBlocks -= 1;
             this.blocks.splice(this.blocks.indexOf(obj), 1);
-        } else {
-            throw new Error("unknown type of object");
+            if (obj.powerUp) {
+                obj.powerUp.initiateMove();
+            };
+        } else if (obj instanceof Powerup) {
+            let pUp = this.movingPowerUps.findIndex(el => el.type === obj.type);
+            this.movingPowerUps.splice(pUp, 1);
         };
-    }
+    };
 
     checkForCollisions() {
         const allObj = this.allCurObjects();
@@ -207,7 +244,8 @@ class Game {
                         obj1.collidesWith(obj2);
                         this.remove(obj2);
                     };
-                }; 
+                }; //check for player powerup or powerup playewr only...
+                //this will call initiateMove() in powerup of block has powerup causing a move
             };
         };
     };
