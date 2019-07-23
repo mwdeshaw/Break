@@ -28,12 +28,10 @@ class Powerup extends MovingObject{
     };
 
     initiateMove() {
-        debugger
-        this.vel.y += 100;
+        this.vel.y += 130;
     }
 
     move(deltaTime) {
-        debugger
         let newDistanceY = this.vel.y * deltaTime;
         this.pos.y = this.pos.y + newDistanceY;
     }

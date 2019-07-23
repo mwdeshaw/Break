@@ -8,7 +8,7 @@ const randomColor = () => {
 };
 
 class Block {
-    constructor(pos, width, height, powerUp = null) {
+    constructor(pos, width, height, powerUp) {
         this.pos = pos;
         this.width = width;
         this.height = height;

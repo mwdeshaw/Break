@@ -44,7 +44,10 @@ class Game {
 
         while (i < n) {
             if (!this.blocks.length) {
-                this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, BLOCK_WIDTH, BLOCK_HEIGHT));
+                let randomPowerup = new Powerup({ x: blockPosX, y: blockPosY }, this.getRandom(this.powerups));
+                this.totalPowerups.push(randomPowerup);
+                this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, BLOCK_WIDTH, BLOCK_HEIGHT, randomPowerup));
+                this.powerupCount -= 1;
                 i += 1;
             } 
 
@@ -53,13 +56,13 @@ class Game {
                 blockPosX = 10;
                 blockPosY = blockPosY += BLOCK_HEIGHT;
             }
-            if ((i % 3 === 0 || i % 7 === 0 || i % 11 === 0 || i % 15 === 0) && this.powerupCount > 0) {
+            if (i % 6 === 0 && this.powerupCount > 0) {
                 let randomPowerup = new Powerup({ x: blockPosX, y: blockPosY }, this.getRandom(this.powerups));
                 this.totalPowerups.push(randomPowerup);
                 this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, BLOCK_WIDTH, BLOCK_HEIGHT, randomPowerup));
                 this.powerupCount -= 1;
             } else {
-                this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, BLOCK_WIDTH, BLOCK_HEIGHT));
+                this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, BLOCK_WIDTH, BLOCK_HEIGHT, null));
             }
             i += 1;
         };
@@ -137,6 +140,7 @@ class Game {
         if (this.lives === 0) {
             return "Game Over!"
         } else {     
+            this.player.width = 120;
             this.player.pos = Object.assign({}, PLAYER_START_LOCATION);
             this.player.vel = { x: 0, y: 0 };
             if (this.balls.length > 1) {
@@ -204,7 +208,6 @@ class Game {
 
     remove(obj) {
         if (obj instanceof Block) {
-            debugger
             if (obj.powerUp) {
                 let pUp = this.totalPowerups.indexOf(obj.powerUp);
                 this.movingPowerups.push(this.totalPowerups[pUp]);
