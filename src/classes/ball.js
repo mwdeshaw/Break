@@ -49,12 +49,12 @@ class Ball extends MovingObj {
     };
 
     wallCollision() {
-        this.vel.x = -this.vel.x;
+        this.vel.x = -0.9*(this.vel.x);
         return true;
     }
 
     topWallCollision() {
-        this.vel.y = -this.vel.y;
+        this.vel.y = -0.9*(this.vel.y);
         return true;
     }
 
@@ -62,7 +62,7 @@ class Ball extends MovingObj {
         if (this.dir.x !== 0 && this.dir.y !== 0) {
             this.dir.x = -this.dir.x;
             this.dir.y = -this.dir.y;            
-            this.vel.y = -this.vel.y;
+            this.vel.y = -1.1*(this.vel.y);
         };
     };
 
@@ -101,7 +101,6 @@ class Ball extends MovingObj {
         super.move(deltaTime);
         this.rotate(deltaTime);
     };
-
 };
 
 export default Ball;
