@@ -8,6 +8,10 @@ class GVIEW {
             d: [90, 0],
             space: [0, -100]
         };
+        this.keyUp = {
+            a: [90, 0],
+            d: [-90, 0],
+        };
     };
 
     keyHandler() {   
@@ -31,7 +35,7 @@ class GVIEW {
                     break;
                 case 68:
                     if (input.d !== down) {
-                        this.game.player.setKeyInputs(input.d, Object.keys(this.input)[0]);
+                        this.game.player.setKeyInputs(input.d, Object.keys(this.input)[1]);
                         this.game.ball.handleBallRelease(input.d, Object.keys(this.input)[1]);
                     }
                     break;
