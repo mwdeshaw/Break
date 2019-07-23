@@ -4,8 +4,8 @@ import Block from './blocks';
 
 const HEIGHT = 600;
 const WIDTH = 920;
-const PLAYER_START_LOCATION = { x: 400, y: 540 };
-const BALL_START_LOCATION = { x: 460, y: 500 };
+const PLAYER_START_LOCATION = { x: 395, y: 540 };
+const BALL_START_LOCATION = { x: 455, y: 500 };
 const STARTING_LIVES = 3;
 const BLOCK_HEIGHT = 50;
 const BLOCK_WIDTH = 50;
@@ -37,7 +37,7 @@ class Game {
             } 
 
             blockPosX += BLOCK_WIDTH;
-            if (blockPosX > 890) {
+            if (blockPosX > 878) {
                 blockPosX = 10;
                 blockPosY = blockPosY += BLOCK_HEIGHT;
             }
@@ -195,7 +195,7 @@ class Game {
                         obj1.collidesWith(obj2);
                         this.remove(obj2);
                     };
-                };
+                }; 
             };
         };
     };
