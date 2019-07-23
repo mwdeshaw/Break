@@ -4,8 +4,8 @@ class GVIEW {
     constructor(game){
         this.game = game;
         this.input = {
-            a: [-70, 0],
-            d: [70, 0],
+            a: [-90, 0],
+            d: [90, 0],
             space: [0, -100]
         };
     };

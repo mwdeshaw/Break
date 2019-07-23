@@ -22,7 +22,11 @@ class Player extends MovingObject {
 
     setKeyInputs(input, key) {
         this.vel.x += input[0];
-        this.vel.y += input[1];
+    };
+
+    move(deltaTime) {
+        let newDistanceX = this.vel.x * deltaTime;
+        this.pos.x = this.pos.x + newDistanceX;
     };
 
     draw(ctx) {

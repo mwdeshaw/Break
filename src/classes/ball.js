@@ -18,7 +18,7 @@ class Ball extends MovingObj {
         super(pos, { x: 0, y: 0 }, BALL_RADIUS);
         this.color = randomColor();
         this.dir = { x: 0, y: 0 }
-        this.spinSpeed = Math.random() * 60 + 30;
+        this.spinSpeed = Math.random() * 30 + 30;
         this.initialFlag = false;
 
     };
@@ -38,10 +38,10 @@ class Ball extends MovingObj {
 
     collidesWith(otherObj) {
         if (otherObj instanceof Player) {
-            this.bounce();
+            this.bounce(otherObj);
             return true;
         } else if (otherObj instanceof Block) {
-            this.bounce();
+            this.bounce(otherObj);
             return true;
         } else {
             return false;
@@ -49,20 +49,24 @@ class Ball extends MovingObj {
     };
 
     wallCollision() {
-        this.vel.x = -0.9*(this.vel.x);
+        this.vel.x = (-this.vel.x) * 0.95;
         return true;
     }
 
     topWallCollision() {
-        this.vel.y = -0.9*(this.vel.y);
+        this.vel.y = (-this.vel.y) * 0.95;
         return true;
     }
 
-    bounce() {
+    bounce(otherObj) {
         if (this.dir.x !== 0 && this.dir.y !== 0) {
             this.dir.x = -this.dir.x;
-            this.dir.y = -this.dir.y;            
-            this.vel.y = -1.1*(this.vel.y);
+            this.dir.y = -this.dir.y;    
+            if (otherObj instanceof Block) {
+                this.vel.y = (-this.vel.y) * 1.05;
+            } else {
+                this.vel.y = (-this.vel.y) * 1.08;
+            };
         };
     };
 
@@ -93,7 +97,6 @@ class Ball extends MovingObj {
             this.vel.x += input[0];
             this.vel.y += input[1];
             this.initialRotation();
-
         }
     };
 
