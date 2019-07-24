@@ -98,6 +98,15 @@ class Game {
         } else {
             this.ctx.fillText(`${this.lives} Life Left`, 750, 580);
         }
+
+        // if (this.activePowerups) {
+        //     for (let i = 0; i < this.activePowerups.length; i++) {
+        //         let posX = 500;
+        //         let posY = 500; 
+        //         this.ctx.fillText(`${this.activePowerups[i].type}`, posX, posY);
+        //         posX += 40;
+        //     }
+        // }
         
         this.allCurObjects().forEach(obj => {
             obj.draw(this.ctx);
