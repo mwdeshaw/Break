@@ -1,44 +1,46 @@
-
-
 class GVIEW {
     constructor(game){
         this.game = game;
         this.input = {
-            a: [-100, 0],
-            d: [100, 0],
             space: [0, -100]
         };
     };
 
     keyHandler() {   
         document.addEventListener("keydown", event => {
-            this.handleKey(event, true);
+            this.handleKey(event);
         });
         document.addEventListener("keyup", event => {
-            this.handleKey(event, false);
+            this.handleKey(event);
         });
     };
 
-    handleKey(event, down) {
+    handleKey(event) {
         let input = this.input;
         if (!this.game.balls[0].initialFlag) {
             switch (event.keyCode) {
                 case 65:
-                    if (input.a !== down) {
-                        this.game.player.setKeyInputs(input.a, Object.keys(this.input)[0]);
-                        this.game.balls[0].handleBallRelease(input.a, Object.keys(this.input)[0]);
+                    if (event.type === "keydown") {
+                        this.game.player.vel.x = -300;
+                        this.game.balls[0].vel.x = -300;
+                    } else {
+                        this.game.player.vel.x = 0;
+                        this.game.balls[0].vel.x = 0;
                     }
                     break;
                 case 68:
-                    if (input.d !== down) {
-                        this.game.player.setKeyInputs(input.d, Object.keys(this.input)[1]);
-                        this.game.balls[0].handleBallRelease(input.d, Object.keys(this.input)[1]);
+                    if (event.type === "keydown") {
+                        this.game.player.vel.x = 300;
+                        this.game.balls[0].vel.x = 300;
+                    } else {
+                        this.game.player.vel.x = 0;
+                        this.game.balls[0].vel.x = 0;
                     }
                     break;
                 case 32:
-                    if (input.space !== down) {
+                    if (event.type === "keydown") {
                         this.game.balls[0].initialFlag = true;
-                        this.game.balls[0].handleBallRelease(input.space, Object.keys(this.input)[2]);
+                        this.game.balls[0].handleBallRelease(input.space, Object.keys(this.input)[0]);
                     }
                     break;
                 default:
@@ -47,16 +49,20 @@ class GVIEW {
         } else {
             switch (event.keyCode) {
                 case 65:
-                    if (input.a !== down) {
-                        this.game.player.setKeyInputs(input.a, Object.keys(this.input)[0]);
+                    if (event.type === "keydown") {
+                        this.game.player.vel.x = -300;
+                    } else {
+                        this.game.player.vel.x = 0;
                     }
                     break;
                 case 68:
-                    if (input.d !== down) {
-                        this.game.player.setKeyInputs(input.d, Object.keys(this.input)[1]);
+                    if (event.type === "keydown") {
+                        this.game.player.vel.x = 300;
+                    } else {
+                        this.game.player.vel.x = 0;
                     }
                     break;
-                default:
+            default:
                     break;
             };     
         };

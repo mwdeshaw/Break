@@ -20,9 +20,9 @@ class Player extends MovingObject {
         this.height = PLAYER_HEIGHT;
     };
 
-    setKeyInputs(input, key) {
-        this.vel.x += input[0];
-    };
+    // setKeyInputs(input, key) {
+    //     this.vel.x += input[0];
+    // };
 
     move(deltaTime) {
         let newDistanceX = this.vel.x * deltaTime;
