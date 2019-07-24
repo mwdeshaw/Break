@@ -11,8 +11,8 @@ const STARTING_LIVES = 3;
 const BLOCK_HEIGHT = 50;
 const BLOCK_WIDTH = 50;
 const BLOCKS_NUM = 72;
-const POWERUPS = ["extraLife", "multiBall", "shorterPaddle", "longerPaddle"];
-// const POWERUPS = ["extraLife", "multiBall", "superball", "shorterPaddle", "longerPaddle", "megaBall", "minieBall"];
+const POWERUPS = ["extraLife", "multiBall", "shorterPaddle", "longerPaddle", "miniBall", "megaBall"];
+// const POWERUPS = ["extraLife", "multiBall", "superball", "shorterPaddle", "longerPaddle", ""];
 const TOTAL_POWERUP_COUNT = 12;
 
 
@@ -159,6 +159,7 @@ class Game {
             this.balls[0].pos = Object.assign({}, BALL_START_LOCATION);
             this.balls[0].dir = { x: 0, y: 0 };
             this.balls[0].vel = { x: 0, y: 0 };
+            this.balls[0].radius = 20;
             this.balls[0].initialFlag = false;
             this.activePowerups = [];
             this.movingPowerups = [];
@@ -264,40 +265,52 @@ class Game {
     };
 
     collidesWithPowerup(powerup) {
-
         switch (powerup.type) {
             case "extraLife":
                 this.lives += 1;
                 break;
             case "multiBall":
-                let newBalls = [new Ball(Object.assign({}, this.balls[0].pos), true), new Ball(Object.assign({}, this.balls[0].pos), true)];
-                newBalls[0].vel.y = -100;
-                newBalls[0].vel.x = -50;
-                newBalls[0].dir.x = -1;
-                newBalls[0].dir.y = -1;
+                let newerBalls = [];
+                this.balls.forEach(ball => {
+                    let newBalls = [new Ball(Object.assign({}, this.balls[0].pos), true), new Ball(Object.assign({}, this.balls[0].pos), true)];
+                    newBalls[0].vel.y = -100;
+                    newBalls[0].vel.x = -50;
+                    newBalls[0].dir.x = -1;
+                    newBalls[0].dir.y = -1;
+                    newBalls[1].vel.y = -100;
+                    newBalls[0].vel.x = 50;
+                    newBalls[1].dir.x = -1;
+                    newBalls[1].dir.y = 1;
 
-                newBalls[1].vel.y = -100;
-                newBalls[0].vel.x = 50;
-                newBalls[1].dir.x = -1;
-                newBalls[1].dir.y = 1;
+                    newerBalls.concat(newBalls);
+                });
 
-                this.balls = this.balls.concat(newBalls);
+                this.balls = this.balls.concat(newerBalls);
             break;
-            // case "superball":
-            //     break;
+            case "megaBall":
+                this.balls.forEach(ball => {
+                    ball.radius *= 1.5;
+                    ball.vel.x *= 0.75;
+                    ball.vel.y *= 0.75;
+                });
+                break;
             case "shorterPaddle":
                 this.player.width = this.player.width -= 20;
                 break;
             case "longerPaddle":
                 this.player.width = this.player.width += 20;
                 break;
-            // case "minieBall":
-            //     break;
-            // case "megaBall":
-            //     break;
+            case "miniBall":
+                this.balls.forEach(ball => {
+                    ball.radius *= 0.5;
+                    ball.vel.x *= 1.25;
+                    ball.vel.y *= 1.25;
+                });
+                break;
             default:
                 break;
         };
+
         this.activePowerups.push(powerup);
     };
 

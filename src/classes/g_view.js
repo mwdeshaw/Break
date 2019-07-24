@@ -2,7 +2,7 @@ class GVIEW {
     constructor(game){
         this.game = game;
         this.input = {
-            space: [0, -100]
+            space: [0, -175]
         };
     };
 
@@ -21,8 +21,8 @@ class GVIEW {
             switch (event.keyCode) {
                 case 65:
                     if (event.type === "keydown") {
-                        this.game.player.vel.x = -320;
-                        this.game.balls[0].vel.x = -320;
+                        this.game.player.vel.x = -350;
+                        this.game.balls[0].vel.x = -350;
                     } else {
                         this.game.player.vel.x = 0;
                         this.game.balls[0].vel.x = 0;
@@ -30,8 +30,8 @@ class GVIEW {
                     break;
                 case 68:
                     if (event.type === "keydown") {
-                        this.game.player.vel.x = 320;
-                        this.game.balls[0].vel.x = 320;
+                        this.game.player.vel.x = 350;
+                        this.game.balls[0].vel.x = 350;
                     } else {
                         this.game.player.vel.x = 0;
                         this.game.balls[0].vel.x = 0;
@@ -50,14 +50,14 @@ class GVIEW {
             switch (event.keyCode) {
                 case 65:
                     if (event.type === "keydown") {
-                        this.game.player.vel.x = -320;
+                        this.game.player.vel.x = -350;
                     } else {
                         this.game.player.vel.x = 0;
                     }
                     break;
                 case 68:
                     if (event.type === "keydown") {
-                        this.game.player.vel.x = 320;
+                        this.game.player.vel.x = 350;
                     } else {
                         this.game.player.vel.x = 0;
                     }

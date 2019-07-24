@@ -19,6 +19,7 @@ class Ball extends MovingObj {
         this.color = randomColor();
         this.dir = { x: 0, y: 0 }
         this.initialFlag = initialFlag;
+        this.spinSpeed = (Math.random() * 60) * 60;
         // this.speed = 100;
     };
 
@@ -70,6 +71,7 @@ class Ball extends MovingObj {
         let rads = 90 * (Math.PI / 180);
         this.dir.x = Math.cos(rads);
         this.dir.y = Math.sin(rads);
+
     };
 
     rotate(deltaTime) {
