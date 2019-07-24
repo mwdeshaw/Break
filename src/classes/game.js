@@ -266,8 +266,8 @@ class Game {
                     };
                 } else if (obj1 instanceof Player && obj2 instanceof Powerup) {
                     if (this.isCollided(obj1, obj2)) {
-                         //powerupSound
                         this.collidesWithPowerup(obj2);
+                        this.playPowerupSound();
                         this.remove(obj2);
                     };
                 } else if (obj1 instanceof Ball && obj2 instanceof Block) {
@@ -318,6 +318,12 @@ class Game {
         const anotherSound = document.getElementById("anotherSound");
         anotherSound.currentTime = 0;
         anotherSound.play();
+    };
+
+    playPowerupSound() {
+        const powerupSound = document.getElementById("powerupSound");
+        powerupSound.currentTime = 0;
+        powerupSound.play();
     };
 
 };
