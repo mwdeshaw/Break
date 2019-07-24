@@ -36,22 +36,32 @@ class Player extends MovingObject {
         ctx.restore();
     };
 
+    // collidesWith(otherObj) {
+    //     if (otherObj instanceof Ball) {
+    //        if (otherObj.dir.x > 0) {
+    //            otherObj.dir.x = -otherObj.dir.x;
+    //        } else {
+    //            otherObj.dir.x = otherObj.dir.x;
+    //        }
+    //         if (otherObj.dir.y > 0) {
+    //             otherObj.dir.y = otherObj.dir.y;
+    //         } else {
+    //             otherObj.dir.x = -otherObj.dir.x;
+    //         }
+    //         otherObj.speed = -Math.abs(otherObj.speed) * 1.05;
+    //         return true;
+    //     };
+    // };
+
     collidesWith(otherObj) {
         if (otherObj instanceof Ball) {
-           if (otherObj.dir.x > 0) {
-               otherObj.dir.x = -otherObj.dir.x;
-           } else {
-               otherObj.dir.x = otherObj.dir.x;
-           }
-            if (otherObj.dir.y > 0) {
-                otherObj.dir.y = otherObj.dir.y;
-            } else {
-                otherObj.dir.x = -otherObj.dir.x;
-            }
-            otherObj.speed = -Math.abs(otherObj.speed) * 1.05;
+            otherObj.dir.x = -Math.abs(otherObj.dir.x);
+            otherObj.dir.y = -Math.abs(otherObj.dir.y);
+            otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.1;
             return true;
         };
     };
+
 
     rightWallCollision() {
         this.vel.x = -Math.abs(this.vel.x);

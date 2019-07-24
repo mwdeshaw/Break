@@ -148,8 +148,8 @@ class Game {
                 this.balls = this.balls.slice(0, 1);
             }
             this.balls[0].pos = Object.assign({}, BALL_START_LOCATION);
-            this.balls[0].speed = 100;
             this.balls[0].dir = { x: 0, y: 0 };
+            this.balls[0].vel = { x: 0, y: 0 };
             this.balls[0].initialFlag = false;
             this.activePowerups = [];
         };
@@ -165,15 +165,15 @@ class Game {
             if ((obj instanceof Player) && (obj.pos.x > (920 - obj.width))) {
                 return obj.rightWallCollision();
             }
-            if ((obj instanceof Ball) && (obj.pos.x < (4 + 0 + obj.radius))) {
+            if ((obj instanceof Ball) && (obj.pos.x < (obj.radius))) {
                 this.playBounceSound();
                 return obj.leftWallCollision();
             }
-            if ((obj instanceof Ball) && (obj.pos.x > (920 - obj.radius - 4))) {
+            if ((obj instanceof Ball) && (obj.pos.x > (920 - obj.radius))) {
                 this.playBounceSound();
                 return obj.rightWallCollision();
             }
-            if ((obj instanceof Ball) && (obj.pos.y < (4 + obj.radius) || obj.pos.y > (600 - obj.radius - 4))) {
+            if ((obj instanceof Ball) && (obj.pos.y < (obj.radius) || obj.pos.y > (600 - obj.radius))) {
                 this.playBounceSound();
                 return obj.topWallCollision();
             }
@@ -251,10 +251,7 @@ class Game {
                 const obj1 = allObj[i];
                 const obj2 = allObj[j];
                 if (obj1 instanceof Player && obj2 instanceof Ball) {
-                    let copy = Object.assign({}, obj1);
-                    copy.width = copy.width + 4;
-                    copy.height = copy.height + 4;
-                    if (this.isCollided(copy, obj2)) {
+                    if (this.isCollided(obj1, obj2)) {
                         this.playBounceSound();
                         obj1.collidesWith(obj2);
                     };
