@@ -122,9 +122,10 @@ class Game {
     };
 
     singleMove(delta) {
-        this.moveObjects(delta);
         this.checkForCollisions();
         this.checkForWallCollisions();
+        this.moveObjects(delta);
+
     };
 
     isOutOfBounds(posY) {
@@ -147,7 +148,7 @@ class Game {
                 this.balls = this.balls.slice(0, 1);
             }
             this.balls[0].pos = Object.assign({}, BALL_START_LOCATION);
-            this.balls[0].vel = { x: 0, y: 0 };
+            this.balls[0].speed = 100;
             this.balls[0].dir = { x: 0, y: 0 };
             this.balls[0].initialFlag = false;
             this.activePowerups = [];
@@ -164,15 +165,15 @@ class Game {
             if ((obj instanceof Player) && (obj.pos.x > (920 - obj.width))) {
                 return obj.rightWallCollision();
             }
-            if ((obj instanceof Ball) && (obj.pos.x < (0 + obj.radius))) {
+            if ((obj instanceof Ball) && (obj.pos.x < (4 + 0 + obj.radius))) {
                 this.playBounceSound();
                 return obj.leftWallCollision();
             }
-            if ((obj instanceof Ball) && (obj.pos.x > (920 - obj.radius))) {
+            if ((obj instanceof Ball) && (obj.pos.x > (920 - obj.radius - 4))) {
                 this.playBounceSound();
                 return obj.rightWallCollision();
             }
-            if ((obj instanceof Ball) && (obj.pos.y < (0 + obj.radius) || obj.pos.y > (600 - obj.radius))) {
+            if ((obj instanceof Ball) && (obj.pos.y < (4 + obj.radius) || obj.pos.y > (600 - obj.radius - 4))) {
                 this.playBounceSound();
                 return obj.topWallCollision();
             }
@@ -205,6 +206,25 @@ class Game {
         let dY = dy - obj2.width / 2;
         return (dX * dX + dY * dY <= (obj2.radius * obj2.radius));
     };
+    // isCollided(obj1, obj2) {
+    //     let dx = Math.abs(obj2.pos.x - obj1.pos.x - obj1.width / 2);
+    //     let dy = Math.abs(obj2.pos.y - obj1.pos.y - obj1.height / 2);
+    //     if (dx > (obj1.width / 2 + obj2.radius)) {
+    //         return false;
+    //     };
+    //     if (dy > (obj1.height / 2 + obj2.radius)) { 
+    //         return false; 
+    //     };
+    //     if (dx <= (obj1.width / 2)) { 
+    //         return true; 
+    //     };
+    //     if (dy <= (obj1.height / 2)) { 
+    //         return true; 
+    //     };
+    //     let dX = dx - obj1.width / 2;
+    //     let dY = dy - obj2.width / 2;
+    //     return (dX * dX + dY * dY <= (obj2.radius * obj2.radius));
+    // };
 
     remove(obj) {
         if (obj instanceof Block) {
@@ -238,14 +258,9 @@ class Game {
                     };
                 } else if (obj1 instanceof Player && obj2 instanceof Powerup) {
                     if (this.isCollided(obj1, obj2)) {
-                        // this.playBounceSound(); //powerupSound
+                         //powerupSound
                         this.collidesWithPowerup(obj2);
                         this.remove(obj2);
-                    };
-                } else if (obj1 instanceof Ball && obj2 instanceof Player) {
-                    if (this.isCollided(obj1, obj2)) {
-                        this.playBounceSound();
-                        obj1.collidesWith(obj2);
                     };
                 } else if (obj1 instanceof Ball && obj2 instanceof Block) {
                     if (this.isCollided(obj2, obj1)) {

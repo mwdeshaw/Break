@@ -38,9 +38,10 @@ class Player extends MovingObject {
 
     collidesWith(otherObj) {
         if (otherObj instanceof Ball) {
+            console.log(otherObj.dir)
             otherObj.dir.x = -Math.abs(otherObj.dir.x);
-            otherObj.dir.y = -Math.abs(otherObj.dir.y);
-            otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.1;
+            otherObj.dir.y = Math.abs(otherObj.dir.y);
+            otherObj.speed = -Math.abs(otherObj.speed) * 1.1;
             return true;
         };
     };
