@@ -237,7 +237,6 @@ class Game {
             this.numBlocks -= 1;
             this.blocks.splice(this.blocks.indexOf(obj), 1);
         } else if (obj instanceof Powerup) {
-            // let pUp = this.movingPowerups.findIndex(el => el.type === obj.type);
             let pUp = this.movingPowerups.indexOf(obj);
             this.movingPowerups.splice(pUp, 1);
         } else if (obj instanceof Ball) {
@@ -252,7 +251,10 @@ class Game {
                 const obj1 = allObj[i];
                 const obj2 = allObj[j];
                 if (obj1 instanceof Player && obj2 instanceof Ball) {
-                    if (this.isCollided(obj1, obj2)) {
+                    let copy = Object.assign({}, obj1);
+                    copy.width = copy.width + 4;
+                    copy.height = copy.height + 4;
+                    if (this.isCollided(copy, obj2)) {
                         this.playBounceSound();
                         obj1.collidesWith(obj2);
                     };

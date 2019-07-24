@@ -33,7 +33,6 @@ class Ball extends MovingObj {
 
     collidesWith(otherObj) {
         if (otherObj instanceof Block) {
-            // this.dir.x = -this.dir.x;
             this.dir.y = -this.dir.y;
             return true;
         } else {
@@ -56,39 +55,6 @@ class Ball extends MovingObj {
         this.dir.y = -(this.dir.y);
         return true;
     }
-
-    // bounce(otherObj) {
-        // console.log(otherObj)
-        // if (this.dir.x !== 0 && this.dir.y !== 0) {
-
-            // this.dir.x =  / (otherObj.width / 2);
-            // this.vel.x = (this.pos.x - otherObj.pos.x)
-            // this.vel.x = (this.pos.x - otherObj.pos.x)
-            // this.dir.y = -this.dir.y;  
-            // this.dir.x = -this.dir.x;
-            // this.dir.y = -this.dir.y;  
-            // this.vel.y = -this.vel.y * 1.1;
-        // };
-    // };
-
-    // initialRotation() {
-    //     let rads = 90 * (Math.PI / 180);
-    //     this.dir.x = Math.cos(rads);
-    //     this.dir.y = Math.sin(rads);
-    // };
-
-    // rotate(deltaTime) {
-    //     if (this.dir.y !== 0) {
-    //         let angle = -this.spinSpeed * (Math.PI / 180) * deltaTime;
-    //         let vector = [this.dir.x, this.dir.y];
-
-    //         var cos = Math.cos(angle);
-    //         var sin = Math.sin(angle);
-
-    //         this.dir.x = Math.round(10000 * (vector[0] * cos - vector[1] * sin)) / 10000;
-    //         this.dir.y = Math.round(10000 * (vector[0] * sin + vector[1] * cos)) / 10000;
-    //     }
-    // }
 
     handleBallRelease(input, key) {
         if (!this.initialFlag && key !== "space") {
@@ -114,7 +80,6 @@ class Ball extends MovingObj {
         this.pos.x = this.pos.x + newDistanceX;
         this.pos.y = this.pos.y + newDistanceY;
 
-        // this.rotate(deltaTime);
     };
 };
 
