@@ -161,6 +161,7 @@ class Game {
             this.balls[0].vel = { x: 0, y: 0 };
             this.balls[0].initialFlag = false;
             this.activePowerups = [];
+            this.movingPowerups = [];
         };
     };
 
@@ -215,25 +216,6 @@ class Game {
         let dY = dy - obj2.width / 2;
         return (dX * dX + dY * dY <= (obj2.radius * obj2.radius));
     };
-    // isCollided(obj1, obj2) {
-    //     let dx = Math.abs(obj2.pos.x - obj1.pos.x - obj1.width / 2);
-    //     let dy = Math.abs(obj2.pos.y - obj1.pos.y - obj1.height / 2);
-    //     if (dx > (obj1.width / 2 + obj2.radius)) {
-    //         return false;
-    //     };
-    //     if (dy > (obj1.height / 2 + obj2.radius)) { 
-    //         return false; 
-    //     };
-    //     if (dx <= (obj1.width / 2)) { 
-    //         return true; 
-    //     };
-    //     if (dy <= (obj1.height / 2)) { 
-    //         return true; 
-    //     };
-    //     let dX = dx - obj1.width / 2;
-    //     let dY = dy - obj2.width / 2;
-    //     return (dX * dX + dY * dY <= (obj2.radius * obj2.radius));
-    // };
 
     remove(obj) {
         if (obj instanceof Block) {
@@ -282,13 +264,24 @@ class Game {
     };
 
     collidesWithPowerup(powerup) {
+
         switch (powerup.type) {
             case "extraLife":
                 this.lives += 1;
                 break;
             case "multiBall":
-                let newBalls = [new Ball({ x: this.balls[0].pos.x, y: this.balls[0].pos.y }, true), new Ball({ x: this.balls[0].pos.x, y: this.balls[0].pos.y }, true)];
-                this.balls.concat(newBalls);
+                let newBalls = [new Ball(Object.assign({}, this.balls[0].pos), true), new Ball(Object.assign({}, this.balls[0].pos), true)];
+                newBalls[0].vel.y = -100;
+                newBalls[0].vel.x = -50;
+                newBalls[0].dir.x = -1;
+                newBalls[0].dir.y = -1;
+
+                newBalls[1].vel.y = -100;
+                newBalls[0].vel.x = 50;
+                newBalls[1].dir.x = -1;
+                newBalls[1].dir.y = 1;
+
+                this.balls = this.balls.concat(newBalls);
             break;
             // case "superball":
             //     break;
