@@ -20,10 +20,6 @@ class Player extends MovingObject {
         this.height = PLAYER_HEIGHT;
     };
 
-    // setKeyInputs(input, key) {
-    //     this.vel.x += input[0];
-    // };
-
     move(deltaTime) {
         let newDistanceX = this.vel.x * deltaTime;
         this.pos.x = this.pos.x + newDistanceX;
@@ -62,14 +58,13 @@ class Player extends MovingObject {
         };
     };
 
-
     rightWallCollision() {
-        this.vel.x = -Math.abs(this.vel.x);
+        this.vel.x = -100;
         return true;
     }
 
     leftWallCollision() {
-        this.vel.x = Math.abs(this.vel.x);
+        this.vel.x = 100;
         return true;
     }
 
