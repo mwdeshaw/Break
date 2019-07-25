@@ -57,7 +57,7 @@ class Powerup extends MovingObject{
     };
 
     initiateMove() {
-        this.vel.y += 200;
+        this.vel.y += 150;
     }
 
     move(deltaTime) {
