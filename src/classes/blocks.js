@@ -23,7 +23,6 @@ class Block {
         ctx.restore();
     };
 
-
 };
 
 export default Block;

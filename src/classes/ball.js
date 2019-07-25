@@ -1,5 +1,4 @@
 import MovingObj from './moving_object';
-import Player from './player';
 import Block from './blocks';
 
 const BALL_RADIUS = 20;
@@ -63,10 +62,6 @@ class Ball extends MovingObj {
         };
     };    
 
-    getRandomInt(min, max) {
-        return Math.random() * (max - min) + min;
-    };
-
     initialRotation() {
         let rads = 90 * (Math.PI / 180);
         this.dir.x = Math.cos(rads);
@@ -92,7 +87,6 @@ class Ball extends MovingObj {
             this.vel.y += input[1];
         } else if (key === "space" && this.dir.x === 0 && this.dir.y === 0) {
             this.vel.x += input[0];
-            // this.vel.x += this.getRandomInt(-50, 50);
             this.vel.y += input[1];
             this.initialRotation();
         }
@@ -103,21 +97,6 @@ class Ball extends MovingObj {
         this.rotate(deltaTime);
     };
 
-
-    // move(deltaTime) {
-    //     let newDistanceX;
-    //     let newDistanceY;
-    //     if (this.initialFlag) {
-    //         newDistanceX = this.speed * deltaTime * this.dir.x;
-    //         newDistanceY = this.speed * deltaTime * this.dir.y;
-    //     } else {
-    //         newDistanceX = deltaTime * this.dir.x;
-    //         newDistanceY = deltaTime * this.dir.y;
-    //     }
-    //     this.pos.x = this.pos.x + newDistanceX;
-    //     this.pos.y = this.pos.y + newDistanceY;
-
-    // };
 };
 
 export default Ball;
