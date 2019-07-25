@@ -19,8 +19,7 @@ class Ball extends MovingObj {
         this.color = randomColor();
         this.dir = { x: 0, y: 0 }
         this.initialFlag = initialFlag;
-        this.spinSpeed = (Math.random() * 60) * 60;
-        // this.speed = 100;
+        this.spinSpeed = Math.random() * 60 + 30;
     };
 
     draw(ctx) {
@@ -65,13 +64,16 @@ class Ball extends MovingObj {
             this.dir.y = -this.dir.y;
             this.vel.y = -this.vel.y;
         };
+    };    
+
+    getRandomInt(min, max) {
+        return Math.random() * (max - min) + min;
     };
 
     initialRotation() {
         let rads = 90 * (Math.PI / 180);
         this.dir.x = Math.cos(rads);
         this.dir.y = Math.sin(rads);
-
     };
 
     rotate(deltaTime) {
@@ -93,6 +95,7 @@ class Ball extends MovingObj {
             this.vel.y += input[1];
         } else if (key === "space" && this.dir.x === 0 && this.dir.y === 0) {
             this.vel.x += input[0];
+            // this.vel.x += this.getRandomInt(-50, 50);
             this.vel.y += input[1];
             this.initialRotation();
         }
@@ -102,10 +105,6 @@ class Ball extends MovingObj {
         super.move(deltaTime);
         this.rotate(deltaTime);
     };
-
-
-
-
 
 
     // move(deltaTime) {

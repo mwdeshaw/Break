@@ -49,14 +49,41 @@ class Player extends MovingObject {
     //     };
     // };
 
+    //can dir x be set here? i bet it can
+
     collidesWith(otherObj) {
         if (otherObj instanceof Ball) {
-            otherObj.dir.x = -Math.abs(otherObj.dir.x);
-            otherObj.dir.y = -Math.abs(otherObj.dir.y);
-            otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.1;
+
+                if (otherObj.pos.x === (this.pos.x + 60)) {
+                    otherObj.dir.x = -Math.abs(otherObj.dir.x); 
+                    otherObj.dir.y = -Math.abs(otherObj.dir.y);
+                    otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.1;
+                } else if (otherObj.pos.x < (this.pos.x + 60))  {
+                    otherObj.dir.x = -Math.abs(otherObj.dir.x);
+                    otherObj.dir.y = -Math.abs(otherObj.dir.y); 
+                    otherObj.vel.x = -(otherObj.vel.x); 
+                    otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.1;
+                } else {
+                    otherObj.dir.x = -Math.abs(otherObj.dir.x);
+                    otherObj.dir.y = -Math.abs(otherObj.dir.y);
+                    otherObj.vel.x = -(otherObj.vel.x); 
+                    otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.1;
+                }
+            console.log("ballPos", otherObj.pos);
+            console.log("ballVel", otherObj.vel);
+            console.log("ballDir", otherObj.dir);
             return true;
         };
     };
+
+    // collidesWith(otherObj) {
+    //     if (otherObj instanceof Ball) {
+    //         otherObj.dir.x = -Math.abs(otherObj.dir.x);
+    //         otherObj.dir.y = -Math.abs(otherObj.dir.y);
+    //         otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.1;
+    //         return true;
+    //     };
+    // };
 
     rightWallCollision() {
         this.vel.x = -100;

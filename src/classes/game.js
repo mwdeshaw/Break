@@ -12,7 +12,6 @@ const BLOCK_HEIGHT = 50;
 const BLOCK_WIDTH = 50;
 const BLOCKS_NUM = 72;
 const POWERUPS = ["extraLife", "multiBall", "shorterPaddle", "longerPaddle", "miniBall", "megaBall"];
-// const POWERUPS = ["extraLife", "multiBall", "superball", "shorterPaddle", "longerPaddle", ""];
 const TOTAL_POWERUP_COUNT = 12;
 
 
@@ -244,6 +243,9 @@ class Game {
                 const obj2 = allObj[j];
                 if (obj1 instanceof Player && obj2 instanceof Ball) {
                     if (this.isCollided(obj1, obj2)) {
+                        // console.log("playerPos", obj1.pos);
+                        // console.log("ballPos", obj2.pos);
+                        // console.log("ballDir", obj2.vel);
                         this.playBounceSound();
                         obj1.collidesWith(obj2);
                     };

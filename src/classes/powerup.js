@@ -26,15 +26,6 @@ class Powerup extends MovingObject{
     };
     
     // draw(ctx) {
-    //     ctx.save();
-    //     ctx.fillStyle = this.color;
-    //     ctx.beginPath();
-    //     ctx.arc(this.pos.x, this.pos.y, this.radius, 0, 2 * Math.PI, true);
-    //     ctx.fill();
-    //     ctx.restore();
-    // };
-
-    // draw(ctx) {
     //     let img = new Image();
     //     switch(this.type) {
     //         case "extraLife":
