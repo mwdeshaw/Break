@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const arrow = document.querySelector(".arrow");
     powerBtn.onclick = () => {
-        powerBtn.classList.remove("end"); //get rid of pulsating button here
+        powerBtn.classList.remove("end");
         arrow.classList.add("end");
         defScreen.setAttribute("class", "active");
         const startScreen = document.getElementById('start-screen');
@@ -42,12 +42,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 3000);
 
         startBtn.onclick = () => {
-            // startBtn.removeAttribute("class"); //have it pulsate until onClick...
-            startScreen.removeAttribute("class");
             instructions.classList.remove("end");
+            startScreen.removeAttribute("class");
+            startBtn.removeAttribute("class");
             controlsList.classList.remove("end");
             screenText.classList.remove("end");
-
             const canvas = document.getElementById("board");
             const ctx = canvas.getContext("2d");
             const game = new Game(ctx);
