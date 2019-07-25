@@ -455,3 +455,7 @@ body {
     top: 160px;
     z-index: 4;
 };
+
+/* .arrow {
+  z-index: 4 !important;
+} */
