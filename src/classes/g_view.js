@@ -6,10 +6,6 @@ class GVIEW {
         };
     };
 
-    // getRandom(arr) {
-    //     return arr[Math.floor((Math.random() * arr.length))];
-    // }
-
     keyHandler() {   
         document.addEventListener("keydown", event => {
             this.handleKey(event);

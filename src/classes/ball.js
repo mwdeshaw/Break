@@ -32,10 +32,7 @@ class Ball extends MovingObj {
     };
 
     collidesWith(otherObj) {
-        if (otherObj instanceof Player) {
-            this.bounce();
-            return true;
-        } else if (otherObj instanceof Block) {
+        if (otherObj instanceof Block) {
             this.bounce();
             return true;
         } else {

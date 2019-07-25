@@ -243,9 +243,6 @@ class Game {
                 const obj2 = allObj[j];
                 if (obj1 instanceof Player && obj2 instanceof Ball) {
                     if (this.isCollided(obj1, obj2)) {
-                        // console.log("playerPos", obj1.pos);
-                        // console.log("ballPos", obj2.pos);
-                        // console.log("ballDir", obj2.vel);
                         this.playBounceSound();
                         obj1.collidesWith(obj2);
                     };

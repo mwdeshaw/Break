@@ -53,25 +53,40 @@ class Player extends MovingObject {
 
     collidesWith(otherObj) {
         if (otherObj instanceof Ball) {
-
-                if (otherObj.pos.x === (this.pos.x + 60)) {
-                    otherObj.dir.x = -Math.abs(otherObj.dir.x); 
-                    otherObj.dir.y = -Math.abs(otherObj.dir.y);
+            if (otherObj.pos.x >= (this.pos.x + 30) && otherObj.pos.x <= (this.pos.x + 60) ) { //"center behavior"
+                    // otherObj.dir.x = -Math.abs(otherObj.dir.x); 
+                    // otherObj.dir.y = -Math.abs(otherObj.dir.y);
                     otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.1;
-                } else if (otherObj.pos.x < (this.pos.x + 60))  {
-                    otherObj.dir.x = -Math.abs(otherObj.dir.x);
-                    otherObj.dir.y = -Math.abs(otherObj.dir.y); 
-                    otherObj.vel.x = -(otherObj.vel.x); 
-                    otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.1;
+                } else if (otherObj.pos.x < (this.pos.x + 30) && otherObj.pos.x >= (this.pos.x))  {
+                // console.log("preLeft", otherObj.dir);
+                    if (otherObj.vel.x < 0) {
+                        // otherObj.dir.x = -Math.abs(otherObj.dir.x);
+                        // otherObj.dir.y = -Math.abs(otherObj.dir.y); 
+                        otherObj.vel.x = -Math.abs(otherObj.vel.x); 
+                        otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.1;
+                    } else {
+                        // otherObj.dir.x = -Math.abs(otherObj.dir.x);
+                        // otherObj.dir.y = -Math.abs(otherObj.dir.y);
+                        otherObj.vel.x = Math.abs(otherObj.vel.x); 
+                        otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.1;
+                    }
+                // console.log("postLeft", otherObj.dir);
                 } else {
-                    otherObj.dir.x = -Math.abs(otherObj.dir.x);
-                    otherObj.dir.y = -Math.abs(otherObj.dir.y);
-                    otherObj.vel.x = -(otherObj.vel.x); 
-                    otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.1;
+                // console.log("preRight", otherObj.dir);
+                    if (otherObj.vel.x < 0) {
+                        // otherObj.dir.x = -Math.abs(otherObj.dir.x);
+                        // otherObj.dir.y = -Math.abs(otherObj.dir.y);
+                        otherObj.vel.x = -Math.abs(otherObj.vel.x);
+                        otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.1;
+                    } else {
+                        // otherObj.dir.x = -Math.abs(otherObj.dir.x);
+                        // otherObj.dir.y = -Math.abs(otherObj.dir.y);
+                        otherObj.vel.x = Math.abs(otherObj.vel.x);
+                        otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.1;
+                    }
+                // console.log("postRight", otherObj.dir);
+
                 }
-            console.log("ballPos", otherObj.pos);
-            console.log("ballVel", otherObj.vel);
-            console.log("ballDir", otherObj.dir);
             return true;
         };
     };
