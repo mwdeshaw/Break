@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         screenText.classList.add("end");
         const startBtn = document.getElementById("start-game");
+        const arrowDown = document.querySelector(".arrow-start");
         setTimeout(() => {
             const audio = document.getElementById("gameboySound");
             audio.currentTime = 0;
@@ -39,10 +40,12 @@ document.addEventListener("DOMContentLoaded", () => {
             instructions.classList.add("end");
             controlsList.classList.add("end");
             startBtn.setAttribute("class", "active");
+            arrowDown.classList.add("end");
         }, 3000);
 
         startBtn.onclick = () => {
             instructions.classList.remove("end");
+            arrowDown.classList.remove("end");
             startScreen.removeAttribute("class");
             startBtn.removeAttribute("class");
             controlsList.classList.remove("end");

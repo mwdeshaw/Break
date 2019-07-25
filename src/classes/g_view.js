@@ -85,7 +85,10 @@ class GVIEW {
             this.game.ctx.clearRect(0, 0, this.game.width, this.game.height);
             const endScreen = document.querySelector(".end-screen");
             const startBtn = document.getElementById("start-game");
+            const arrowDown = document.querySelector(".arrow-start");
+
             endScreen.classList.add("end");
+            arrowDown.classList.add("end");
             startBtn.setAttribute("class", "active");
         }
     };
