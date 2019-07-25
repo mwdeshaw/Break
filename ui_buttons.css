@@ -5,7 +5,7 @@
     left: 110px;
 }
 
-.power-btn {
+.power-btn.end {
     margin-top: 7px;
     width: 44px;
     height: 44px;
@@ -19,6 +19,8 @@
     animation-name: pulse;
     animation-duration: 3s;
     animation-iteration-count: infinite;
+    cursor: pointer;
+
 };
 
 .power-container {
@@ -42,19 +44,6 @@
   from { transform: scale(1); }
   50% { transform: scale(0.85); }
   to { transform: scale(1); }
-};
-
-.power-btn.end {
-    margin-top: 7px;
-    width: 44px;
-    height: 44px;
-    background: #ddd9dc;
-    border-radius: 100%;
-    vertical-align: middle;
-    align-content: center;
-    justify-content: center;
-    border: 0.5px solid black;
-    box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
 };
 
 
@@ -86,6 +75,13 @@
     background: lightgray;
 } 
 
+#start-game.active {
+    cursor: pointer;
+    animation-name: pulse;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+} 
+
 .vert {
     position: absolute;
     left: 30px;
@@ -113,6 +109,7 @@
     border-top: 10px solid #2d302e;
 }
 
+
 #horiz {
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
@@ -131,6 +128,8 @@
     border-radius: 5px;
     z-index: 6;
 }
+
+
 
 .thing {
     background-color: #c0c0be;
@@ -208,6 +207,7 @@
     justify-content: center;
 }
 
+
 .start-btn p {
     color: #2d302e;
     font-size: 16px;
@@ -222,6 +222,23 @@
 		0.25px 0.25px 0 #000;
 }
 
+.power-btn {
+    margin-top: 7px;
+    width: 44px;
+    height: 44px;
+    background: #ddd9dc;
+    border-radius: 100%;
+    vertical-align: middle;
+    align-content: center;
+    justify-content: center;
+    border: 0.5px solid black;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+    /* animation-name: pulse;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    cursor: pointer; */
+};
+
 #start-game {
     margin-top: 7px;
     width: 44px;
@@ -234,6 +251,35 @@
     border: 0.5px solid black;
     box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
 }
+
+
+#start-game {
+    margin-top: 7px;
+    width: 44px;
+    height: 44px;
+    background: #ddd9dc;
+    border-radius: 100%;
+    vertical-align: middle;
+    align-content: center;
+    justify-content: center;
+    border: 0.5px solid black;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* #start-game {
+    margin-top: 7px;
+    width: 44px;
+    height: 44px;
+    background: #ddd9dc;
+    border-radius: 100%;
+    vertical-align: middle;
+    align-content: center;
+    justify-content: center;
+    border: 0.5px solid black;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+} */
+
+
 
 #power {
     color: #2d302e;
