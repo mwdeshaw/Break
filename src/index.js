@@ -12,9 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const defScreen = document.getElementById("default");
-    const powerBtn = document.getElementById("power-btn");
+    const powerBtn = document.querySelector(".power-btn");
     powerBtn.onclick = () => {
-        defScreen.setAttribute("class", "active");
+        powerBtn.classList.add("end");
+        defScreen.setAttribute("class", "active"); //do this next
         const startScreen = document.getElementById('start-screen');
         startScreen.setAttribute("class", "active");
 

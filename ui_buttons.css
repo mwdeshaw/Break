@@ -5,6 +5,22 @@
     left: 110px;
 }
 
+.power-btn {
+    margin-top: 7px;
+    width: 44px;
+    height: 44px;
+    background: #ddd9dc;
+    border-radius: 100%;
+    vertical-align: middle;
+    align-content: center;
+    justify-content: center;
+    border: 0.5px solid black;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+    animation-name: pulse;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+};
+
 .power-container {
     position: absolute;
     top: 290px;
@@ -22,7 +38,13 @@
     justify-content: center;
 }
 
-#power-btn {
+@keyframes pulse {
+  from { transform: scale(1); }
+  50% { transform: scale(0.85); }
+  to { transform: scale(1); }
+};
+
+.power-btn.end {
     margin-top: 7px;
     width: 44px;
     height: 44px;
@@ -34,6 +56,7 @@
     border: 0.5px solid black;
     box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
 };
+
 
 .pad  {
     position: absolute;
@@ -73,7 +96,7 @@
     z-index: 6;
 }
 
-#power-btn:hover {
+.power-btn:hover {
     cursor: pointer;
     background: lightgray;
 }; 
