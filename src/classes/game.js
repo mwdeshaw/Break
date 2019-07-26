@@ -11,8 +11,7 @@ const STARTING_LIVES = 3;
 const BLOCK_HEIGHT = 50;
 const BLOCK_WIDTH = 50;
 const BLOCKS_NUM = 72;
-// const POWERUPS = ["extraLife", "multiBall", "shorterPaddle", "longerPaddle", "miniBall", "megaBall", "superBall"];
-const POWERUPS = ["multiBall"];
+const POWERUPS = ["extraLife", "multiBall", "shorterPaddle", "longerPaddle", "miniBall", "megaBall", "superBall"];
 const TOTAL_POWERUP_COUNT = 12;
 
 
