@@ -21,13 +21,19 @@ class Powerup extends MovingObject{
         this.type = type;
         this.color = randomColor();
     };
-    
+
     // draw(ctx) {
     //     let img = new Image();
     //     img.onload = () => {
-    //         ctx.save();
-    //         ctx.drawImage(img, this.pos.x, this.pos.y, this.radius, this.radius);
-    //         ctx.restore();
+    //         try {
+    //             ctx.save();
+    //             ctx.drawImage(img, this.pos.x, this.pos.y, this.radius, this.radius);
+    //             ctx.restore();
+    //         }
+    //         catch(error) {
+    //             console.log(error);
+    //         }
+            
     //     }
     //     switch (this.type) {
     //         case "extraLife":
