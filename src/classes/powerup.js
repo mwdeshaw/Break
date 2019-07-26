@@ -1,11 +1,10 @@
 import MovingObject from './moving_object';
-// import extraLife from 
-// import multiBall from 
-// import shorterPaddle from 
-// import longerPaddle from 
+import extraLife from './extraLifePowerup.png';
+import multiBall from './powerupMultiBallFinal.png';
+import shorterPaddle from './powerupSmallBat.png';
+import longerPaddle from './powerupBigBat.png';
 
-
-const POWERUP_RADIUS = 30;
+const POWERUP_RADIUS = 30; 
 
 const randomColor = () => {
     const digs = "0123456789ABCDEF";
@@ -25,36 +24,35 @@ class Powerup extends MovingObject{
         this.color = randomColor();
     };
     
-    // draw(ctx) {
-    //     let img = new Image();
-    //     switch(this.type) {
-    //         case "extraLife":
-    //             img.src = extraLife;
-    //             break;
-    //         case "multiBall":
-    //             img.src = multiBall;
-    //             break;
-    //         case "shorterPaddle":
-    //             img.src = shorterPaddle;
-    //             break;
-    //         case "longerPaddle":
-    //             img.src = longerPaddle;
-    //             break;
-    //     }
-    //     ctx.save();
-    //     ctx.drawImage(img, this.pos.x, this.pos.y, this.radius, this.radius);
-    //     ctx.restore();
-    // }
-
-
     draw(ctx) {
+        let img = new Image();
+        switch(this.type) {
+            case "extraLife":
+                img.src = extraLife;
+                break;
+            case "multiBall":
+                img.src = multiBall;
+                break;
+            case "shorterPaddle":
+                img.src = shorterPaddle;
+                break;
+            case "longerPaddle":
+                img.src = longerPaddle;
+                break;
+        }
         ctx.save();
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.pos.x, this.pos.y, this.radius, 0, 2 * Math.PI, true);
-        ctx.fill();
+        ctx.drawImage(img, this.pos.x, this.pos.y, this.radius, this.radius);
         ctx.restore();
-    };
+    }
+
+    // draw(ctx) {
+    //     ctx.save();
+    //     ctx.fillStyle = this.color;
+    //     ctx.beginPath();
+    //     ctx.arc(this.pos.x, this.pos.y, this.radius, 0, 2 * Math.PI, true);
+    //     ctx.fill();
+    //     ctx.restore();
+    // };
 
     initiateMove() {
         this.vel.y += 150;
