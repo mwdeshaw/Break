@@ -11,7 +11,8 @@ const STARTING_LIVES = 3;
 const BLOCK_HEIGHT = 50;
 const BLOCK_WIDTH = 50;
 const BLOCKS_NUM = 72;
-const POWERUPS = ["extraLife", "multiBall", "shorterPaddle", "longerPaddle", "miniBall", "megaBall", "superBall"];
+// const POWERUPS = ["extraLife", "multiBall", "shorterPaddle", "longerPaddle", "miniBall", "megaBall", "superBall"];
+const POWERUPS = ["multiBall"];
 const TOTAL_POWERUP_COUNT = 12;
 
 
@@ -259,7 +260,7 @@ class Game {
                 this.lives += 1;
                 break;
             case "multiBall":
-                let newerBalls = [];
+                let newerBalls;
                 this.balls.forEach(ball => {
                     let newBalls = [new Ball(Object.assign({}, this.balls[0].pos), true), new Ball(Object.assign({}, this.balls[0].pos), true)];
                     newBalls[0].vel.y = -Math.abs(ball.vel.y);
@@ -268,16 +269,16 @@ class Game {
                     newBalls[0].dir.y = -1;
                     newBalls[0].type = ball.type;
                     newBalls[0].radius = ball.radius;
+                    newBalls[0].color = ball.color;
                     newBalls[1].vel.y = -Math.abs(ball.vel.y);
-                    newBalls[1].vel.x = Math.abs(ball.vel.x);
+                    newBalls[1].vel.x = -Math.abs(ball.vel.x * 0.5);
                     newBalls[1].dir.x = -1;
-                    newBalls[1].dir.y = 1;
+                    newBalls[1].dir.y = -1;
                     newBalls[1].type = ball.type;
                     newBalls[1].radius = ball.radius;
-
-                    newerBalls.concat(newBalls);
+                    newBalls[1].color = ball.color;
+                    newerBalls = newBalls;
                 });
-
                 this.balls = this.balls.concat(newerBalls);
             break;
             case "megaBall":
@@ -288,11 +289,9 @@ class Game {
                 });
                 break;
             case "shorterPaddle":
-                // this.player.width = this.player.width -= 20;
                 this.player.width = this.player.width *= 0.75;
                 break;
             case "longerPaddle":
-                // this.player.width = this.player.width += 20;
                 this.player.width = this.player.width *= 1.25;
                 break;
             case "miniBall":
