@@ -61,6 +61,8 @@ class Ball extends MovingObj {
                 this.dir.x = -this.dir.x;
                 this.dir.y = -this.dir.y;
                 this.vel.y = -this.vel.y;
+            } else {
+                return null;
             };
         };
     };    

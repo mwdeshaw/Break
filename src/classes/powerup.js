@@ -18,6 +18,9 @@ megaBall.src = './src/classes/powerupMegaball.png';
 const miniBall = new Image();
 miniBall.src = './src/classes/miniBallPowerup.png';
 
+const superBall = new Image();
+superBall.src = './src/classes/superBallPowerup.png';
+
 const POWERUP_RADIUS = 50; 
 
 class Powerup extends MovingObject{
@@ -46,6 +49,9 @@ class Powerup extends MovingObject{
                 break;
             case "miniBall":
                 img = miniBall;
+                break;
+            case "superBall":
+                img = superBall;
                 break;
             }
                 ctx.save();
