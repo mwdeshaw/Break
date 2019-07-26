@@ -133,7 +133,6 @@ class Game {
         this.checkForCollisions();
         this.checkForWallCollisions();
         this.moveObjects(delta);
-
     };
 
     isOutOfBounds(posY) {
@@ -277,7 +276,7 @@ class Game {
                     newBalls[0].dir.x = -1;
                     newBalls[0].dir.y = -1;
                     newBalls[1].vel.y = -100;
-                    newBalls[0].vel.x = 50;
+                    newBalls[1].vel.x = 50;
                     newBalls[1].dir.x = -1;
                     newBalls[1].dir.y = 1;
 

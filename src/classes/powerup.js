@@ -3,25 +3,22 @@ import extraLife from './extraLifePowerup.png';
 import multiBall from './powerupMultiBallFinal.png';
 import shorterPaddle from './powerupSmallBat.png';
 import longerPaddle from './powerupBigBat.png';
+import megaBall from './powerupMegaball.png';
 
 const POWERUP_RADIUS = 30; 
-
-const randomColor = () => {
-    const digs = "0123456789ABCDEF";
-    let color = "#";
-    for (let i = 0; i < 3; i++) {
-        color += digs[Math.floor((Math.random() * 16))];
-    }
-    return color;
-};
-
-// const POWERUPS = ["extraLife", "multiBall", "shorterPaddle", "longerPaddle"];
-
+// const randomColor = () => {
+//     const digs = "0123456789ABCDEF";
+//     let color = "#";
+//     for (let i = 0; i < 3; i++) {
+//         color += digs[Math.floor((Math.random() * 16))];
+//     }
+//     return color;
+// };
 class Powerup extends MovingObject{
     constructor(pos, type) {
         super(pos, { x: 0, y: 0 }, POWERUP_RADIUS)
         this.type = type;
-        this.color = randomColor();
+        // this.color = randomColor();
     };
     
     draw(ctx) {
@@ -38,6 +35,12 @@ class Powerup extends MovingObject{
                 break;
             case "longerPaddle":
                 img.src = longerPaddle;
+                break;
+            case "megaBall":
+                img.src = megaBall;
+                break;
+            case "miniBall":
+                img.src = miniBall;
                 break;
         }
         ctx.save();
