@@ -1,70 +1,57 @@
 import MovingObject from './moving_object';
-import extraLife from './extraLifePowerup.png';
-import multiBall from './powerupMultiBallFinal.png';
-import shorterPaddle from './powerupSmallBat.png';
-import longerPaddle from './powerupBigBat.png';
-import megaBall from './powerupMegaball.png';
-import miniBall from './miniBallPowerup.png';
-const POWERUP_RADIUS = 30; 
 
-const randomColor = () => {
-    const digs = "0123456789ABCDEF";
-    let color = "#";
-    for (let i = 0; i < 3; i++) {
-        color += digs[Math.floor((Math.random() * 16))];
-    }
-    return color;
-};
+const extraLife = new Image();
+extraLife.src = './src/classes/extraLifePowerup.png';
+
+const multiBall = new Image();
+multiBall.src = './src/classes/powerupMultiBallFinal.png';
+
+const shorterPaddle = new Image();
+shorterPaddle.src = './src/classes/powerupSmallBat.png';
+
+const longerPaddle = new Image();
+longerPaddle.src = './src/classes/powerupBigBat.png';
+
+const megaBall = new Image();
+megaBall.src = './src/classes/powerupMegaball.png';
+
+const miniBall = new Image();
+miniBall.src = './src/classes/miniBallPowerup.png';
+
+const POWERUP_RADIUS = 50; 
+
 class Powerup extends MovingObject{
     constructor(pos, type) {
         super(pos, { x: 0, y: 0 }, POWERUP_RADIUS)
         this.type = type;
-        this.color = randomColor();
     };
-
-    // draw(ctx) {
-    //     let img = new Image();
-    //     img.onload = () => {
-    //         try {
-    //             ctx.save();
-    //             ctx.drawImage(img, this.pos.x, this.pos.y, this.radius, this.radius);
-    //             ctx.restore();
-    //         }
-    //         catch(error) {
-    //             console.log(error);
-    //         }
-            
-    //     }
-    //     switch (this.type) {
-    //         case "extraLife":
-    //             img.src = extraLife;
-    //             break;
-    //         case "multiBall":
-    //             img.src = multiBall;
-    //             break;
-    //         case "shorterPaddle":
-    //             img.src = shorterPaddle;
-    //             break;
-    //         case "longerPaddle":
-    //             img.src = longerPaddle;
-    //             break;
-    //         case "megaBall":
-    //             img.src = megaBall;
-    //             break;
-    //         case "miniBall":
-    //             img.src = miniBall;
-    //             break;
-    //     }
-    // }
 
     draw(ctx) {
-        ctx.save();
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.pos.x, this.pos.y, this.radius, 0, 2 * Math.PI, true);
-        ctx.fill();
-        ctx.restore();
-    };
+        let img;
+        switch (this.type) {
+            case "extraLife":
+                img = extraLife;
+                break;
+            case "multiBall":
+                img = multiBall;
+                break;
+            case "shorterPaddle":
+                img = shorterPaddle;
+                break;
+            case "longerPaddle":
+                img = longerPaddle;
+                break;
+            case "megaBall":
+                img = megaBall;
+                break;
+            case "miniBall":
+                img = miniBall;
+                break;
+            }
+                ctx.save();
+                ctx.drawImage(img, this.pos.x, this.pos.y, this.radius, this.radius);
+                ctx.restore();
+        };
 
     initiateMove() {
         this.vel.y += 150;

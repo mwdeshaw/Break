@@ -55,17 +55,5 @@ document.addEventListener("DOMContentLoaded", () => {
             const game = new Game(ctx);
             new GView(game).start();
         };
-
-        // if (defScreen.classList[0] === "active") {
-        //     powerBtn.onclick = () => {
-        //         defScreen.removeAttribute("class");
-        //         startBtn.removeAttribute("class");
-        //         startScreen.removeAttribute("class");
-        //         screenText.classList.remove("end");
-        //         instructions.classList.remove("end");
-        //         controlsList.classList.remove("end");
-        //         light.removeAttribute("class");
-        //     };
-        // };
     };
 });
