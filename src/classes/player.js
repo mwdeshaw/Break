@@ -41,36 +41,36 @@ class Player extends MovingObject {
             if (otherObj.pos.x >= (this.pos.x + 30) && otherObj.pos.x <= (this.pos.x + 60) ) {
                     otherObj.dir.x = -Math.abs(otherObj.dir.x); 
                     otherObj.dir.y = -Math.abs(otherObj.dir.y);
-                    otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.1;
+                    otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.05;
                 } else if (otherObj.pos.x < (this.pos.x + 30) && otherObj.pos.x >= (this.pos.x))  {
                     if (otherObj.vel.x === 0) {
                         otherObj.vel.x = this.getRandom([-175, 175]);
-                        otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.1;
+                        otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.05;
                     } else if (otherObj.vel.x < 0) {
                         otherObj.dir.x = -Math.abs(otherObj.dir.x);
                         otherObj.dir.y = -Math.abs(otherObj.dir.y); 
                         otherObj.vel.x = -Math.abs(otherObj.vel.x); 
-                        otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.1;
+                        otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.05;
                     } else {
                         otherObj.dir.x = -Math.abs(otherObj.dir.x);
                         otherObj.dir.y = -Math.abs(otherObj.dir.y);
                         otherObj.vel.x = Math.abs(otherObj.vel.x); 
-                        otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.1;
+                        otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.05;
                     }
                 } else {
                     if (otherObj.vel.x === 0) {
                         otherObj.vel.x = this.getRandom([-175, 175]);
-                        otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.1;
+                        otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.05;
                     } else if (otherObj.vel.x < 0) {
                         otherObj.dir.x = -Math.abs(otherObj.dir.x);
                         otherObj.dir.y = -Math.abs(otherObj.dir.y);
                         otherObj.vel.x = -Math.abs(otherObj.vel.x);
-                        otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.1;
+                        otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.05;
                     } else {
                         otherObj.dir.x = -Math.abs(otherObj.dir.x);
                         otherObj.dir.y = -Math.abs(otherObj.dir.y);
                         otherObj.vel.x = Math.abs(otherObj.vel.x);
-                        otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.1;
+                        otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.05;
                     }
                 }
             return true;

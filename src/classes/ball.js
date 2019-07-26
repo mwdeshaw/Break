@@ -13,12 +13,13 @@ const randomColor = () => {
 };
 
 class Ball extends MovingObj {
-    constructor(pos, initialFlag = false) {
+    constructor(pos, initialFlag = false, type="normal") {
         super(pos, { x: 0, y: 0 }, BALL_RADIUS);
         this.color = randomColor();
         this.dir = { x: 0, y: 0 }
         this.initialFlag = initialFlag;
         this.spinSpeed = Math.random() * 60 + 30;
+        this.type = type;
     };
 
     draw(ctx) {
@@ -56,11 +57,21 @@ class Ball extends MovingObj {
 
     bounce() {
         if (this.dir.x !== 0 && this.dir.y !== 0) {
-            this.dir.x = -this.dir.x;
-            this.dir.y = -this.dir.y;
-            this.vel.y = -this.vel.y;
+            if (this.type === "normal") {
+                this.dir.x = -this.dir.x;
+                this.dir.y = -this.dir.y;
+                this.vel.y = -this.vel.y;
+            };
         };
     };    
+
+    // bounce() {
+    //     if (this.dir.x !== 0 && this.dir.y !== 0) {
+    //         this.dir.x = -this.dir.x;
+    //         this.dir.y = -this.dir.y;
+    //         this.vel.y = -this.vel.y;
+    //     };
+    // };    
 
     initialRotation() {
         let rads = 90 * (Math.PI / 180);
