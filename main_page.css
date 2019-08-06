@@ -18,6 +18,7 @@ body {
 
 .arrow i {
   color: #ffffff;
+  font-size: 3rem;
 }
 
 .arrow p {
@@ -51,6 +52,8 @@ display: none;
 
 .arrow-start.end i {
   color: #ffffff;
+  font-size: 3rem;
+
 }
 
 .arrow-start.end p {
@@ -317,14 +320,15 @@ display: none;
 #power-lt {
     position: absolute;
     background-color: #525253;
-    height: 15px;
-    width: 15px;
+    height: 1rem;
+    width: 1rem;
     border-radius: 100%;
-    top: 120px;
-    right: 276px;
+    top: 15%;
+    right: 17%;
     z-index: 7;
     display: flex;
     justify-content: space-between;
+    vertical-align: middle;
 }
 
 #power-lt.active {
@@ -332,16 +336,13 @@ display: none;
     -moz-animation: glowing 1500ms infinite;
     -o-animation: glowing 1500ms infinite;
     animation: glowing 1500ms infinite;
-
 }
 
 #power-lt p {
     color: #2d302e;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 700;
-    left: 10px;
-    padding-left: 25px;
-    padding-top: 0px;
+    padding-left: 1.5rem;
     text-shadow:
 		-.25px -.25px 0 #000,
 		0.25px -.25px 0 #000,
