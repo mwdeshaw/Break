@@ -436,19 +436,20 @@ display: none;
   position: absolute;
   opacity: 1;
   z-index: 5;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
 }
 
 #text-thing {
-  font-size: 2rem;
-  margin-left: 272px;
-  padding-bottom: 15px;
-  margin-top: 140px;
+  font-size: 2.5rem;
+  padding-bottom: 4%;
+  padding-top: 15%;
 }
 
 #play-again {
   font-size: 1.5rem;
-  margin-left: 128px;
-  padding-top: 20px;
 }
 
 .start-text {
@@ -474,7 +475,6 @@ display: none;
   -o-transition: top 3s linear;
   transition: top 3s linear;
 }
-
 
 .instructions {
   top: 0;
