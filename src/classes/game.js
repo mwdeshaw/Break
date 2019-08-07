@@ -96,12 +96,12 @@ class Game {
         this.ctx.fillStyle = this.themeColor;
         this.ctx.fillRect(0, 0, this.width, this.height);
         
-        this.ctx.font = "30px Sans-Serif";
+        this.ctx.font = "10px Sans-Serif";
         this.ctx.fillStyle = "#8a891f";
         if (this.lives > 1) {
-            this.ctx.fillText(`${this.lives} Lives Left`, 750, 580);
+            this.ctx.fillText(`${this.lives} Lives Left`, Math.floor(this.width * 0.5), Math.floor(this.height * 0.8));
         } else {
-            this.ctx.fillText(`${this.lives} Life Left`, 750, 580);
+            this.ctx.fillText(`${this.lives} Lives Left`, Math.floor(this.width * 0.8), Math.floor(this.height * 0.8));
         }
 
         this.allCurObjects().forEach(obj => {

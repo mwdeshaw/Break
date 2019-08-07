@@ -2,6 +2,24 @@ import Game from "./classes/game";
 import GView from "./classes/g_view";
 
 document.addEventListener("DOMContentLoaded", () => {
+    const canvas = document.getElementById("board");
+    // const width = canvas.width;
+    // const height = canvas.height;
+
+    canvas.width = Math.floor(window.innerHeight / 0.43);
+    canvas.height = Math.floor(window.innerWidth / 0.45);
+    const height = canvas.height;
+    const width = canvas.width;
+    console.log(height);
+    console.log(width);
+    const ctx = canvas.getContext("2d");
+
+    // width: 55vw;
+    // height: 53vh;
+
+
+
+
     let github = document.getElementById("github");
     github.onclick = () => {
         document.location.href = 'https://github.com/mwdeshaw';
@@ -50,10 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
             startBtn.removeAttribute("class");
             controlsList.classList.remove("end");
             screenText.classList.remove("end");
-            const canvas = document.getElementById("board");
-            const width = canvas.width;
-            const height = canvas.height;
-            const ctx = canvas.getContext("2d");
             const game = new Game(ctx, width, height);
             new GView(game).start();
         };
