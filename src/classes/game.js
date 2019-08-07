@@ -33,7 +33,7 @@ class Game {
         this.blockSize = Math.floor(this.width / 25);
 
         this.powerupCount = TOTAL_POWERUP_COUNT; 
-        this.powerupSize = Math.floor(this.width * 0.02);
+        this.powerupSize = Math.floor(this.width * 0.055);
         this.powerups = POWERUPS;
         this.activePowerups = [];
         this.totalPowerups = [];
@@ -62,7 +62,7 @@ class Game {
                 blockPosY = blockPosY += this.blockSize;
             }
             if (i % 6 === 0 && this.powerupCount > 0) {
-                let randomPowerup = new Powerup({ x: blockPosX, y: blockPosY }, this.getRandom(this.powerups));
+                let randomPowerup = new Powerup({ x: blockPosX, y: blockPosY }, this.getRandom(this.powerups), this.powerupSize, this.width);
                 this.totalPowerups.push(randomPowerup);
                 this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, this.blockSize, this.blockSize, randomPowerup));
                 this.powerupCount -= 1;

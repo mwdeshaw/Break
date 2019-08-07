@@ -55,9 +55,9 @@ class Powerup extends MovingObject{
                 img = superBall;
                 break;
             }
-                ctx.save();
-                ctx.drawImage(img, this.pos.x, this.pos.y, this.radius, this.radius);
-                ctx.restore();
+            ctx.save();
+            ctx.drawImage(img, this.pos.x, this.pos.y, this.radius, this.radius);
+            ctx.restore();
         };
 
     initiateMove() {

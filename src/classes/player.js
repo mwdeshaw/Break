@@ -44,7 +44,7 @@ class Player extends MovingObject {
                     otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.05;
             } else if (otherObj.pos.x < (this.pos.x + this.height) && otherObj.pos.x >= (this.pos.x))  {
                     if (otherObj.vel.x === 0) {
-                        otherObj.vel.x = this.getRandom([-175, 175]);
+                        otherObj.vel.x = this.getRandom([-Math.floor(this.gameWidth / 5.25), Math.floor(this.gameWidth / 5.25)]);
                         otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.05;
                     } else if (otherObj.vel.x < 0) {
                         otherObj.dir.x = -Math.abs(otherObj.dir.x);
@@ -59,7 +59,7 @@ class Player extends MovingObject {
                     }
                 } else {
                     if (otherObj.vel.x === 0) {
-                        otherObj.vel.x = this.getRandom([-175, 175]);
+                        otherObj.vel.x = this.getRandom([-Math.floor(this.gameWidth / 5.25), Math.floor(this.gameWidth / 5.25)]);
                         otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.05;
                     } else if (otherObj.vel.x < 0) {
                         otherObj.dir.x = -Math.abs(otherObj.dir.x);
