@@ -149,10 +149,10 @@ display: none;
 .logo {
     position: absolute;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: #ababa9;
-    font-size: 80px;
+    color: hsl(60, 1%, 67%);
+    font-size: 4.5rem;
     font-weight: 700;
-    bottom: 7px;
+    top: 91.5%;
     z-index: 6;
     text-shadow:
 		-3px -3px 0 #000,
@@ -388,8 +388,10 @@ display: none;
     top: 45px;
     background: #2d302e;
     z-index: 3;
-    width: 1000px;
-    height: 750px;
+    width: 60vw;
+    height: 82vh;
+    /* width: 1000px;
+    height: 750px; */
     border-radius: 10% 10% 80% 80%;
     display: flex;
     vertical-align: middle; 
@@ -535,11 +537,12 @@ display: none;
 }
 
 #circle {
-    width: 1000px;
-    height: 80%;
+    width: 60vw;
+    height: 65.5vh;
     background: #2d302e;
     position: absolute;
     border-radius: 10% 10% 25% 25%;
     top: 160px;
     z-index: 4;
 };
+
