@@ -1,7 +1,5 @@
 import MovingObject from './moving_object';
 import Ball from './ball';
-const PLAYER_HEIGHT = 30;
-const PLAYER_WIDTH = 120;
 
 const randomColor = () => {
     const digs = "0123456789ABCDEF";
@@ -13,11 +11,11 @@ const randomColor = () => {
 };
 
 class Player extends MovingObject {
-    constructor(pos) {
+    constructor(pos, width, height) {
         super(pos, { x: 0, y: 0 })
         this.color = randomColor();
-        this.width = PLAYER_WIDTH;
-        this.height = PLAYER_HEIGHT;
+        this.width = width;
+        this.height = height
     };
 
     move(deltaTime) {

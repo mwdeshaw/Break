@@ -51,8 +51,10 @@ document.addEventListener("DOMContentLoaded", () => {
             controlsList.classList.remove("end");
             screenText.classList.remove("end");
             const canvas = document.getElementById("board");
+            const width = canvas.width;
+            const height = canvas.height;
             const ctx = canvas.getContext("2d");
-            const game = new Game(ctx);
+            const game = new Game(ctx, width, height);
             new GView(game).start();
         };
     };

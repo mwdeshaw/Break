@@ -3,10 +3,11 @@ import Ball from './ball';
 import Block from './blocks';
 import Powerup from './powerup'
 
-const HEIGHT = 600;
-const WIDTH = 920;
-const PLAYER_START_LOCATION = { x: 395, y: 540 };
-const BALL_START_LOCATION = { x: 455, y: 500 };
+// const HEIGHT = 600;
+// const WIDTH = 920;
+const PLAYER_START_LOCATION = { x: 150, y: 120 };
+const BALL_START_LOCATION = { x: 150, y: 110 };
+// const BALL_START_LOCATION = { x: 455, y: 500 };
 const STARTING_LIVES = 1;
 // const STARTING_LIVES = 3;
 const BLOCK_HEIGHT = 50;
@@ -17,17 +18,24 @@ const TOTAL_POWERUP_COUNT = 12;
 
 
 class Game {
-    constructor(ctx) {
-        this.lives = STARTING_LIVES;
-        this.player = new Player(Object.assign({}, PLAYER_START_LOCATION));
+    constructor(ctx, width, height) {
+        this.height = height;
+        this.width = width;
         this.ctx = ctx;
+        this.lives = STARTING_LIVES;
         this.blocks = [];
+        this.playerWidth = Math.floor(this.width / 7.67);
+        this.playerHeight = Math.floor(this.height / 20);
+
+        this.playerStart = { x: Math.floor(this.width / 2.33), y: Math.floor(this.height * 0.88) };
+
+
         this.balls = [new Ball(Object.assign({}, BALL_START_LOCATION))];
-        this.height = HEIGHT;
-        this.width = WIDTH;
+        this.player = new Player(Object.assign({}, this.playerStart), this.playerWidth, this.playerHeight);
         this.themeColor = ["#bdae57"];
         this.numBlocks = BLOCKS_NUM;
-        
+        this.blockWidth = Math.floor(this.width / 18.4);
+        this.blockHeight = 17;
         this.powerupCount = TOTAL_POWERUP_COUNT; 
         this.powerups = POWERUPS;
         this.activePowerups = [];
@@ -46,7 +54,8 @@ class Game {
             if (!this.blocks.length) {
                 let randomPowerup = new Powerup({ x: blockPosX, y: blockPosY }, this.getRandom(this.powerups));
                 this.totalPowerups.push(randomPowerup);
-                this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, BLOCK_WIDTH, BLOCK_HEIGHT, randomPowerup));
+                this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, this.blockWidth, this.blockWidth, randomPowerup));
+                // this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, BLOCK_WIDTH, BLOCK_HEIGHT, randomPowerup));
                 this.powerupCount -= 1;
                 i += 1;
             } 
@@ -59,10 +68,10 @@ class Game {
             if (i % 6 === 0 && this.powerupCount > 0) {
                 let randomPowerup = new Powerup({ x: blockPosX, y: blockPosY }, this.getRandom(this.powerups));
                 this.totalPowerups.push(randomPowerup);
-                this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, BLOCK_WIDTH, BLOCK_HEIGHT, randomPowerup));
+                this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, this.blockWidth, this.blockWidth, randomPowerup));
                 this.powerupCount -= 1;
             } else {
-                this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, BLOCK_WIDTH, BLOCK_HEIGHT, null));
+                this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, this.blockWidth, this.blockWidth, null));
             }
             i += 1;
         };
@@ -140,8 +149,9 @@ class Game {
         if (this.lives === 0) {
             return "Game Over!"
         } else {     
-            this.player.width = 120;
-            this.player.pos = Object.assign({}, PLAYER_START_LOCATION);
+            this.player.width = this.playerWidth;
+            
+            this.player.pos = Object.assign({}, this.playerStart);
             this.player.vel = { x: 0, y: 0 };
             if (this.balls.length > 1) {
                 this.balls = this.balls.slice(0, 1);
@@ -163,14 +173,14 @@ class Game {
             if ((obj instanceof Player) && (obj.pos.x < 0)) {
                 return obj.leftWallCollision();
             }
-            if ((obj instanceof Player) && (obj.pos.x > (920 - obj.width))) {
+            if ((obj instanceof Player) && (obj.pos.x > (this.width - obj.width))) {
                 return obj.rightWallCollision();
             }
             if ((obj instanceof Ball) && (obj.pos.x < (obj.radius))) {
                 this.playBounceSound();
                 return obj.leftWallCollision();
             }
-            if ((obj instanceof Ball) && (obj.pos.x > (920 - obj.radius))) {
+            if ((obj instanceof Ball) && (obj.pos.x > (this.width - obj.radius))) {
                 this.playBounceSound();
                 return obj.rightWallCollision();
             }
