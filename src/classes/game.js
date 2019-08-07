@@ -23,7 +23,7 @@ class Game {
         this.player = new Player(Object.assign({}, this.playerStart), this.playerWidth, this.playerHeight, this.width, this.height);
 
         this.ballRadius = Math.floor(this.width * 0.02)
-        this.ballStart = { x: Math.floor(this.width / 2.05), y: Math.floor(this.height * 0.8) };
+        this.ballStart = { x: Math.floor(this.width / 2.03), y: Math.floor(this.height * 0.81) };
         this.balls = [new Ball(Object.assign({}, this.ballStart), this.ballRadius)];
 
         this.themeColor = "#bdae57";
@@ -42,7 +42,7 @@ class Game {
     };   
      
     addBlocks(n) {
-        let blockPosX = Math.floor(this.width / 92);
+        let blockPosX = Math.floor(this.width / 70);
         let blockPosY = Math.floor(this.height * 0.02);
         let i = 0;
 
@@ -56,8 +56,8 @@ class Game {
             } 
 
             blockPosX += this.blockSize;
-            if (blockPosX > this.width - (this.width * 0.04)) {
-                blockPosX = Math.floor(this.width / 92);
+            if (blockPosX > this.width - (this.blockSize)) {
+                blockPosX = Math.floor(this.width / 70);
                 blockPosY = blockPosY += this.blockSize;
             }
             if (i % 6 === 0 && this.powerupCount > 0) {
@@ -97,9 +97,9 @@ class Game {
         this.ctx.font = `${this.width * 0.03}px Sans-Serif`;
         this.ctx.fillStyle = "#8a891f";
         if (this.lives > 1) {
-            this.ctx.fillText(`${this.lives} Lives Left`, Math.floor(this.width * 0.85), Math.floor(this.height * 0.95));
+            this.ctx.fillText(`${this.lives} Lives Left`, Math.floor(this.width * 0.8), Math.floor(this.height * 0.95));
         } else {
-            this.ctx.fillText(`${this.lives} Life Left`, Math.floor(this.width * 0.85), Math.floor(this.height * 0.95));
+            this.ctx.fillText(`${this.lives} Life Left`, Math.floor(this.width * 0.8), Math.floor(this.height * 0.95));
         }
 
         this.allCurObjects().forEach(obj => {
