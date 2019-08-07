@@ -61,7 +61,7 @@ class Powerup extends MovingObject{
         };
 
     initiateMove() {
-        this.vel.y += Math.floor(this.gameWidth / 4);
+        this.vel.y += Math.floor(this.gameWidth / 5);
     }
 
     move(deltaTime) {

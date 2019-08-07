@@ -5,9 +5,9 @@ import Powerup from './powerup'
 
 const STARTING_LIVES = 1;
 // const STARTING_LIVES = 3;
-const BLOCKS_NUM = 96;
+const BLOCKS_NUM = 100;
 const POWERUPS = ["extraLife", "multiBall", "shorterPaddle", "longerPaddle", "miniBall", "megaBall", "superBall"];
-const TOTAL_POWERUP_COUNT = 16;
+const TOTAL_POWERUP_COUNT = 17;
 
 
 class Game {
@@ -96,12 +96,14 @@ class Game {
         this.ctx.fillStyle = this.themeColor;
         this.ctx.fillRect(0, 0, this.width, this.height);
         
-        this.ctx.font = "10px Sans-Serif";
+        // 2 * window.innerWidth + "px Arial";
+        this.ctx.font = `${this.width * 0.03}px Sans-Serif`;
+        
         this.ctx.fillStyle = "#8a891f";
         if (this.lives > 1) {
-            this.ctx.fillText(`${this.lives} Lives Left`, Math.floor(this.width * 0.5), Math.floor(this.height * 0.8));
+            this.ctx.fillText(`${this.lives} Lives Left`, Math.floor(this.width * 0.85), Math.floor(this.height * 0.95));
         } else {
-            this.ctx.fillText(`${this.lives} Lives Left`, Math.floor(this.width * 0.8), Math.floor(this.height * 0.8));
+            this.ctx.fillText(`${this.lives} Life Left`, Math.floor(this.width * 0.85), Math.floor(this.height * 0.95));
         }
 
         this.allCurObjects().forEach(obj => {
