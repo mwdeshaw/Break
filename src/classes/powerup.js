@@ -21,12 +21,13 @@ miniBall.src = './src/classes/miniBallPowerup.png';
 const superBall = new Image();
 superBall.src = './src/classes/superBallPowerup.png';
 
-const POWERUP_RADIUS = 50; 
 
 class Powerup extends MovingObject{
-    constructor(pos, type) {
-        super(pos, { x: 0, y: 0 }, POWERUP_RADIUS)
+    constructor(pos, type, radius, gameWidth) {
+        super(pos, { x: 0, y: 0 })
         this.type = type;
+        this.radius = radius;
+        this.gameWidth = gameWidth;
     };
 
     draw(ctx) {
@@ -60,7 +61,7 @@ class Powerup extends MovingObject{
         };
 
     initiateMove() {
-        this.vel.y += 150;
+        this.vel.y += Math.floor(this.gameWidth / 4);
     }
 
     move(deltaTime) {

@@ -28,9 +28,12 @@ class Game {
         this.balls = [new Ball(Object.assign({}, this.ballStart), this.ballRadius)];
 
         this.themeColor = "#bdae57";
+
         this.numBlocks = BLOCKS_NUM;
         this.blockSize = Math.floor(this.width / 25);
+
         this.powerupCount = TOTAL_POWERUP_COUNT; 
+        this.powerupSize = Math.floor(this.width * 0.02);
         this.powerups = POWERUPS;
         this.activePowerups = [];
         this.totalPowerups = [];
@@ -46,7 +49,7 @@ class Game {
 
         while (i < n) {
             if (!this.blocks.length) {
-                let randomPowerup = new Powerup({ x: blockPosX, y: blockPosY }, this.getRandom(this.powerups));
+                let randomPowerup = new Powerup({ x: blockPosX, y: blockPosY }, this.getRandom(this.powerups), this.powerupSize, this.width);
                 this.totalPowerups.push(randomPowerup);
                 this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, this.blockSize, this.blockSize, randomPowerup));
                 this.powerupCount -= 1;
