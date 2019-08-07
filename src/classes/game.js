@@ -3,8 +3,7 @@ import Ball from './ball';
 import Block from './blocks';
 import Powerup from './powerup'
 
-const STARTING_LIVES = 1;
-// const STARTING_LIVES = 3;
+const STARTING_LIVES = 3;
 const BLOCKS_NUM = 100;
 const POWERUPS = ["extraLife", "multiBall", "shorterPaddle", "longerPaddle", "miniBall", "megaBall", "superBall"];
 const TOTAL_POWERUP_COUNT = 17;
@@ -95,10 +94,7 @@ class Game {
         this.ctx.clearRect(0, 0, this.width, this.height);
         this.ctx.fillStyle = this.themeColor;
         this.ctx.fillRect(0, 0, this.width, this.height);
-        
-        // 2 * window.innerWidth + "px Arial";
         this.ctx.font = `${this.width * 0.03}px Sans-Serif`;
-        
         this.ctx.fillStyle = "#8a891f";
         if (this.lives > 1) {
             this.ctx.fillText(`${this.lives} Lives Left`, Math.floor(this.width * 0.85), Math.floor(this.height * 0.95));

@@ -1,14 +1,14 @@
 
 .controls-parent {
     position: absolute;
-    top: 350px; 
-    left: 110px;
+    top: 32%;
+    left: 6%;
 }
 
 .power-btn.end {
-    margin-top: 7px;
-    width: 44px;
-    height: 44px;
+    margin-top: 4%;
+    width: 3rem;
+    height: 3rem;
     background: #ddd9dc;
     border-radius: 100%;
     vertical-align: middle;
@@ -20,15 +20,14 @@
     animation-duration: 3s;
     animation-iteration-count: infinite;
     cursor: pointer;
-
 };
 
 .power-container {
     position: absolute;
-    top: 290px;
-    left: 29px;
-    width: 130px;
-    height: 60px;
+    top: 13rem;
+    left: 3rem;
+    width: 8rem;
+    height: 3.8rem;
     background: #615297;
     z-index: 6;
     border-radius: 30px;
@@ -46,7 +45,6 @@
   to { transform: scale(1); }
 };
 
-
 .pad  {
     position: absolute;
     margin-left: 40px;
@@ -55,10 +53,10 @@
 
 .power-container {
     position: absolute;
-    top: 290px;
-    left: 29px;
-    width: 130px;
-    height: 60px;
+    top: 19rem;
+    left: 1rem;
+    width: 8rem;
+    height: 3.8rem;
     background: #615297;
     z-index: 6;
     border-radius: 30px;
@@ -129,8 +127,6 @@
     z-index: 6;
 }
 
-
-
 .thing {
     background-color: #c0c0be;
     width: 40px;
@@ -192,10 +188,10 @@
 
 .start-btn {
     position: absolute;
-    top: 205px;
-    left: 45px;
-    width: 130px;
-    height: 60px;
+    top: 13rem;
+    left: 1rem;
+    width: 8rem;
+    height: 3.8rem;
     background: #615297;
     z-index: 6;
     border-radius: 30px;
@@ -207,14 +203,12 @@
     justify-content: center;
 }
 
-
 .start-btn p {
     color: #2d302e;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 700;
-    left: 10px;
-    padding-left: 6px;
-    padding-top: 21px;
+    padding-left: 5%;
+    padding-top: 17%;
     text-shadow:
 		-.25px -.25px 0 #000,
 		0.25px -.25px 0 #000,
@@ -223,9 +217,9 @@
 }
 
 .power-btn {
-    margin-top: 7px;
-    width: 44px;
-    height: 44px;
+    margin-top: 4%;
+    width: 3rem;
+    height: 3rem;
     background: #ddd9dc;
     border-radius: 100%;
     vertical-align: middle;
@@ -236,9 +230,9 @@
 };
 
 #start-game {
-    margin-top: 7px;
-    width: 44px;
-    height: 44px;
+    margin-top: 4%;
+    width: 3rem;
+    height: 3rem;
     background: #ddd9dc;
     border-radius: 100%;
     vertical-align: middle;
@@ -247,12 +241,11 @@
     border: 0.5px solid black;
     box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
 }
-
 
 #start-game {
-    margin-top: 7px;
-    width: 44px;
-    height: 44px;
+    margin-top: 4%;
+    width: 3rem;
+    height: 3rem;
     background: #ddd9dc;
     border-radius: 100%;
     vertical-align: middle;
@@ -261,29 +254,13 @@
     border: 0.5px solid black;
     box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
 }
-
-/* #start-game {
-    margin-top: 7px;
-    width: 44px;
-    height: 44px;
-    background: #ddd9dc;
-    border-radius: 100%;
-    vertical-align: middle;
-    align-content: center;
-    justify-content: center;
-    border: 0.5px solid black;
-    box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
-} */
-
-
 
 #power {
     color: #2d302e;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 700;
-    left: 10px;
-    padding-left: 2px;
-    padding-top: 22px;
+    padding-left: 5%;
+    padding-top: 17%;
     text-shadow:
 		-.25px -.25px 0 #000,
 		0.25px -.25px 0 #000,
