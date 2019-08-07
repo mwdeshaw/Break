@@ -1,9 +1,8 @@
 
 class MovingObject {
-    constructor(pos, vel, radius) {
+    constructor(pos, vel) {
         this.pos = pos;
         this.vel = vel;
-        this.radius = radius;
     };
 
     move(deltaTime) {

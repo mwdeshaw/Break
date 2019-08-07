@@ -1,8 +1,6 @@
 import MovingObj from './moving_object';
 import Block from './blocks';
 
-const BALL_RADIUS = 20;
-
 const randomColor = () => {
     const digs = "0123456789ABCDEF";
     let color = "#";
@@ -13,13 +11,14 @@ const randomColor = () => {
 };
 
 class Ball extends MovingObj {
-    constructor(pos, initialFlag = false, type="normal") {
-        super(pos, { x: 0, y: 0 }, BALL_RADIUS);
+    constructor(pos, radius, initialFlag = false, type="normal") {
+        super(pos, { x: 0, y: 0 });
         this.color = randomColor();
         this.dir = { x: 0, y: 0 }
         this.initialFlag = initialFlag;
         this.spinSpeed = Math.random() * 60 + 30;
         this.type = type;
+        this.radius = radius;
     };
 
     draw(ctx) {

@@ -11,11 +11,13 @@ const randomColor = () => {
 };
 
 class Player extends MovingObject {
-    constructor(pos, width, height) {
+    constructor(pos, width, height, gameWidth, gameHeight) {
         super(pos, { x: 0, y: 0 })
         this.color = randomColor();
         this.width = width;
         this.height = height
+        this.gameWidth = gameWidth;
+        this.gameHeight = gameHeight;
     };
 
     move(deltaTime) {
@@ -36,11 +38,11 @@ class Player extends MovingObject {
 
     collidesWith(otherObj) {
         if (otherObj instanceof Ball) {
-            if (otherObj.pos.x >= (this.pos.x + 30) && otherObj.pos.x <= (this.pos.x + 60) ) {
+            if (otherObj.pos.x >= (this.pos.x + this.height) && otherObj.pos.x <= (this.pos.x + Math.floor(this.width / 2)) ) {
                     otherObj.dir.x = -Math.abs(otherObj.dir.x); 
                     otherObj.dir.y = -Math.abs(otherObj.dir.y);
                     otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.05;
-                } else if (otherObj.pos.x < (this.pos.x + 30) && otherObj.pos.x >= (this.pos.x))  {
+            } else if (otherObj.pos.x < (this.pos.x + this.height) && otherObj.pos.x >= (this.pos.x))  {
                     if (otherObj.vel.x === 0) {
                         otherObj.vel.x = this.getRandom([-175, 175]);
                         otherObj.vel.y = -Math.abs(otherObj.vel.y) * 1.05;
@@ -76,12 +78,12 @@ class Player extends MovingObject {
     };
 
     rightWallCollision() {
-        this.vel.x = -100;
+        this.vel.x = -Math.floor(this.gameHeight / 6);
         return true;
     }
 
     leftWallCollision() {
-        this.vel.x = 100;
+        this.vel.x = Math.floor(this.gameHeight / 6);
         return true;
     }
 

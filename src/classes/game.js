@@ -3,11 +3,6 @@ import Ball from './ball';
 import Block from './blocks';
 import Powerup from './powerup'
 
-// const HEIGHT = 600;
-// const WIDTH = 920;
-const PLAYER_START_LOCATION = { x: 150, y: 120 };
-const BALL_START_LOCATION = { x: 150, y: 110 };
-// const BALL_START_LOCATION = { x: 455, y: 500 };
 const STARTING_LIVES = 1;
 // const STARTING_LIVES = 3;
 const BLOCK_HEIGHT = 50;
@@ -24,15 +19,18 @@ class Game {
         this.ctx = ctx;
         this.lives = STARTING_LIVES;
         this.blocks = [];
+
         this.playerWidth = Math.floor(this.width / 7.67);
         this.playerHeight = Math.floor(this.height / 20);
-
         this.playerStart = { x: Math.floor(this.width / 2.33), y: Math.floor(this.height * 0.88) };
+        this.player = new Player(Object.assign({}, this.playerStart), this.playerWidth, this.playerHeight, this.width, this.height);
+
+        this.ballStart = { x: Math.floor(this.width / 2.33), y: Math.floor(this.height * 0.7) };
+
+        this.balls = [new Ball(Object.assign({}, this.ballStart, this.ballRadius))];
 
 
-        this.balls = [new Ball(Object.assign({}, BALL_START_LOCATION))];
-        this.player = new Player(Object.assign({}, this.playerStart), this.playerWidth, this.playerHeight);
-        this.themeColor = ["#bdae57"];
+        this.themeColor = "#bdae57";
         this.numBlocks = BLOCKS_NUM;
         this.blockWidth = Math.floor(this.width / 18.4);
         this.blockHeight = 17;
@@ -97,7 +95,7 @@ class Game {
  
     draw() {
         this.ctx.clearRect(0, 0, this.width, this.height);
-        this.ctx.fillStyle = this.themeColor[0];
+        this.ctx.fillStyle = this.themeColor;
         this.ctx.fillRect(0, 0, this.width, this.height);
         
         this.ctx.font = "30px Sans-Serif";
@@ -156,10 +154,10 @@ class Game {
             if (this.balls.length > 1) {
                 this.balls = this.balls.slice(0, 1);
             }
-            this.balls[0].pos = Object.assign({}, BALL_START_LOCATION);
+            this.balls[0].pos = Object.assign({}, this.ballStart);
             this.balls[0].dir = { x: 0, y: 0 };
             this.balls[0].vel = { x: 0, y: 0 };
-            this.balls[0].radius = 20;
+            this.balls[0].radius = this.ballRadius;
             this.balls[0].initialFlag = false;
             this.activePowerups = [];
             this.movingPowerups = [];
@@ -184,7 +182,7 @@ class Game {
                 this.playBounceSound();
                 return obj.rightWallCollision();
             }
-            if ((obj instanceof Ball) && (obj.pos.y < (obj.radius) || obj.pos.y > (600 - obj.radius))) {
+            if ((obj instanceof Ball) && (obj.pos.y < (obj.radius) || obj.pos.y > (this.width - obj.radius))) {
                 this.playBounceSound();
                 return obj.topWallCollision();
             }
