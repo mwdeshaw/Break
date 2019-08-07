@@ -47,7 +47,7 @@
 
 .pad  {
     position: absolute;
-    margin-left: 40px;
+    /* margin-left: 10rem; */
     z-index: 6;
 }
 
@@ -82,9 +82,9 @@
 
 .vert {
     position: absolute;
-    left: 30px;
-    width: 42px;
-    height: 126px;
+    left: 1.8rem;
+    width: 2.75rem;
+    height: 8rem;
     background: #ddd9dc;
     border-radius: 5px;
     z-index: 6;
@@ -98,8 +98,8 @@
 .vert::before {
     content: "";
     position: relative;
-    top: 138px;
-    left: 11px;
+    top: 1.1rem;
+    left: 1.8rem;
     width: 0;
     height: 0;
     border-left: 10px solid transparent;
@@ -117,11 +117,12 @@
 }
 
 
+
 #horiz {
     position: absolute;
-    left: 30px;
-    width: 42px;
-    height: 126px;
+    left: 1.8rem;
+    width: 2.75rem;
+    height: 8rem;
     background: #ddd9dc;
     border-radius: 5px;
     z-index: 6;
@@ -129,11 +130,11 @@
 
 .thing {
     background-color: #c0c0be;
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 100%;
-    top: 43px;
-    left: 30px;
+    top: 2.7rem;
+    left: 1.95rem;
     position: absolute;
     z-index: 7;
 }
@@ -141,11 +142,11 @@
 #a-btn {
     position: absolute;
     color: #c0c0be;
-    font-size: 28px;
+    font-size: 1.75em;
     font-weight: 700;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    left: -3px;
-    top: 50px;
+    top: 3.2rem;
+    left: 0.1rem;
     z-index: 7;
     text-shadow:
 		-1px -1px 0 #000,
@@ -157,11 +158,11 @@
 #d-btn {
     position: absolute;
     color: #c0c0be;
-    font-size: 28px;
+    font-size: 1.75em;
     font-weight: 700;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    left: 82px;
-    top: 50px;
+    left: 5rem;
+    top: 3.2rem;
     z-index: 7;
     text-shadow:
 		-1px -1px 0 #000,
@@ -173,11 +174,11 @@
 #sp-btn {
     position: absolute;
     color: #c0c0be;
-    font-size: 28px;
+    font-size: 1.60em;
     font-weight: 700;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    left: 32px;
-    top: 93px;
+    left: 2.15rem;
+    top: 6rem;
     z-index: 7;
     text-shadow:
 		-1px -1px 0 #000,
