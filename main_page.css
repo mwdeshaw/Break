@@ -150,9 +150,9 @@ display: none;
     position: absolute;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: hsl(60, 1%, 67%);
-    font-size: 4.5rem;
+    font-size: 5rem;
     font-weight: 700;
-    top: 90%;
+    top: 97%;
     z-index: 6;
     text-shadow:
 		-3px -3px 0 #000,
@@ -385,11 +385,11 @@ display: none;
 
 .screen {
     position: absolute;
-    top: 45px;
+    top: 10%;
     background: #2d302e;
     z-index: 3;
     width: 60vw;
-    height: 82vh;
+    height: 65vh;
     border-radius: 10% 10% 80% 80%;
     display: flex;
     vertical-align: middle; 
@@ -402,9 +402,9 @@ display: none;
   z-index: 4;
   border-radius: 13px;
   border: 2px solid black;
-  margin-top: 4%;
+  margin-top: 6%;
   width: 55vw;
-  height: 67vh;
+  height: 53vh;
   position: absolute;
 }
 
@@ -413,9 +413,9 @@ display: none;
     background-color: #bdae57;
     z-index: 5;
     border: 2px solid black;
-  margin-top: 4%;
-  width: 55vw;
-  height: 67vh;
+    margin-top: 6%;
+    width: 55vw;
+    height: 53vh;
     position: absolute;
 }
 
@@ -423,14 +423,14 @@ display: none;
   opacity: 0;
   color: #8a891f;
   font-family:'Press Start 2P', cursive;
-    position: absolute;
-    border: 2px solid black;
-    border-radius: 13px;
-    background-color: #bdae57;
-    z-index: 5;
-  margin-top: 4%;
+  position: absolute;
+  border: 2px solid black;
+  border-radius: 13px;
+  background-color: #bdae57;
+  z-index: 5;
+  margin-top: 6%;
   width: 55vw;
-  height: 67vh;
+  height: 53vh;
 }
 
 .end-screen.end {
@@ -444,7 +444,6 @@ display: none;
   margin-left: 272px;
   padding-bottom: 15px;
   margin-top: 140px;
-
 }
 
 #play-again {
@@ -458,7 +457,7 @@ display: none;
   opacity: 0;
   position: relative;
   color: #8a891f;
-  font-size: 3rem;
+  font-size: 2.75rem;
   z-index: 7;
   font-family:'Press Start 2P', cursive;
 }
@@ -466,7 +465,7 @@ display: none;
 .start-text.end {
   opacity: 1;
   z-index: 7;
-  top: 20%;
+  top: 15%;
   line-height: normal;
   display: flex;
   justify-content: center;
@@ -483,7 +482,7 @@ display: none;
   opacity: 0;
   position: relative;
   color: #8a891f;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   z-index: 7;
   font-family:'Press Start 2P', cursive;
 }
@@ -491,7 +490,7 @@ display: none;
 .instructions.end {
   opacity: 1;
   z-index: 7;
-  top: 28%;
+  top: 26%;
   line-height: normal;
   display: flex;
   justify-content: center;
@@ -502,7 +501,7 @@ display: none;
   opacity: 0;
   position: relative;
   color: #8a891f;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   z-index: 7;
   font-family:'Press Start 2P', cursive;
   list-style: none;
@@ -510,14 +509,13 @@ display: none;
 
 .controls-list li {
   padding: 2% 2% 0 0;
-
 }
 
 .controls-list.end {
   opacity: 1;
   z-index: 7;
   top: 34%;
-  left: 20%;
+  left: 23%;
   position: relative;
   line-height: normal;
   display: flex;
@@ -530,18 +528,18 @@ display: none;
   border-radius: 13px;
   z-index: 5;
   border: 2px solid black;
-  margin-top: 4%;
+  margin-top: 6%;
   width: 55vw;
-  height: 67vh;
+  height: 53vh;
 }
 
 #circle {
     width: 60vw;
-    height: 65.5vh;
+    height: 60.5vh;
     background: #2d302e;
     position: absolute;
     border-radius: 10% 10% 25% 25%;
-    top: 160px;
+    top: 22%;
     z-index: 4;
 };
 
