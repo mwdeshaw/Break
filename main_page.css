@@ -100,12 +100,9 @@ display: none;
   width: 4rem;
   height: 4rem;
   border-radius: 100%;
-  /* position: absolute; */
   outline: none;
   margin-top: 30%;
-  /* right: 20%; */
   color: #c0c0be;
-  /* bottom: 1%; */
 }
 
 #github i {
@@ -123,13 +120,11 @@ display: none;
   border-radius: 100%;
   outline: none;
   color: #c0c0be;
-  /* position: absolute; */
 }
 
 #linkedin i {
   font-size: 2rem;
 }
-
 
 #linkedin:hover {
   background: lightgrey;
@@ -139,15 +134,15 @@ display: none;
 .speakers {
   content: "";
   position: absolute;
-  height: 120px;
-  width: 8px;
-  top: 555px;
-  right: 210px; 
+  height: 8rem;
+  width: 0.5rem;
+  bottom: 14%;
+  right: 13%;
   background: #3c2861;
   border-radius: 4px;
   -webkit-transform: rotate(-95deg);
   transform: rotate(-95deg);
-  box-shadow: 20px 0 #3c2861, 40px 0 #3c2861, 60px 0 #3c2861, 80px 0 #3c2861;
+  box-shadow: 1rem 0 #3c2861, 2rem 0 #3c2861, 3rem 0 #3c2861, 4rem 0 #3c2861;
   z-index: 5;
 }
 
