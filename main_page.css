@@ -87,20 +87,29 @@ display: none;
 
 .media{
   position: absolute;
+  justify-content: space-between;
+  display: flex;
   z-index: 7 ;
-  right: 220px; 
-  top: 250px;
+  right: 7%;
+  top: 37%;
+  width: 9vw;
+  height: 20vh;
 }
 
 #github {
-  width: 60px;
-  height: 60px;
+  width: 4rem;
+  height: 4rem;
   border-radius: 100%;
-  position: absolute;
+  /* position: absolute; */
   outline: none;
-  right: 10px;
+  margin-top: 30%;
+  /* right: 20%; */
   color: #c0c0be;
-  top: 40px;
+  /* bottom: 1%; */
+}
+
+#github i {
+  font-size: 2rem;
 }
 
 #github:hover {
@@ -109,13 +118,18 @@ display: none;
 }
 
 #linkedin {
-  width: 60px;
-  height: 60px;
+  width: 4rem;
+  height: 4rem;
   border-radius: 100%;
   outline: none;
   color: #c0c0be;
-  position: absolute;
+  /* position: absolute; */
 }
+
+#linkedin i {
+  font-size: 2rem;
+}
+
 
 #linkedin:hover {
   background: lightgrey;
