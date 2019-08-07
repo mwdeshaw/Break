@@ -5,11 +5,9 @@ import Powerup from './powerup'
 
 const STARTING_LIVES = 1;
 // const STARTING_LIVES = 3;
-const BLOCK_HEIGHT = 50;
-const BLOCK_WIDTH = 50;
-const BLOCKS_NUM = 72;
+const BLOCKS_NUM = 96;
 const POWERUPS = ["extraLife", "multiBall", "shorterPaddle", "longerPaddle", "miniBall", "megaBall", "superBall"];
-const TOTAL_POWERUP_COUNT = 12;
+const TOTAL_POWERUP_COUNT = 16;
 
 
 class Game {
@@ -25,14 +23,13 @@ class Game {
         this.playerStart = { x: Math.floor(this.width / 2.33), y: Math.floor(this.height * 0.88) };
         this.player = new Player(Object.assign({}, this.playerStart), this.playerWidth, this.playerHeight, this.width, this.height);
 
-        this.ballRadius = 20;
-        this.ballStart = { x: Math.floor(this.width / 2.33), y: Math.floor(this.height * 0.7) };
+        this.ballRadius = Math.floor(this.width * 0.02)
+        this.ballStart = { x: Math.floor(this.width / 2.05), y: Math.floor(this.height * 0.8) };
         this.balls = [new Ball(Object.assign({}, this.ballStart), this.ballRadius)];
-
 
         this.themeColor = "#bdae57";
         this.numBlocks = BLOCKS_NUM;
-        this.blockSize = Math.floor(this.width / 22);
+        this.blockSize = Math.floor(this.width / 25);
         this.powerupCount = TOTAL_POWERUP_COUNT; 
         this.powerups = POWERUPS;
         this.activePowerups = [];
@@ -44,7 +41,7 @@ class Game {
      
     addBlocks(n) {
         let blockPosX = Math.floor(this.width / 92);
-        let blockPosY = Math.floor(this.height / 60);
+        let blockPosY = Math.floor(this.height * 0.02);
         let i = 0;
 
         while (i < n) {
@@ -56,10 +53,10 @@ class Game {
                 i += 1;
             } 
 
-            blockPosX += BLOCK_WIDTH;
-            if (blockPosX > 878) {
-                blockPosX = 10;
-                blockPosY = blockPosY += BLOCK_HEIGHT;
+            blockPosX += this.blockSize;
+            if (blockPosX > this.width - (this.width * 0.04)) {
+                blockPosX = Math.floor(this.width / 92);
+                blockPosY = blockPosY += this.blockSize;
             }
             if (i % 6 === 0 && this.powerupCount > 0) {
                 let randomPowerup = new Powerup({ x: blockPosX, y: blockPosY }, this.getRandom(this.powerups));
