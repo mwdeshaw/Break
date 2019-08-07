@@ -22,23 +22,6 @@
     cursor: pointer;
 };
 
-.power-container {
-    position: absolute;
-    top: 13rem;
-    left: 3rem;
-    width: 8rem;
-    height: 3.8rem;
-    background: #615297;
-    z-index: 6;
-    border-radius: 30px;
-    transform: rotate(30deg);
-    border: 0.5px solid black;
-    display: flex;
-    vertical-align: middle;
-    align-content: center;
-    justify-content: center;
-}
-
 @keyframes pulse {
   from { transform: scale(1); }
   50% { transform: scale(0.85); }
@@ -47,14 +30,13 @@
 
 .pad  {
     position: absolute;
-    /* margin-left: 10rem; */
     z-index: 6;
 }
 
 .power-container {
     position: absolute;
-    top: 19rem;
-    left: 1rem;
+    top: 36vh;
+    left: 1vw;
     width: 8rem;
     height: 3.8rem;
     background: #615297;
@@ -115,8 +97,6 @@
     -o-transform: rotate(90deg);
     transform: rotate(90deg);
 }
-
-
 
 #horiz {
     position: absolute;
@@ -189,8 +169,8 @@
 
 .start-btn {
     position: absolute;
-    top: 13rem;
-    left: 1rem;
+    top: 24vh;
+    left: 1vw;
     width: 8rem;
     height: 3.8rem;
     background: #615297;
