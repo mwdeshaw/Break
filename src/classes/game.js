@@ -25,9 +25,9 @@ class Game {
         this.playerStart = { x: Math.floor(this.width / 2.33), y: Math.floor(this.height * 0.88) };
         this.player = new Player(Object.assign({}, this.playerStart), this.playerWidth, this.playerHeight, this.width, this.height);
 
+        this.ballRadius = 20;
         this.ballStart = { x: Math.floor(this.width / 2.33), y: Math.floor(this.height * 0.7) };
-
-        this.balls = [new Ball(Object.assign({}, this.ballStart, this.ballRadius))];
+        this.balls = [new Ball(Object.assign({}, this.ballStart), this.ballRadius)];
 
 
         this.themeColor = "#bdae57";
@@ -135,7 +135,7 @@ class Game {
     };
 
     isOutOfBounds(posY) {
-        if (posY > (560)) {
+        if (posY > (Math.floor(this.height / 1.07))) {
             return true
         } else {
             return false;
@@ -270,7 +270,7 @@ class Game {
             case "multiBall":
                 let newerBalls;
                 this.balls.forEach(ball => {
-                    let newBalls = [new Ball(Object.assign({}, this.balls[0].pos), true), new Ball(Object.assign({}, this.balls[0].pos), true)];
+                    let newBalls = [new Ball(Object.assign({}, this.balls[0].pos), this.ballRadius, true), new Ball(Object.assign({}, this.balls[0].pos), this.ballRadius, true)];
                     newBalls[0].vel.y = -Math.abs(ball.vel.y);
                     newBalls[0].vel.x = -Math.abs(ball.vel.x);
                     newBalls[0].dir.x = -1;
