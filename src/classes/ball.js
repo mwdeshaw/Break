@@ -66,14 +66,6 @@ class Ball extends MovingObj {
         };
     };    
 
-    // bounce() {
-    //     if (this.dir.x !== 0 && this.dir.y !== 0) {
-    //         this.dir.x = -this.dir.x;
-    //         this.dir.y = -this.dir.y;
-    //         this.vel.y = -this.vel.y;
-    //     };
-    // };    
-
     initialRotation() {
         let rads = 90 * (Math.PI / 180);
         this.dir.x = Math.cos(rads);

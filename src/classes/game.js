@@ -32,8 +32,7 @@ class Game {
 
         this.themeColor = "#bdae57";
         this.numBlocks = BLOCKS_NUM;
-        this.blockWidth = Math.floor(this.width / 18.4);
-        this.blockHeight = 17;
+        this.blockSize = Math.floor(this.width / 22);
         this.powerupCount = TOTAL_POWERUP_COUNT; 
         this.powerups = POWERUPS;
         this.activePowerups = [];
@@ -44,16 +43,15 @@ class Game {
     };   
      
     addBlocks(n) {
-        let blockPosX = 10;
-        let blockPosY = 10;
+        let blockPosX = Math.floor(this.width / 92);
+        let blockPosY = Math.floor(this.height / 60);
         let i = 0;
 
         while (i < n) {
             if (!this.blocks.length) {
                 let randomPowerup = new Powerup({ x: blockPosX, y: blockPosY }, this.getRandom(this.powerups));
                 this.totalPowerups.push(randomPowerup);
-                this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, this.blockWidth, this.blockWidth, randomPowerup));
-                // this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, BLOCK_WIDTH, BLOCK_HEIGHT, randomPowerup));
+                this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, this.blockSize, this.blockSize, randomPowerup));
                 this.powerupCount -= 1;
                 i += 1;
             } 
@@ -66,10 +64,10 @@ class Game {
             if (i % 6 === 0 && this.powerupCount > 0) {
                 let randomPowerup = new Powerup({ x: blockPosX, y: blockPosY }, this.getRandom(this.powerups));
                 this.totalPowerups.push(randomPowerup);
-                this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, this.blockWidth, this.blockWidth, randomPowerup));
+                this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, this.blockSize, this.blockSize, randomPowerup));
                 this.powerupCount -= 1;
             } else {
-                this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, this.blockWidth, this.blockWidth, null));
+                this.blocks.push(new Block({ x: blockPosX, y: blockPosY }, this.blockSize, this.blockSize, null));
             }
             i += 1;
         };
