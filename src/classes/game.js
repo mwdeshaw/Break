@@ -151,6 +151,8 @@ class Game {
                 this.balls = this.balls.slice(0, 1);
             }
             this.balls[0].pos = Object.assign({}, this.ballStart);
+            this.balls[0].type = "normal";
+            this.balls[0].color = this.randomColor();
             this.balls[0].dir = { x: 0, y: 0 };
             this.balls[0].vel = { x: 0, y: 0 };
             this.balls[0].radius = this.ballRadius;
@@ -159,6 +161,16 @@ class Game {
             this.movingPowerups = [];
         };
     };
+
+    randomColor() {
+        const digs = "0123456789ABCDEF";
+        let color = "#";
+        for (let i = 0; i < 3; i++) {
+            color += digs[Math.floor((Math.random() * 16))];
+        }
+        return color;
+    };
+
 
     checkForWallCollisions() {
         const allMovingObj = this.allCurMovingObjs();
@@ -264,26 +276,21 @@ class Game {
                 this.lives += 1;
                 break;
             case "multiBall":
-                let newerBalls;
                 this.balls.forEach(ball => {
-                    let newBalls = [new Ball(Object.assign({}, this.balls[0].pos), this.ballRadius, true), new Ball(Object.assign({}, this.balls[0].pos), this.ballRadius, true)];
+                    let newBalls = [new Ball(Object.assign({}, ball.pos), this.ballRadius, true, ball.type), new Ball(Object.assign({}, ball.pos), this.ballRadius, true, ball.type)];
                     newBalls[0].vel.y = -Math.abs(ball.vel.y);
                     newBalls[0].vel.x = -Math.abs(ball.vel.x);
                     newBalls[0].dir.x = -1;
                     newBalls[0].dir.y = -1;
-                    newBalls[0].type = ball.type;
-                    newBalls[0].radius = ball.radius;
                     newBalls[0].color = ball.color;
+
                     newBalls[1].vel.y = -Math.abs(ball.vel.y);
                     newBalls[1].vel.x = -Math.abs(ball.vel.x * 0.5);
                     newBalls[1].dir.x = -1;
                     newBalls[1].dir.y = -1;
-                    newBalls[1].type = ball.type;
-                    newBalls[1].radius = ball.radius;
                     newBalls[1].color = ball.color;
-                    newerBalls = newBalls;
+                    this.balls = this.balls.concat(newBalls);
                 });
-                this.balls = this.balls.concat(newerBalls);
             break;
             case "megaBall":
                 this.balls.forEach(ball => {
